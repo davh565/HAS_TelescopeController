@@ -23,8 +23,8 @@
 const double trackRateHz = 250.0;
 double slewRateHz = 250.0;
 bool isRaDir;
-bool isRaPul;
 bool isDecDir;
+bool isRaPul;
 bool isDecPul;
 bool isTrack;
 int potVal;
@@ -52,10 +52,10 @@ void setup()
     // Serial.begin(9600);
 
 }
-void loop()
 
-{
-    potVal = analogRead(AI_POT);
+
+void loop(){
+ potVal = analogRead(AI_POT);
     slewRateHz = 0.095*potVal*potVal;
     // Serial.println(slewRateHz);
     isRaDir = !digitalRead(DI_RA_DIR);

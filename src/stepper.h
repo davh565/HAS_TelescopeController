@@ -16,7 +16,6 @@ struct stepperCalibration{
 namespace io{
     class Stepper{
     private:
-        PulseGenerator Pulse;
         bool isEnabled;
         // bool flagResetCount;
         double pulsesPerDeg;
@@ -34,6 +33,7 @@ namespace io{
         void setEnabled(bool isEnabled);
         int getDirection() {return dir;}
     public:
+        PulseGenerator Pulse;
         uint32_t getFrequency() {return frequency;}
         bool getEnabled() {return isEnabled;}
         // double getStepsPerDeg() {return stepsPerDeg;}

@@ -19,9 +19,9 @@
 #define AI_POT A8
 double trackRateHz = 250.0;
 double slewRateHz = 250.0;
-bool isRaDir;
+int raDir;
+int decDir;
 bool isRaPul;
-bool isDecDir;
 bool isDecPul;
 bool isTrack;
 int potVal;
@@ -40,21 +40,54 @@ void testStepper(){
 
 void setup(){
     Serial.begin(9600);
-raStp.init(DO_RA_STP_DIR, PWM_RA_STP_PUL, maxFreq, raCal);
-decStp.init(DO_DEC_STP_DIR, PWM_DEC_STP_PUL, maxFreq, decCal);
-        raStp.runAngle(5);
-        decStp.runAngle(10);
-    // testStepper();
+    pinMode(DI_RA_DIR, INPUT_PULLUP);
+    pinMode(DI_RA_PUL, INPUT_PULLUP);
+    pinMode(DI_DEC_DIR, INPUT_PULLUP);
+    pinMode(DI_DEC_PUL, INPUT_PULLUP);
+    pinMode(DI_TRACK, INPUT_PULLUP);
+    pinMode(AI_POT, INPUT);
 
+    raStp.init(DO_RA_STP_DIR, PWM_RA_STP_PUL, maxFreq, raCal);
+    decStp.init(DO_DEC_STP_DIR, PWM_DEC_STP_PUL, maxFreq, decCal);
 
 }
 
-void loop(){
-    
-    // Serial.println(io::motor.getDirection());
-    // io::motor.changeDirection();
-    // Serial.println(REVERSE);
-    // static bool tst = false;
-    // digitalWrite(DO_RA_STP_DIR, tst);
-    // tst = !tst;
+void loop()
+
+{
+    potVal = analogRead(AI_POT);
+    slewRateHz = 0.095*potVal*potVal;
+    // Serial.println(slewRateHz);
+    raDir = !digitalRead(DI_RA_DIR);
+    isRaPul = !digitalRead(DI_RA_PUL);
+    decDir = !digitalRead(DI_DEC_DIR);
+    isDecPul = !digitalRead(DI_DEC_PUL);
+    isTrack = !digitalRead(DI_TRACK);
+
+    // digitalWrite(DO_RA_EN,isRaPul);
+    // digitalWrite(DO_DEC_EN,isDecPul);
+    if(isRaPul){
+        raStp.run(raDir, slewRateHz);
+    }
+    else if(isTrack){
+        raStp.run(FORWARD, trackRateHz);
+    }
+    else{
+        raStp.stop();
+    }
+    if(isDecPul){
+        decStp.run(decDir, slewRateHz);
+    }
+    else{
+        decStp.stop();
+    }
+
+    static unsigned long lastTime = 0;
+    if(millis() - lastTime > 1000){
+        lastTime = millis();
+        Serial.println("RA: " + String(raStp.getStepCount()) + " DEC: " + String(decStp.getStepCount()));
+    }
+
+    // decPulse.setDirection(isDecDir);
+    // digitalWrite(DO_DEC_DIR,isDecDir);
 }
