@@ -4,7 +4,7 @@
 #include "src/comms.h"
 #include "src/ctrl.h"
 #include "src/pos.h"
-#include "src/io.h"
+// #include "src/io.h"
 #include "src/stepper.h"
 
 #include "src/utils.h"
@@ -35,8 +35,16 @@ int potVal;
 
 io::Stepper raStp;
 io::Stepper decStp;
+pos::Position getMotorPositions(){
+    pos::Position pos;
+    pos.frame = MOTOR;
+    pos.ra = raStp.getStepCount()/raStp.getPulsesPerDeg();
+    pos.dec = decStp.getStepCount()/decStp.getPulsesPerDeg();
+    return pos;
+}
 
-        uint32_t maxFreq = 50000;
+
+uint32_t maxFreq = 50000;
 stepperCalibration raCal = {30742.88868,-0.4805,32558};
 stepperCalibration decCal = {99603.48705,-1.2116,74717};
 ////////////////////////////////////////////////////////////////////////////////
@@ -118,12 +126,13 @@ void loop() {
     // Finally, the base position is converted to celestial coordinates.
     pos::SiderealTime::update();
     ctrl::state = (digitalRead(DI_MODE) == LOW) ? AUTO : MANUAL;
+    pos::currentLocation.updatePosition(getMotorPositions());
     // io::inputUpdate();
 
     // if (g_isSlewing) ctrl::simSlew(pos::currentLocation, pos::targetPosition);
 
-    switch(ctrl::state){
-    case AUTO:
+    // switch(ctrl::state){
+    // case AUTO:
         if (comms::readStringUntilChar(buffer, '#')) {
             currentCmd = comms::parseCommand(buffer);
             switch (currentCmd) {
@@ -156,14 +165,27 @@ void loop() {
             break;
 
             case SLEW_TO_TARGET:
-            comms::sendReply(ctrl::checkTargetReachable(pos::targetPosition));
-            ctrl::moveTo(pos::targetPosition);
-            // g_isSlewing = true;
+            switch (ctrl::state){
+                case AUTO:
+                comms::sendReply(ctrl::checkTargetReachable(pos::targetPosition));
+                ctrl::move(pos::currentLocation, pos::targetPosition);
+                // g_isSlewing = true;
+                break;
+                case MANUAL:
+                comms::sendReply("2: Telescope in Manual mode");
+                break;
+            }
             buffer = "";
             break;
 
             case STOP_SLEW:
-            ctrl::stopAllMovement();
+            switch (ctrl::state){
+                case AUTO:
+                ctrl::stopAllMovement();
+                break;
+                case MANUAL:
+                break;
+            }
             buffer = "";
             break;
 
@@ -193,9 +215,10 @@ void loop() {
         
         // Serial1.print("RX " + comms::receive);
         }
-    break;
-    case MANUAL:
-    default:
+    // break;
+    // case MANUAL:
+    // default:
+    if(ctrl::state == MANUAL){
         potVal = analogRead(AI_POT);
         slewRateHz = 0.095*potVal*potVal;
         // Serial.println(slewRateHz);

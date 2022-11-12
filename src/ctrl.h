@@ -19,13 +19,12 @@ enum autoManualMode{
 namespace ctrl {
     // void commandActions(command cmd);
     String checkTargetReachable(pos::Position target);
-    void stepperControl();
     void stopAllMovement();
     void calibrateHomePosition();
-    void moveTo(pos::Position position);
-    void moveSteps(int axis, uint32_t steps);
-    void waitForSync();
-    void simSlew(pos::FrameSet& currentLocation, pos::Position& targetPosition);
+    void move(pos::FrameSet& currentLocation, pos::Position& targetPosition);
+    // void moveSteps(int axis, uint32_t steps);
+    // void waitForSync();
+    // void simSlew(pos::FrameSet& currentLocation, pos::Position& targetPosition);
 };
 
 #endif //HAS_CTRL

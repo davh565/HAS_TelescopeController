@@ -36,7 +36,7 @@ namespace io{
         PulseGenerator Pulse;
         uint32_t getFrequency() {return frequency;}
         bool getEnabled() {return isEnabled;}
-        // double getStepsPerDeg() {return stepsPerDeg;}
+        double getPulsesPerDeg() {return pulsesPerDeg;}
         long getStepCount() {return Pulse.getCount();}
         void setFrequency(uint32_t frequency);
         void runSteps(int32_t steps);

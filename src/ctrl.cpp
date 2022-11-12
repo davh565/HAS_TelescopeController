@@ -24,17 +24,7 @@ namespace ctrl {
         return str;
     }
 
-    void waitForSync() {
-    // while (digitalRead(2) == HIGH) {
-    //   Serial.println("Waiting for sync");
-    //   delay(1000);
-    // }
-    // Serial.println("Synced");
-    }
-    
-    void moveSteps(int axis, uint32_t steps){
 
-    }
     void stopAllMovement() {
         // io::stopMotors();
     }
@@ -46,32 +36,38 @@ namespace ctrl {
     }
 
 // checkPath
-    void simSlew(pos::FrameSet& currentLocation, pos::Position& targetPosition){
-        static unsigned long prevMillis = millis();
-        unsigned long currentMillis = millis();
-        const int updateRate = 100;
-        if (currentMillis - prevMillis >= updateRate) {
+    void move(pos::FrameSet& currentLocation, pos::Position& targetPosition) {
             double deltaRa = wrap180(targetPosition.ra - currentLocation.getCoord(SKY, RA));
             double deltaDec = wrap180(targetPosition.dec - currentLocation.getCoord(SKY, DECL));
-            
-            Serial1.println(String(currentLocation.getCoord(SKY, RA)) + " " + String(deltaRa) + " " + String(currentLocation.getCoord(SKY, DECL)) + " " + String(deltaDec));
-            const double slewRateRa = 0.1253417;//1.0;
-            const double slewRateDec = 0.0680118;//0.5;
-            const double threshold = 0.25;
-            int raDir = deltaRa > 0 ? 1 : -1;
-            int decDir = deltaDec > 0 ? 1 : -1;
-            if (abs(deltaRa) > threshold){
-                currentLocation.incrementCoord(MOTOR, RA, -raDir * slewRateRa);
-            }
-            if (abs(deltaDec) > threshold){
-                currentLocation.incrementCoord(MOTOR, DECL, decDir * slewRateDec);
-            }
-            if (abs(deltaRa) <= threshold && abs(deltaDec) <= threshold) g_isSlewing = false;
-            prevMillis = currentMillis;
+            // io::moveSteppers(deltaRa, deltaDec);
         }
     }
+    // void simSlew(pos::FrameSet& currentLocation, pos::Position& targetPosition){
+    //     static unsigned long prevMillis = millis();
+    //     unsigned long currentMillis = millis();
+    //     const int updateRate = 100;
+    //     if (currentMillis - prevMillis >= updateRate) {
+    //         double deltaRa = wrap180(targetPosition.ra - currentLocation.getCoord(SKY, RA));
+    //         double deltaDec = wrap180(targetPosition.dec - currentLocation.getCoord(SKY, DECL));
+            
+    //         Serial1.println(String(currentLocation.getCoord(SKY, RA)) + " " + String(deltaRa) + " " + String(currentLocation.getCoord(SKY, DECL)) + " " + String(deltaDec));
+    //         const double slewRateRa = 0.1253417;//1.0;
+    //         const double slewRateDec = 0.0680118;//0.5;
+    //         const double threshold = 0.25;
+    //         int raDir = deltaRa > 0 ? 1 : -1;
+    //         int decDir = deltaDec > 0 ? 1 : -1;
+    //         if (abs(deltaRa) > threshold){
+    //             currentLocation.incrementCoord(MOTOR, RA, -raDir * slewRateRa);
+    //         }
+    //         if (abs(deltaDec) > threshold){
+    //             currentLocation.incrementCoord(MOTOR, DECL, decDir * slewRateDec);
+    //         }
+    //         if (abs(deltaRa) <= threshold && abs(deltaDec) <= threshold) g_isSlewing = false;
+    //         prevMillis = currentMillis;
+    //     }
+    // }
 
-};
+// };
     // void Stepper::setEnabled(bool isenabled){this->isEnabled = isEnabled;}
     // void setDirection(direction direction){
         // resetCount();
