@@ -16,6 +16,29 @@ String coordString;
 // bool g_isSlewing = false;
 bool initialSync = false;
 
+
+#define DI_MODE 21
+#define DI_DEC_DIR 24
+#define DI_DEC_PUL 25
+#define DI_RA_DIR 22
+#define DI_RA_PUL 23
+#define DI_TRACK A9
+#define AI_POT A8
+double trackRateHz = 250.0;
+double slewRateHz = 250.0;
+int raDir;
+int decDir;
+bool isRaPul;
+bool isDecPul;
+bool isTrack;
+int potVal;
+
+io::Stepper raStp;
+io::Stepper decStp;
+
+        uint32_t maxFreq = 50000;
+stepperCalibration raCal = {30742.88868,-0.4805,32558};
+stepperCalibration decCal = {99603.48705,-1.2116,74717};
 ////////////////////////////////////////////////////////////////////////////////
 /// Main Program
 ////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +60,7 @@ namespace pos{
     FrameSet currentLocation;
 }
 namespace ctrl{
-    autoManualMode state = AUTO;
+    autoManualMode state = MANUAL;
 }
 
 
@@ -69,6 +92,18 @@ namespace ctrl{
 void setup() {
     Serial.begin(9600);
     Serial1.begin(9600);
+
+    pinMode(DI_MODE, INPUT_PULLUP);
+    pinMode(DI_RA_DIR, INPUT_PULLUP);
+    pinMode(DI_RA_PUL, INPUT_PULLUP);
+    pinMode(DI_DEC_DIR, INPUT_PULLUP);
+    pinMode(DI_DEC_PUL, INPUT_PULLUP);
+    pinMode(DI_TRACK, INPUT_PULLUP);
+    pinMode(AI_POT, INPUT);
+
+    raStp.init(DO_RA_STP_DIR, PWM_RA_STP_PUL, maxFreq, raCal);
+    decStp.init(DO_DEC_STP_DIR, PWM_DEC_STP_PUL, maxFreq, decCal);
+
     // attachInterrupt(digitalPinToInterrupt(DI_PIN_DEC), declination_Stop, CHANGE);
     // attachInterrupt(digitalPinToInterrupt(DI_PIN_RA), RA_Home, CHANGE);
 
@@ -82,6 +117,7 @@ void loop() {
     // loop. Then the base position is updated based on calculated movement. 
     // Finally, the base position is converted to celestial coordinates.
     pos::SiderealTime::update();
+    ctrl::state = (digitalRead(DI_MODE) == LOW) ? AUTO : MANUAL;
     // io::inputUpdate();
 
     // if (g_isSlewing) ctrl::simSlew(pos::currentLocation, pos::targetPosition);
@@ -158,23 +194,40 @@ void loop() {
         // Serial1.print("RX " + comms::receive);
         }
     break;
-  //   case MANUAL:
-  //   default:
-    //   slewRateHz = double(analogRead(AI_PIN_POT))*1.5;
-    // isRaDir = !digitalRead(DI_PIN_RA_DIR);
-    // isRaEn = !digitalRead(DI_PIN_RA_EN);
-    // isDecDir = !digitalRead(DI_PIN_DEC_DIR);
-    // isDecEn = !digitalRead(DI_PIN_DEC_EN);
-    // isTrack = !digitalRead(DI_PIN_TRACK);
+    case MANUAL:
+    default:
+        potVal = analogRead(AI_POT);
+        slewRateHz = 0.095*potVal*potVal;
+        // Serial.println(slewRateHz);
+        raDir = !digitalRead(DI_RA_DIR);
+        isRaPul = !digitalRead(DI_RA_PUL);
+        decDir = !digitalRead(DI_DEC_DIR);
+        isDecPul = !digitalRead(DI_DEC_PUL);
+        isTrack = !digitalRead(DI_TRACK);
 
-    // digitalWrite(DO_PIN_RA_DIR,isRaDir);
-    // //digitalWrite(DO_PIN_RA_EN,isRaEn);
-    // digitalWrite(DO_PIN_DEC_DIR,isDecDir);
-    // //digitalWrite(DO_PIN_DEC_EN,isDecEn);
-    // if(isTrack) digitalWrite(DO_PIN_RA_PUL, Track.outputPulse(trackRateHz));
-    // else if(isRaEn) digitalWrite(DO_PIN_RA_PUL, Slew.outputPulse(slewRateHz));
-    // if(isDecEn) digitalWrite(DO_PIN_DEC_PUL, Slew.outputPulse(slewRateHz));
+        // digitalWrite(DO_RA_EN,isRaPul);
+        // digitalWrite(DO_DEC_EN,isDecPul);
+        if(isRaPul){
+            raStp.run(raDir, slewRateHz);
+        }
+        else if(isTrack){
+            raStp.run(FORWARD, trackRateHz);
+        }
+        else{
+            raStp.stop();
+        }
+        if(isDecPul){
+            decStp.run(decDir, slewRateHz);
+        }
+        else{
+            decStp.stop();
+        }
 
+        static unsigned long lastTime = 0;
+        if(millis() - lastTime > 1000){
+            lastTime = millis();
+            Serial.println("RA: " + String(raStp.getStepCount()) + " DEC: " + String(decStp.getStepCount()) + " MODE: " + String(digitalRead(DI_MODE)));
+        }
     }
     // io::outputUpdate();
 }

@@ -1,9 +1,10 @@
 #include "pulse.h"
 
-#define DI_DEC_DIR 24
-#define DI_DEC_PUL 25
+#define DI_MODE 21
 #define DI_RA_DIR 22
 #define DI_RA_PUL 23
+#define DI_DEC_DIR 24
+#define DI_DEC_PUL 25
 #define DI_TRACK A9
 // #define DO_RA_EN 8 
 // #define DO_DEC_EN 11
@@ -35,6 +36,7 @@ PulseGenerator decPulse;
 
 void setup()
 {
+    pinMode(DI_MODE, INPUT_PULLUP);
     pinMode(DI_RA_DIR, INPUT_PULLUP);
     pinMode(DI_RA_PUL, INPUT_PULLUP);
     pinMode(DI_DEC_DIR, INPUT_PULLUP);

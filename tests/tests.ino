@@ -11,6 +11,7 @@
 
 // use the following site for independent coordinate conversion to produce reference values
 // https://www.swift.psu.edu/secure/toop/convert.htm
+#define DI_MODE 21
 #define DI_DEC_DIR 24
 #define DI_DEC_PUL 25
 #define DI_RA_DIR 22
@@ -40,6 +41,7 @@ void testStepper(){
 
 void setup(){
     Serial.begin(9600);
+    pinMode(DI_MODE, INPUT_PULLUP);
     pinMode(DI_RA_DIR, INPUT_PULLUP);
     pinMode(DI_RA_PUL, INPUT_PULLUP);
     pinMode(DI_DEC_DIR, INPUT_PULLUP);
@@ -85,7 +87,7 @@ void loop()
     static unsigned long lastTime = 0;
     if(millis() - lastTime > 1000){
         lastTime = millis();
-        Serial.println("RA: " + String(raStp.getStepCount()) + " DEC: " + String(decStp.getStepCount()));
+        Serial.println("RA: " + String(raStp.getStepCount()) + " DEC: " + String(decStp.getStepCount()) + " MODE: " + String(digitalRead(DI_MODE)));
     }
 
     // decPulse.setDirection(isDecDir);
