@@ -87,7 +87,7 @@ void loop()
     static unsigned long lastTime = 0;
     if(millis() - lastTime > 1000){
         lastTime = millis();
-        Serial.println("RA: " + String(raStp.getStepCount()) + " DEC: " + String(decStp.getStepCount()) + " MODE: " + String(digitalRead(DI_MODE)));
+        Serial.println("RA: " + String(raStp.getPulseCount()) + " DEC: " + String(decStp.getPulseCount()) + " MODE: " + String(digitalRead(DI_MODE)));
     }
 
     // decPulse.setDirection(isDecDir);

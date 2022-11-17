@@ -3,6 +3,7 @@
 #include "config.h"
 #include "enums.h"
 
+/// @brief The coordinate frame of a position
 enum frame{
     BASE,
     SKY,
@@ -45,10 +46,9 @@ namespace pos {
         void updatePosition(frame frame, double coord1, double coord2);
         void updateSiderealTime(double siderealTime);
         void __SET_POSITION(frame frame, double coord1, double coord2); // for testing only, disable in production
-         /// @brief this setter should only be used on initial sync during startup.
-         /// otherwise use the updateSiderealTime() method to ensure that base
-         /// coordinates are updated. 
-        void initialiseSiderealTime(double siderealTime){this->siderealTime = siderealTime;}
+        void initialiseSiderealTime(double siderealTime){this->siderealTime = siderealTime;}//this setter should only be
+        // used on initial sync during startup. Otherwise use the updateSiderealTime() 
+        //method to ensure that base coordinates are updated. 
     private:
         double siderealTime;
         Position altaz;
@@ -66,8 +66,8 @@ namespace pos {
         //void dome2Base();
     };
 
-    /// @brief Singleton pattern controls access to siderealTime value. This value 
-    /// determines the conversion between base and celestial frames
+    /// @brief The Sidereal time determines the conversion between base and celestial frames.
+    /// This class implements the Singleton pattern, as there should only ever be one instance
     class SiderealTime{
     public:
         static SiderealTime& getInstance(){

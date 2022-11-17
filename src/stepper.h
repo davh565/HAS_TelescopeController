@@ -7,6 +7,7 @@
 #include "utils.h"
 #include "pulse.h"
 
+//TODO remove correction factors. Stepper should not run in region when missing steps are likely
 struct stepperCalibration{
     double pulsesPerDeg;
     double correctionSlope;
@@ -14,6 +15,7 @@ struct stepperCalibration{
 };
 
 namespace io{
+    /// @brief Stepper motor class.
     class Stepper{
     private:
         bool isEnabled;
@@ -25,7 +27,7 @@ namespace io{
         int pinDIR;
         uint32_t maxFrequency;
         uint32_t frequency;
-        void resetStepCount(){Pulse.resetCount();}
+        void resetPulseCount(){Pulse.resetCount();}
         void setCount(long count){Pulse.setCount(count);}
 
         void setDirection(direction dir);
@@ -37,16 +39,16 @@ namespace io{
         uint32_t getFrequency() {return frequency;}
         bool getEnabled() {return isEnabled;}
         double getPulsesPerDeg() {return pulsesPerDeg;}
-        long getStepCount() {return Pulse.getCount();}
+        long getPulseCount() {return Pulse.getCount();}
         void setFrequency(uint32_t frequency);
-        void runSteps(int32_t steps);
+        void runPulses(int32_t steps);
         void runAngle(double angle);
         void runToTarget(int32_t target);
         void run(direction dir, uint32_t frequency);
         void run(direction dir);
         void disable();
         void enable();
-        void runSteps(){runSteps(0);}
+        void runPulses(){runPulses(0);}
         void stop();
         void init(int pinDIR, PulsePin pinPUL, uint32_t maxFrequency, stepperCalibration calParams);
     };

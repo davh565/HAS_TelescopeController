@@ -6,18 +6,14 @@
 #include "src/pos.h"
 #include "src/io.h"
 #include "src/stepper.h"
-
 #include "src/utils.h"
 
+//TODO: move variables to appropriate modules. Ideally only setup and loop should be in this file
 String buffer ="";
-
 command currentCmd;
 String coordString;
 // bool g_isSlewing = false;
 bool initialSync = false;
-
-
-
 double slewRateHz = 250.0;
 int raDir;
 int decDir;
@@ -25,19 +21,9 @@ bool isRaPul;
 bool isDecPul;
 bool isTrack;
 int potVal;
-
-io::Stepper raStp;
-io::Stepper decStp;
-
-
-
 uint32_t maxFreq = 50000;
 stepperCalibration raCal = {29918.22352,-0.4805,32558};
 stepperCalibration decCal = {99603.48705,-1.2116,74717};
-////////////////////////////////////////////////////////////////////////////////
-/// Main Program
-////////////////////////////////////////////////////////////////////////////////
-
 namespace pos{
     const Position homePosition = {BASE, 0.00, 47.2536};
     Position targetPosition = {SKY, 0, 0};
@@ -48,7 +34,15 @@ namespace ctrl{
         
 }
 
+io::Stepper raStp;
+io::Stepper decStp;
 
+////////////////////////////////////////////////////////////////////////////////
+/// Main Program
+////////////////////////////////////////////////////////////////////////////////
+
+
+/// @brief Main program entry point.
 void setup() {
     Serial.begin(9600);
     Serial1.begin(9600);
@@ -58,28 +52,20 @@ void setup() {
     raStp.init(DO_RA_STP_DIR, PWM_RA_STP_PUL, maxFreq, raCal);
     decStp.init(DO_DEC_STP_DIR, PWM_DEC_STP_PUL, maxFreq, decCal);
 
-
-  // ctrl::waitForSync();
-
 }
 
-  // command currentCmd;
+/// @brief Main loop
 void loop() {
 
     pos::SiderealTime::update(); // Update the sidereal time
     pos::currentLocation.updateSiderealTime(pos::SiderealTime::getValue()); // Pass the sidereal time to the current location
     pos::currentLocation.updatePosition(io::getMotorPositions(raStp, decStp)); // Update the current location from the motor positions
-    ctrl::horizonStop(pos::currentLocation, raStp, decStp); // Check if the current location is below the horizon and stop the motors if it is
     ctrl::state = (digitalRead(DI_MODE) == LOW) ? AUTO : MANUAL;
     // io::inputUpdate();
 
-    // if (g_isSlewing) ctrl::simSlew(pos::currentLocation, pos::targetPosition);
-
-    // switch(ctrl::state){
-    // case AUTO:
-        if (comms::readStringUntilChar(buffer, '#')) {
-            currentCmd = comms::parseCommand(buffer);
-            switch (currentCmd) {
+    if (comms::readStringUntilChar(buffer, '#')) {
+        currentCmd = comms::parseCommand(buffer);
+        switch (currentCmd) {
             case GET_RA:
             // Serial1.println("GET_RA");
             comms::sendReply(comms::double2RaStr(pos::currentLocation.getCoord(SKY, RA)));
@@ -155,13 +141,10 @@ void loop() {
             //        Serial1.println("WARN: invalid command received");
             buffer = "";
             break;
-            }
-        
-        // Serial1.print("RX " + comms::receive);
         }
-    // break;
-    // case MANUAL:
-    // default:
+    
+    }
+
     if(ctrl::state == MANUAL){
         potVal = analogRead(AI_POT);
         slewRateHz = 0.095*potVal*potVal;
@@ -193,8 +176,9 @@ void loop() {
         static unsigned long lastTime = 0;
         if(millis() - lastTime > 1000){
             lastTime = millis();
-            Serial1.println("RA: " + String(raStp.getStepCount()) + " DEC: " + String(decStp.getStepCount()) + " MODE: " + String(digitalRead(DI_MODE)));
+            Serial1.println("RA: " + String(raStp.getPulseCount()) + " DEC: " + String(decStp.getPulseCount()) + " MODE: " + String(digitalRead(DI_MODE)));
         }
     }
+    ctrl::horizonStop(pos::currentLocation, raStp, decStp); // Check if the current location is below the horizon and stop the motors if it is
     io::limitStop(decStp); //Should be last function called in loop to ensure limit switches will stop motors
 }

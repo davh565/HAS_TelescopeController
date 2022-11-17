@@ -5,7 +5,8 @@
 #include "stepper.h"
 
 
-
+/// @brief The io namespace contains functionality for initialising, reading, 
+/// and controlling sensors and actuators.
 namespace io{
     pos::Position getMotorPositions(Stepper& ra, Stepper& dec);
     void setupPinModes();
