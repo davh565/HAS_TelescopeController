@@ -2,6 +2,12 @@
 #define HAS_CTRL
 #include "enums.h"
 #include "pos.h"
+// namespace io{
+// extern Stepper;
+    
+// }
+
+// #include "stepper.h"
 
 // #include "HAS_TelescopeController.h"
 
@@ -21,7 +27,8 @@ namespace ctrl {
     String checkTargetReachable(pos::Position target);
     void stopAllMovement();
     void calibrateHomePosition();
-    void move(pos::FrameSet& currentLocation, pos::Position& targetPosition);
+    // void move(pos::FrameSet& currentLocation, pos::Position& targetPosition, io::Stepper& ra, io::Stepper& dec);
+
     // void moveSteps(int axis, uint32_t steps);
     // void waitForSync();
     // void simSlew(pos::FrameSet& currentLocation, pos::Position& targetPosition);

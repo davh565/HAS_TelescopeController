@@ -234,12 +234,16 @@ namespace pos {
         static unsigned long prevMillis = millis();
         unsigned long currentMillis = millis();
         unsigned long deltaMillis = currentMillis - prevMillis;
-        const double siderealDay = 86164090.5; // milliseconds
+        if (deltaMillis >= 150){
+            const double msPerSiderealDay = 1.160576e-8; // milliseconds
 
-        double deltaDeg = deltaMillis / siderealDay * 360;
-        // Serial1.println(valueDeg);
-        valueDeg +=  wrap360(deltaDeg*2.4);
-        // Serial1.println(valueDeg);
-        prevMillis = currentMillis;
+            double deltaDeg = deltaMillis * msPerSiderealDay * 360;
+            // Serial1.println(valueDeg);
+            valueDeg +=  wrap360(deltaDeg);
+            // Serial.println(msPerSiderealDay*86164100,15);
+            // Serial.println("deltaDeg: " + String(deltaDeg,10) + " valueDeg: " + String(valueDeg));
+            prevMillis = currentMillis;
+            
+        }
     }
 }

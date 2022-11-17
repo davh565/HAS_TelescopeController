@@ -24,7 +24,7 @@ bool initialSync = false;
 #define DI_RA_PUL 23
 #define DI_TRACK A9
 #define AI_POT A8
-double trackRateHz = 250.0;
+double trackRateHz = 125;
 double slewRateHz = 250.0;
 int raDir;
 int decDir;
@@ -35,17 +35,19 @@ int potVal;
 
 io::Stepper raStp;
 io::Stepper decStp;
+
 pos::Position getMotorPositions(){
     pos::Position pos;
     pos.frame = MOTOR;
     pos.ra = raStp.getStepCount()/raStp.getPulsesPerDeg();
-    pos.dec = decStp.getStepCount()/decStp.getPulsesPerDeg();
+    pos.dec = -decStp.getStepCount()/decStp.getPulsesPerDeg();
     return pos;
 }
 
 
 uint32_t maxFreq = 50000;
-stepperCalibration raCal = {30742.88868,-0.4805,32558};
+stepperCalibration raCal = {29918.22352,-0.4805,32558};
+// stepperCalibration raCal = {30742.88868,-0.4805,32558};
 stepperCalibration decCal = {99603.48705,-1.2116,74717};
 ////////////////////////////////////////////////////////////////////////////////
 /// Main Program
@@ -69,6 +71,19 @@ namespace pos{
 }
 namespace ctrl{
     autoManualMode state = MANUAL;
+        void move(pos::FrameSet& currentLocation, pos::Position& targetPosition, io::Stepper& ra, io::Stepper& dec) {
+            ra.setFrequency(20000);
+            dec.setFrequency(60000);
+            double deltaRa = -wrap180(targetPosition.ra - currentLocation.getCoord(SKY, RA));
+            double deltaDec = -wrap180(targetPosition.dec - currentLocation.getCoord(SKY, DECL));
+            // double estRaMoveTime = deltaRa1*ra.getPulsesPerDeg()/ra.getFrequency();
+            // double trackingOffset = estRaMoveTime*trackRateHz/ra.getPulsesPerDeg();
+            double trackingOffset = deltaRa*trackRateHz/double(ra.getFrequency());
+            double deltaRaTotal = wrap180(deltaRa + trackingOffset);
+            ra.runAngle(deltaRaTotal);
+            dec.runAngle(deltaDec);
+            // io::moveSteppers(deltaRa, deltaDec);
+        }
 }
 
 
@@ -125,8 +140,9 @@ void loop() {
     // loop. Then the base position is updated based on calculated movement. 
     // Finally, the base position is converted to celestial coordinates.
     pos::SiderealTime::update();
-    ctrl::state = (digitalRead(DI_MODE) == LOW) ? AUTO : MANUAL;
+    pos::currentLocation.updateSiderealTime(pos::SiderealTime::getValue());
     pos::currentLocation.updatePosition(getMotorPositions());
+    ctrl::state = (digitalRead(DI_MODE) == LOW) ? AUTO : MANUAL;
     // io::inputUpdate();
 
     // if (g_isSlewing) ctrl::simSlew(pos::currentLocation, pos::targetPosition);
@@ -168,7 +184,7 @@ void loop() {
             switch (ctrl::state){
                 case AUTO:
                 comms::sendReply(ctrl::checkTargetReachable(pos::targetPosition));
-                ctrl::move(pos::currentLocation, pos::targetPosition);
+                ctrl::move(pos::currentLocation, pos::targetPosition,raStp, decStp);
                 // g_isSlewing = true;
                 break;
                 case MANUAL:
@@ -231,7 +247,7 @@ void loop() {
         // digitalWrite(DO_RA_EN,isRaPul);
         // digitalWrite(DO_DEC_EN,isDecPul);
         if(isRaPul){
-            raStp.run(raDir, slewRateHz);
+            raStp.run(raDir, slewRateHz/2);
         }
         else if(isTrack){
             raStp.run(FORWARD, trackRateHz);
@@ -249,7 +265,7 @@ void loop() {
         static unsigned long lastTime = 0;
         if(millis() - lastTime > 1000){
             lastTime = millis();
-            Serial.println("RA: " + String(raStp.getStepCount()) + " DEC: " + String(decStp.getStepCount()) + " MODE: " + String(digitalRead(DI_MODE)));
+            Serial1.println("RA: " + String(raStp.getStepCount()) + " DEC: " + String(decStp.getStepCount()) + " MODE: " + String(digitalRead(DI_MODE)));
         }
     }
     // io::outputUpdate();

@@ -4,10 +4,10 @@
 #include "comms.h"
 #include "enums.h"
 #include "utils.h"
-#include "io.h"
+#include "stepper.h"
+// #include "io.h"
 
 extern bool g_isSlewing;
-
 
 namespace ctrl {
   // pos::Position localPosition;
@@ -36,11 +36,13 @@ namespace ctrl {
     }
 
 // checkPath
-    void move(pos::FrameSet& currentLocation, pos::Position& targetPosition) {
-            double deltaRa = wrap180(targetPosition.ra - currentLocation.getCoord(SKY, RA));
-            double deltaDec = wrap180(targetPosition.dec - currentLocation.getCoord(SKY, DECL));
-            // io::moveSteppers(deltaRa, deltaDec);
-        }
+    // void move(pos::FrameSet& currentLocation, pos::Position& targetPosition, io::Stepper& ra, io::Stepper& dec) {
+    //         double deltaRa = wrap180(targetPosition.ra - currentLocation.getCoord(SKY, RA));
+    //         double deltaDec = wrap180(targetPosition.dec - currentLocation.getCoord(SKY, DECL));
+    //         ra.runAngle(deltaRa);
+    //         dec.runAngle(deltaDec);
+    //         // io::moveSteppers(deltaRa, deltaDec);
+    //     }
     }
     // void simSlew(pos::FrameSet& currentLocation, pos::Position& targetPosition){
     //     static unsigned long prevMillis = millis();

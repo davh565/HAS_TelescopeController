@@ -1,3 +1,5 @@
 c_cpp_properties.json
 /tests/src
 /tests/HAS_TelescopeController.h
+/.doc
+HAS_TelescopeController.cpp
