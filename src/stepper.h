@@ -31,9 +31,9 @@ namespace io{
         void setDirection(direction dir);
         void setTarget(int32_t target){Pulse.setTarget(target);}
         void setEnabled(bool isEnabled);
-        int getDirection() {return dir;}
     public:
         PulseGenerator Pulse;
+        int getDirection(){return dir;}
         uint32_t getFrequency() {return frequency;}
         bool getEnabled() {return isEnabled;}
         double getPulsesPerDeg() {return pulsesPerDeg;}

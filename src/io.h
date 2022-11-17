@@ -7,8 +7,10 @@
 
 
 namespace io{
-    pos::Position getMotorPositions(Stepper& raStp, Stepper& decStp);
+    pos::Position getMotorPositions(Stepper& ra, Stepper& dec);
     void setupPinModes();
+    void setupLimits();
     void stopMotors();
+    void limitStop(Stepper& dec);
 }
 #endif

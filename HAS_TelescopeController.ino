@@ -58,8 +58,6 @@ void setup() {
     raStp.init(DO_RA_STP_DIR, PWM_RA_STP_PUL, maxFreq, raCal);
     decStp.init(DO_DEC_STP_DIR, PWM_DEC_STP_PUL, maxFreq, decCal);
 
-    // attachInterrupt(digitalPinToInterrupt(DI_PIN_DEC), declination_Stop, CHANGE);
-    // attachInterrupt(digitalPinToInterrupt(DI_PIN_RA), RA_Home, CHANGE);
 
   // ctrl::waitForSync();
 
@@ -198,5 +196,5 @@ void loop() {
             Serial1.println("RA: " + String(raStp.getStepCount()) + " DEC: " + String(decStp.getStepCount()) + " MODE: " + String(digitalRead(DI_MODE)));
         }
     }
-    // io::outputUpdate();
+    io::limitStop(decStp); //Should be last function called in loop to ensure limit switches will stop motors
 }
