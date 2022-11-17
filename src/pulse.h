@@ -1,11 +1,16 @@
 #ifndef HAS_PULSE
 #define HAS_PULSE
 
-#define FORWARD 0
-#define REVERSE 1
+// #define FORWARD 0
+// #define REVERSE 1
 
-#define TARGET 0
-#define CONSTANT 1
+// #define TARGET 0
+// #define CONSTANT 1
+
+enum pulseMode{
+    TARGET,
+    CONST
+};
 /// allow pwm pins for Timers 1,3,4,5. Note timer 1 is used by the Servo library
 /// If using servo library, do not use Timer 1 pwm pins (OC1A, OC1B, OC1C)
 enum PulsePin: uint8_t {

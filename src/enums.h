@@ -25,9 +25,4 @@ enum direction{
   REVERSE
 };
 
-// enum axis{
-//   DECL,
-//   RA
-// };
-
 #endif

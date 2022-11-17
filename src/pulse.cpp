@@ -1,5 +1,8 @@
 #include <Arduino.h>
 #include "pulse.h"
+#include "enums.h"
+
+
 
 volatile bool pulseState1 = false;
 volatile bool pulseState3 = false;

@@ -1,3 +1,13 @@
+
+//TEMPORAR
+#define DI_MODE 21
+#define DI_DEC_DIR 24
+#define DI_DEC_PUL 25
+#define DI_RA_DIR 22
+#define DI_RA_PUL 23
+#define DI_TRACK A9
+#define AI_POT A8
+
 // #define <RXD0>       0
 // #define <TXD0>       1
 #define DI_DEC_LIM_LO   2

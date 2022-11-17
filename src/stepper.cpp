@@ -98,14 +98,14 @@ namespace io{
     void Stepper::run(direction dir, uint32_t frequency){
         setDirection(dir);
         setFrequency(frequency);
-        Pulse.setRunMode(CONSTANT);
+        Pulse.setRunMode(CONST);
         enable();
     }
 
     /// @brief  Run the stepper motor at current speed indefinitely
     void Stepper::run(direction dir){
         setDirection(dir);
-        Pulse.setRunMode(CONSTANT);
+        Pulse.setRunMode(CONST);
         enable();
     }
 

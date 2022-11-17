@@ -7,7 +7,7 @@
     
 // }
 
-// #include "stepper.h"
+#include "stepper.h"
 
 // #include "HAS_TelescopeController.h"
 
