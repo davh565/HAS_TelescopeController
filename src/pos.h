@@ -1,6 +1,6 @@
 #ifndef HAS_POS
 #define HAS_POS
-#include "pinConfig.h"
+#include "config.h"
 #include "enums.h"
 
 enum frame{

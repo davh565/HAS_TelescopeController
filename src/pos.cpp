@@ -66,11 +66,11 @@ namespace pos {
     void FrameSet::updatePosition(Position newPos){
         switch (newPos.frame){
             case BASE:
-                Serial1.println("Error: Position should be updated from motor or sky frame only");
-                // base = newPos;
-                // base2Motor();
-                // base2Sky(SiderealTime::getValue());
-                // base2Altaz();
+                // Serial1.println("Error: Position should be updated from motor or sky frame only");
+                base = newPos;
+                base2Motor();
+                base2Sky();
+                base2Altaz();
                 break;
             case MOTOR:
                 motor = newPos;
@@ -85,12 +85,12 @@ namespace pos {
                 base2Altaz();
                 break;
             case ALTAZ:
-                Serial1.println("Error: Position should be updated from motor or sky frame only");
-                // altaz = newPos;
-                // altaz2Base();
-                // base2Motor();
-                // base2Sky(SiderealTime::getInstance().getSiderealTime());
-                // break;
+                // Serial1.println("Error: Position should be updated from motor or sky frame only");
+                altaz = newPos;
+                altaz2Base();
+                base2Motor();
+                base2Sky();
+                break;
             default:
                 break;
         }

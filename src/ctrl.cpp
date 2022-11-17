@@ -7,10 +7,11 @@
 #include "stepper.h"
 // #include "io.h"
 
-extern bool g_isSlewing;
+// extern bool g_isSlewing;
 
 namespace ctrl {
   // pos::Position localPosition;
+    
 
 
     String checkTargetReachable(pos::Position target) {
@@ -25,15 +26,38 @@ namespace ctrl {
     }
 
 
-    void stopAllMovement() {
+    void stopAllMovement(io::Stepper& ra, io::Stepper& dec) {
+        ra.stop();
+        dec.stop();
         // io::stopMotors();
     }
 
-    void moveTo(pos::Position position) {
-        if (position.frame == SKY){
+    void horizonStop(pos::FrameSet& currentLocation, io::Stepper& ra, io::Stepper& dec){
+        if (currentLocation.getCoord(ALTAZ, ALT) < minAltitude) {
+            stopAllMovement(ra, dec);
+            pos::FrameSet newTarget = currentLocation;
+            newTarget.updateCoord(ALTAZ, ALT, minAltitude+0.2);
+            pos::Position newPos = newTarget.getPosition(SKY);
+            move(currentLocation, newPos, ra, dec);
 
         }
+
     }
+
+
+    void move(pos::FrameSet& currentLocation, pos::Position& targetPosition, io::Stepper& ra, io::Stepper& dec) {
+            ra.setFrequency(20000);
+            dec.setFrequency(60000);
+            double deltaRa = -wrap180(targetPosition.ra - currentLocation.getCoord(SKY, RA));
+            double deltaDec = -wrap180(targetPosition.dec - currentLocation.getCoord(SKY, DECL));
+            // double estRaMoveTime = deltaRa1*ra.getPulsesPerDeg()/ra.getFrequency();
+            // double trackingOffset = estRaMoveTime*trackRateHz/ra.getPulsesPerDeg();
+            double trackingOffset = deltaRa*trackRateHz/double(ra.getFrequency());
+            double deltaRaTotal = wrap180(deltaRa + trackingOffset);
+            ra.runAngle(deltaRaTotal);
+            dec.runAngle(deltaDec);
+            // io::moveSteppers(deltaRa, deltaDec);
+        }
 
 // checkPath
     // void move(pos::FrameSet& currentLocation, pos::Position& targetPosition, io::Stepper& ra, io::Stepper& dec) {

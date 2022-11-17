@@ -1,5 +1,5 @@
 // #include "HAS_TelescopeController.h"
-#include "pinConfig.h"
+#include "config.h"
 #include "io.h"
 #include "encoder.h"
 

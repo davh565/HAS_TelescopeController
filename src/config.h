@@ -1,5 +1,5 @@
 
-//TEMPORAR
+//TEMPORARY
 #define DI_MODE 21
 #define DI_DEC_DIR 24
 #define DI_DEC_PUL 25

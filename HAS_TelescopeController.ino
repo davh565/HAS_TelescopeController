@@ -1,5 +1,5 @@
 
-#include "src/pinConfig.h"
+#include "src/config.h"
 #include "HAS_TelescopeController.h"
 #include "src/comms.h"
 #include "src/ctrl.h"
@@ -18,7 +18,6 @@ bool initialSync = false;
 
 
 
-double trackRateHz = 125;
 double slewRateHz = 250.0;
 int raDir;
 int decDir;
@@ -46,19 +45,7 @@ namespace pos{
 }
 namespace ctrl{
     autoManualMode state = MANUAL;
-        void move(pos::FrameSet& currentLocation, pos::Position& targetPosition, io::Stepper& ra, io::Stepper& dec) {
-            ra.setFrequency(20000);
-            dec.setFrequency(60000);
-            double deltaRa = -wrap180(targetPosition.ra - currentLocation.getCoord(SKY, RA));
-            double deltaDec = -wrap180(targetPosition.dec - currentLocation.getCoord(SKY, DECL));
-            // double estRaMoveTime = deltaRa1*ra.getPulsesPerDeg()/ra.getFrequency();
-            // double trackingOffset = estRaMoveTime*trackRateHz/ra.getPulsesPerDeg();
-            double trackingOffset = deltaRa*trackRateHz/double(ra.getFrequency());
-            double deltaRaTotal = wrap180(deltaRa + trackingOffset);
-            ra.runAngle(deltaRaTotal);
-            dec.runAngle(deltaDec);
-            // io::moveSteppers(deltaRa, deltaDec);
-        }
+        
 }
 
 
@@ -84,6 +71,7 @@ void loop() {
     pos::SiderealTime::update(); // Update the sidereal time
     pos::currentLocation.updateSiderealTime(pos::SiderealTime::getValue()); // Pass the sidereal time to the current location
     pos::currentLocation.updatePosition(io::getMotorPositions(raStp, decStp)); // Update the current location from the motor positions
+    ctrl::horizonStop(pos::currentLocation, raStp, decStp); // Check if the current location is below the horizon and stop the motors if it is
     ctrl::state = (digitalRead(DI_MODE) == LOW) ? AUTO : MANUAL;
     // io::inputUpdate();
 
@@ -139,7 +127,7 @@ void loop() {
             case STOP_SLEW:
             switch (ctrl::state){
                 case AUTO:
-                ctrl::stopAllMovement();
+                ctrl::stopAllMovement(raStp, decStp);
                 break;
                 case MANUAL:
                 break;
@@ -192,7 +180,7 @@ void loop() {
             raStp.run(raDir, slewRateHz/2);
         }
         else if(isTrack){
-            raStp.run(FORWARD, trackRateHz);
+            raStp.run(FORWARD, ctrl::trackRateHz);
         }
         else{
             raStp.stop();

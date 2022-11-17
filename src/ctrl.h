@@ -23,11 +23,15 @@ enum autoManualMode{
     BOTH
 };
 namespace ctrl {
+    const double trackRateHz = 125;
+    const double minAltitude = 4.8;
     // void commandActions(command cmd);
     String checkTargetReachable(pos::Position target);
-    void stopAllMovement();
-    void calibrateHomePosition();
-    // void move(pos::FrameSet& currentLocation, pos::Position& targetPosition, io::Stepper& ra, io::Stepper& dec);
+    void stopAllMovement(io::Stepper& ra, io::Stepper& dec);
+    void horizonStop(pos::FrameSet& currentLocation, io::Stepper& ra, io::Stepper& dec); // Check if the current location is below the horizon and stop the motors if it is
+    
+    // void calibrateHomePosition();
+    void move(pos::FrameSet& currentLocation, pos::Position& targetPosition, io::Stepper& ra, io::Stepper& dec);
 
     // void moveSteps(int axis, uint32_t steps);
     // void waitForSync();

@@ -1,11 +1,11 @@
-#include "src/pinConfig.h"
+#include "src/config.h"
 // #include "HAS_TelescopeController.h"
 // #include "src/comms.h"
 // #include "src/pos.h"
 // #include "src/ctrl.h"
 // #include "src/io.h"
 // #include "src/utils.h"
-// #include "src/pinConfig.h"
+// #include "src/config.h"
 #include "src/stepper.h"
 // #include "testData.h"
 
