@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include "pos.h"
 #include "ctrl.h"
-#include "comms.h"
 #include "enums.h"
 #include "utils.h"
 #include "stepper.h"
@@ -41,6 +40,7 @@ namespace ctrl {
     /// @param ra the RA stepper motor
     /// @param dec the Dec stepper motor
     void horizonStop(pos::FrameSet& currentLocation, io::Stepper& ra, io::Stepper& dec){
+        static bool isBelowHorizon = false;
         if (currentLocation.getCoord(ALTAZ, ALT) < minAltitude) {
             stopAllMovement(ra, dec);
             pos::FrameSet newTarget = currentLocation;

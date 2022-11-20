@@ -1,6 +1,6 @@
 
 #include "src/config.h"
-#include "HAS_TelescopeController.h"
+// #include "HAS_TelescopeController.h"
 #include "src/comms.h"
 #include "src/ctrl.h"
 #include "src/pos.h"
@@ -179,6 +179,6 @@ void loop() {
             Serial1.println("RA: " + String(raStp.getPulseCount()) + " DEC: " + String(decStp.getPulseCount()) + " MODE: " + String(digitalRead(DI_MODE)));
         }
     }
-    ctrl::horizonStop(pos::currentLocation, raStp, decStp); // Check if the current location is below the horizon and stop the motors if it is
-    io::limitStop(decStp); //Should be last function called in loop to ensure limit switches will stop motors
+    // ctrl::horizonStop(pos::currentLocation, raStp, decStp); // Check if the current location is below the horizon and stop the motors if it is
+    // io::limitStop(decStp); //Should be last function called in loop to ensure limit switches will stop motors
 }
