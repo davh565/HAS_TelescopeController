@@ -1,0 +1,12 @@
+<map id="atand2" name="atand2">
+<area shape="rect" id="node1" title="arctangent2 function with output in degrees" alt="" coords="1169,153,1240,181"/>
+<area shape="rect" id="node2" href="$classpos_1_1_frame_set.html#a5562b8eb611a87bb91b0d18dbe02a557" title=" " alt="" coords="909,126,1121,154"/>
+<area shape="rect" id="node9" href="$classpos_1_1_frame_set.html#a21154b344d9c23bcfea99d06060fc7a2" title=" " alt="" coords="909,178,1121,206"/>
+<area shape="rect" id="node3" href="$classpos_1_1_frame_set.html#a46fac6dd6873164192de2021c845a2d7" title="Set current position, and convert to other frames." alt="" coords="623,126,861,154"/>
+<area shape="rect" id="node4" href="$classpos_1_1_frame_set.html#a6565c9994bc2411b877a63c371f5f781" title=" " alt="" coords="354,5,557,51"/>
+<area shape="rect" id="node5" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,126,57,154"/>
+<area shape="rect" id="node6" href="$classpos_1_1_frame_set.html#a5bf0ab0ac8e084f5a6208fdf010cbed9" title=" " alt="" coords="342,126,569,154"/>
+<area shape="rect" id="node8" href="$classpos_1_1_frame_set.html#a9cf56603bfb247151763b432268f1044" title=" " alt="" coords="336,178,575,206"/>
+<area shape="rect" id="node7" href="$namespacectrl.html#ad392b47fcb1a8daa5887890985a5e0b0" title="Stop the motors if the current location is below the horizon." alt="" coords="130,126,263,154"/>
+<area shape="rect" id="node10" href="$classpos_1_1_frame_set.html#a453fbcc22e789566d077ed323aaf098a" title="sets the celestial coordinates of the current position to match the target position,..." alt="" coords="105,203,288,231"/>
+</map>

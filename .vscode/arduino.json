@@ -1,5 +1,5 @@
 {
-    "sketch": "HAS_TelescopeController.ino",
+    "sketch": "tests\\tests.ino",
     "board": "arduino:avr:mega",
     "programmer": "arduino:avrisp",
     "output": "../ArduinoOutput",

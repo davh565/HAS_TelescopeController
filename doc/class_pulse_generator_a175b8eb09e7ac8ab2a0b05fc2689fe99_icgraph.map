@@ -1,0 +1,10 @@
+<map id="PulseGenerator::setDirection" name="PulseGenerator::setDirection">
+<area shape="rect" id="node1" title="Set the direction of the pulse generator. This ensures accurate count is maintained regardless of dir..." alt="" coords="583,59,805,87"/>
+<area shape="rect" id="node2" href="$classio_1_1_stepper.html#a04102606f6aa6cda60e8580bd0b6433b" title="Initialise stepper motor." alt="" coords="376,19,503,47"/>
+<area shape="rect" id="node4" href="$classio_1_1_stepper.html#a38ca9483ac98be75b137e5589305c03a" title="set the direction of the stepper motor" alt="" coords="344,84,535,112"/>
+<area shape="rect" id="node3" href="$_h_a_s___telescope_controller_8ino.html#a4fc01d736fe50cf5b977f755b675f11d" title="Main Program." alt="" coords="171,5,231,33"/>
+<area shape="rect" id="node5" href="$classio_1_1_stepper.html#a735e92dd186abc0044ade5777608340c" title="Run the stepper motor at specified speed indefinitely." alt="" coords="137,57,265,85"/>
+<area shape="rect" id="node7" href="$classio_1_1_stepper.html#a83337e3036b25fe52d22bea3d6074be1" title="Run the stepper motor for a number of pulses from current position." alt="" coords="113,109,288,137"/>
+<area shape="rect" id="node8" href="$classio_1_1_stepper.html#aa0cd44bd6b7eebf0745124cb36bd7236" title="Run the stepper motor to a target position." alt="" coords="105,161,296,189"/>
+<area shape="rect" id="node6" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,57,57,85"/>
+</map>

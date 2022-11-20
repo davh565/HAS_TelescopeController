@@ -1,0 +1,6 @@
+<map id="pos::FrameSet::getPosition" name="pos::FrameSet::getPosition">
+<area shape="rect" id="node1" title="get the position in the chosen frame" alt="" coords="312,45,525,73"/>
+<area shape="rect" id="node2" href="$classpos_1_1_sidereal_time.html#aea9c99c48afbd3c73b58d4373b46c757" title="sets the current sidreal time. This function assumes that the telescope is in the home position,..." alt="" coords="105,5,264,51"/>
+<area shape="rect" id="node3" href="$namespacectrl.html#ad392b47fcb1a8daa5887890985a5e0b0" title="Stop the motors if the current location is below the horizon." alt="" coords="118,75,251,103"/>
+<area shape="rect" id="node4" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,75,57,103"/>
+</map>
