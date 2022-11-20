@@ -1,10 +1,10 @@
 // #include <Arduino.h>
 #include "comms.h"
-// ////////////////////////////////////////////////////////////////////////////////
-/// ///Serial Communication, command parsing
-// ////////////////////////////////////////////////////////////////////////////////
 namespace comms {
 
+    /// @brief  Determine the command type from the input string
+    /// @param  input   The input string to parse.
+    /// @return The command type.
     command parseCommand(String input) {
         command c;
         if (input == ":GR#") c = GET_RA;
@@ -19,11 +19,16 @@ namespace comms {
     }
 
     /// TODO add message string checking
+    /// @brief Send a reply to Stellarium/
+    /// @param message  The message to send. A '#' terminator is appended to the message.
     void sendReply(String message) {
         Serial.print(message+"#");
         // Serial1.println("-->" + message+"#");
     }
 
+    /// @brief Read a string from the serial buffer until a specified character is encountered.
+    /// @param buffer   The string to append the read characters to.
+    /// @param terminator   The character to read until.
     bool readStringUntilChar(String& buffer,char terminator) {
         while (Serial.available()) {
             char c = Serial.read();
@@ -36,8 +41,9 @@ namespace comms {
         return false;
     }
 
-/// Returns a string of the form "HH:MM:SS.SS" from a double representing RA
-/// in degrees
+/// @brief Convert a decimal angle in degees to a string of the form "HH:MM:SS.SS" for RA.
+/// @param raDegrees    The angle in degrees.
+/// @return The string representation of the angle.
     String double2RaStr(double raDegrees){
         double remHour;
         double remMinute;
@@ -79,7 +85,9 @@ namespace comms {
         return outStr;
     }
 
-/// Returns a string in the form "$DD*MM:SS" from a double representing DEC
+/// @brief Converts an angle in decimal degrees to the form "$DD*MM:SS" for DEC.
+/// @param decDegrees   The angle in degrees.
+/// @return The string representation of the angle.
     String double2DecStr(double decDegrees){
         double deg;
         double remDeg;
@@ -111,7 +119,10 @@ namespace comms {
 
         return outStr;
     }
-    //// Parse coordinate string from Stellarium command, return degrees as double
+
+/// @brief Convert a string of the form "$DD*MM:SS" to a decimal angle in degrees.
+/// @param input The string to convert.
+/// @return The angle in degrees.
     double decStr2Double(String input) {
         int deg;
         int minute;
@@ -130,7 +141,9 @@ namespace comms {
         return value;
     }
 
-    //// Parse coordinate string from Stellarium command, return degrees as double
+/// @brief Convert a string of the form "HH:MM:SS" to a decimal angle in degrees.
+/// @param input The string to convert.
+/// @return The angle in degrees.
     double raStr2Double(String input) {
         int hour; 
         int minute;
@@ -145,6 +158,10 @@ namespace comms {
 
         return value;
     }
+
+    /// @brief  Extract the coordinate substring from a command string.
+    /// @param buffer The buffer containing the command string.
+    /// @return The coordinate substring.
     String extractCoord(String buffer){return buffer.substring(3,buffer.length()-1);}
 
 }

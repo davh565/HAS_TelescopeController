@@ -1,22 +1,24 @@
 #include <Arduino.h>
 #include "pos.h"
 #include "ctrl.h"
-#include "comms.h"
 #include "enums.h"
 #include "utils.h"
-#include "io.h"
+#include "stepper.h"
+// #include "io.h"
 
-extern bool g_isSlewing;
-
+// extern bool g_isSlewing;
 
 namespace ctrl {
   // pos::Position localPosition;
+    
 
-
+    /// @brief check if the target position is reachable.
+    /// @param target the target position
+    /// @return a string containing the error message if the target is not reachable, or "0" if it is.
     String checkTargetReachable(pos::Position target) {
         String str;
         //target reachable
-        if (true) str = "0#";
+        if (true) str = "0";
         // target below horizon
         else if (false) str = "1 ERROR: OBJECT BELOW HORIZON#";
         // target not reachable
@@ -24,75 +26,46 @@ namespace ctrl {
         return str;
     }
 
-
-    void stopAllMovement() {
+    /// @brief Stop all movement of the telescope
+    /// @param ra the RA stepper motor
+    /// @param dec the Dec stepper motor
+    void stopAllMovement(io::Stepper& ra, io::Stepper& dec) {
+        ra.stop();
+        dec.stop();
         // io::stopMotors();
     }
 
-    void moveTo(pos::Position position) {
-        if (position.frame == SKY){
-
+    /// @brief Stop the motors if the current location is below the horizon
+    /// @param currentLocation the current location of the telescope
+    /// @param ra the RA stepper motor
+    /// @param dec the Dec stepper motor
+    void horizonStop(pos::FrameSet& currentLocation, io::Stepper& ra, io::Stepper& dec){
+        static bool isBelowHorizon = false;
+        if (currentLocation.getCoord(ALTAZ, ALT) < minAltitude) {
+            stopAllMovement(ra, dec);
+            pos::FrameSet newTarget = currentLocation;
+            newTarget.updateCoord(ALTAZ, ALT, minAltitude+0.2);
+            pos::Position newPos = newTarget.getPosition(SKY);
+            move(currentLocation, newPos, ra, dec);
         }
     }
 
-// checkPath
-    void move(pos::FrameSet& currentLocation, pos::Position& targetPosition) {
-            double deltaRa = wrap180(targetPosition.ra - currentLocation.getCoord(SKY, RA));
-            double deltaDec = wrap180(targetPosition.dec - currentLocation.getCoord(SKY, DECL));
-            // io::moveSteppers(deltaRa, deltaDec);
-        }
+    /// @brief Move the telescope to the target position
+    /// @param currentLocation the current location of the telescope
+    /// @param targetPosition the target position
+    /// @param ra the RA stepper
+    /// @param dec the DEC stepper
+    void move(pos::FrameSet& currentLocation, pos::Position& targetPosition, io::Stepper& ra, io::Stepper& dec) {
+        ra.setFrequency(20000);
+        dec.setFrequency(60000);
+        double deltaRa = -wrap180(targetPosition.ra - currentLocation.getCoord(SKY, RA));
+        double deltaDec = -wrap180(targetPosition.dec - currentLocation.getCoord(SKY, DECL));
+        // double estRaMoveTime = deltaRa1*ra.getPulsesPerDeg()/ra.getFrequency();
+        // double trackingOffset = estRaMoveTime*trackRateHz/ra.getPulsesPerDeg();
+        double trackingOffset = deltaRa*trackRateHz/double(ra.getFrequency());
+        double deltaRaTotal = wrap180(deltaRa + trackingOffset);
+        ra.runAngle(deltaRaTotal);
+        dec.runAngle(deltaDec);
+        // io::moveSteppers(deltaRa, deltaDec);
     }
-    // void simSlew(pos::FrameSet& currentLocation, pos::Position& targetPosition){
-    //     static unsigned long prevMillis = millis();
-    //     unsigned long currentMillis = millis();
-    //     const int updateRate = 100;
-    //     if (currentMillis - prevMillis >= updateRate) {
-    //         double deltaRa = wrap180(targetPosition.ra - currentLocation.getCoord(SKY, RA));
-    //         double deltaDec = wrap180(targetPosition.dec - currentLocation.getCoord(SKY, DECL));
-            
-    //         Serial1.println(String(currentLocation.getCoord(SKY, RA)) + " " + String(deltaRa) + " " + String(currentLocation.getCoord(SKY, DECL)) + " " + String(deltaDec));
-    //         const double slewRateRa = 0.1253417;//1.0;
-    //         const double slewRateDec = 0.0680118;//0.5;
-    //         const double threshold = 0.25;
-    //         int raDir = deltaRa > 0 ? 1 : -1;
-    //         int decDir = deltaDec > 0 ? 1 : -1;
-    //         if (abs(deltaRa) > threshold){
-    //             currentLocation.incrementCoord(MOTOR, RA, -raDir * slewRateRa);
-    //         }
-    //         if (abs(deltaDec) > threshold){
-    //             currentLocation.incrementCoord(MOTOR, DECL, decDir * slewRateDec);
-    //         }
-    //         if (abs(deltaRa) <= threshold && abs(deltaDec) <= threshold) g_isSlewing = false;
-    //         prevMillis = currentMillis;
-    //     }
-    // }
-
-// };
-    // void Stepper::setEnabled(bool isenabled){this->isEnabled = isEnabled;}
-    // void setDirection(direction direction){
-        // resetCount();
-        // this->direction = direction;
-        // runMode = DONE;
-        // }
-    // void Stepper::setTargetSteps(int targetSteps){
-    //     this->targetSteps = targetSteps;
-    //     }
-    // void Stepper::setTargetAngle(double targetAngle){
-    //     this->targetAngle = targetAngle;
-    //     }
-    // void Stepper::setRunMode(int runMode){
-    //     resetCount();
-    //     this->runMode = runMode;
-    //     }
-    // void Stepper::resetCount(){
-    //     stepCount = 0;
-    //     angleMoved = 0.0;
-    // }
-
-        // bool Stepper::pulse(){
-    //     static unsigned long curMicros = micros();
-    //     stepsTaken = (curMicros - prevPulseMicros)/(double(period)/2);
-    //     angleMoved += stepsTaken/stepsPerDeg;
-    //     prevPulseMicros = curMicros;
-    //     return Pulse.pulse(frequency);
-    // }
+}

@@ -1,0 +1,6 @@
+<map id="io::Stepper::disable" name="io::Stepper::disable">
+<area shape="rect" id="node1" title="Stop the stepper motor by disabling the pulse generator. Does not change the target,..." alt="" coords="5,32,164,60"/>
+<area shape="rect" id="node2" href="$classio_1_1_stepper.html#ac50216a9a50379802d468cca72178b67" title="Enable or disable the stepper motor." alt="" coords="212,32,399,60"/>
+<area shape="rect" id="node3" href="$class_pulse_generator.html#a748055a5182a593642735f0ddab65244" title="Disable the timer via turning off the clock source." alt="" coords="447,5,637,33"/>
+<area shape="rect" id="node4" href="$class_pulse_generator.html#a3a3768987e9c853010ab997d791e4e36" title="Enable Timer by setting prescaler to 64." alt="" coords="449,57,635,85"/>
+</map>

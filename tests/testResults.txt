@@ -1,0 +1,148 @@
+____________________________________________________
+TESTING testWrap:
+wrap 360, ref: 0 test: 0.00 PASS
+wrap 360, ref: 180 test: 180.00 PASS
+wrap 360, ref: 0 test: 0.00 PASS
+wrap 360, ref: 4.43 test: 4.43 PASS
+wrap 360, ref: 4.43 test: 4.43 PASS
+wrap 360, ref: 4.43 test: 4.43 PASS
+wrap 360, ref: 355.57 test: 355.57 PASS
+wrap 360, ref: 355.57 test: 355.57 PASS
+wrap 360, ref: 355.57 test: 355.57 PASS
+- - - - - - - - - - - - - - - - - - - - - - - - - - 
+wrap 180, ref: 0 test: 0.00 PASS
+wrap 180, ref: 180 test: 180.00 PASS
+wrap 180, ref: 180 test: 180.00 PASS
+wrap 180, ref: 4.43 test: 4.43 PASS
+wrap 180, ref: 4.43 test: 4.43 PASS
+wrap 180, ref: 4.43 test: 4.43 PASS
+wrap 180, ref: -4.43 test: -4.43 PASS
+wrap 180, ref: -4.43 test: -4.43 PASS
+wrap 180, ref: -4.43 test: -4.43 PASS
+____________________________________________________
+TESTING double2RaStr:
+double2RaStr, ref: 13:44:20 test: 13:44:19 FAIL
+double2RaStr, ref: 13:44:20 test: 13:44:19 FAIL
+double2RaStr, ref: 13:44:20 test: 13:44:19 FAIL
+double2RaStr, ref: 13:44:20 test: 13:44:19 FAIL
+double2RaStr, ref: 21:28:07 test: 21:28:07 PASS
+double2RaStr, ref: 21:28:06 test: 21:28:07 FAIL
+double2RaStr, ref: 00:15:41 test: 00:15:41 PASS
+double2RaStr, ref: 00:15:39 test: 00:15:38 FAIL
+double2RaStr, ref: 00:16:45 test: 00:16:46 FAIL
+____________________________________________________
+TESTING double2DecStr:
+double2DecStr, ref: +45*24:34 test: +45*24:36 FAIL
+double2DecStr, ref: +45*24:34 test: +45*24:36 FAIL
+double2DecStr, ref: +45*24:34 test: +45*24:36 FAIL
+double2DecStr, ref: +45*24:34 test: +45*24:36 FAIL
+double2DecStr, ref: -88*51:57 test: -88*52:12 FAIL
+double2DecStr, ref: -88*51:57 test: -88*52:12 FAIL
+double2DecStr, ref: -00*04:01 test: -00*04:12 FAIL
+double2DecStr, ref: -00*04:14 test: -00*04:12 FAIL
+double2DecStr, ref: +00*02:52 test: +00*03:00 FAIL
+____________________________________________________
+TESTING raStr2Double:
+raStr2Double, ref: 206.08 test: 206.08 PASS
+raStr2Double, ref: 206.08 test: 206.08 PASS
+raStr2Double, ref: 206.08 test: 206.08 PASS
+raStr2Double, ref: 206.08 test: 206.08 PASS
+raStr2Double, ref: 322.03 test: 322.03 PASS
+raStr2Double, ref: 322.03 test: 322.03 PASS
+raStr2Double, ref: 3.92 test: 3.92 PASS
+raStr2Double, ref: 3.91 test: 3.91 PASS
+raStr2Double, ref: 4.19 test: 4.19 PASS
+____________________________________________________
+TESTING decStr2Double:
+decStr2Double, ref: 45.41 test: 45.41 PASS
+decStr2Double, ref: 45.41 test: 45.41 PASS
+decStr2Double, ref: 45.41 test: 45.41 PASS
+decStr2Double, ref: 45.41 test: 45.41 PASS
+decStr2Double, ref: -88.87 test: -88.87 PASS
+decStr2Double, ref: -88.87 test: -88.87 PASS
+decStr2Double, ref: -0.07 test: -0.07 PASS
+decStr2Double, ref: -0.07 test: -0.07 PASS
+decStr2Double, ref: 0.05 test: 0.05 PASS
+____________________________________________________
+TESTING Frameset:
+refName: HIP 66958 
+SKY_2_BASE_LHA, ref: 359.79 test: 359.79 PASS
+SKY_2_BASE_DEC, ref: 45.41 test: 45.41 PASS
+BASE_2_SKY_RA, ref: 206.08 test: 206.08 PASS
+BASE_2_SKY_DEC, ref: 45.41 test: 45.41 PASS
+BASE_2_ALTAZ_AZ, ref: 0.15 test: 0.15 PASS
+BASE_2_ALTAZ_ALT, ref: 6.81 test: 6.82 PASS
+ALTAZ_2_BASE_LHA, ref: 359.79 test: 359.79 PASS
+ALTAZ_2_BASE_DEC, ref: 45.41 test: 45.42 PASS
+- - - - - - - - - - - - - - - - - - - - - - - - - - 
+refName: HIP 66958 
+SKY_2_BASE_LHA, ref: 357.58 test: 357.58 PASS
+SKY_2_BASE_DEC, ref: 45.41 test: 45.41 PASS
+BASE_2_SKY_RA, ref: 206.08 test: 206.08 PASS
+BASE_2_SKY_DEC, ref: 45.41 test: 45.41 PASS
+BASE_2_ALTAZ_AZ, ref: 1.71 test: 1.71 PASS
+BASE_2_ALTAZ_ALT, ref: 6.78 test: 6.79 PASS
+ALTAZ_2_BASE_LHA, ref: 357.58 test: 357.58 PASS
+ALTAZ_2_BASE_DEC, ref: 45.41 test: 45.42 PASS
+- - - - - - - - - - - - - - - - - - - - - - - - - - 
+refName: HIP 66958 
+SKY_2_BASE_LHA, ref: 1.57 test: 1.57 PASS
+SKY_2_BASE_DEC, ref: 45.41 test: 45.41 PASS
+BASE_2_SKY_RA, ref: 206.08 test: 206.09 PASS
+BASE_2_SKY_DEC, ref: 45.41 test: 45.41 PASS
+BASE_2_ALTAZ_AZ, ref: 358.89 test: 358.89 PASS
+BASE_2_ALTAZ_ALT, ref: 6.80 test: 6.80 PASS
+ALTAZ_2_BASE_LHA, ref: 1.57 test: 1.57 PASS
+ALTAZ_2_BASE_DEC, ref: 45.41 test: 45.41 PASS
+- - - - - - - - - - - - - - - - - - - - - - - - - - 
+refName: HIP 66958 
+SKY_2_BASE_LHA, ref: 48.13 test: 48.13 PASS
+SKY_2_BASE_DEC, ref: 45.41 test: 45.41 PASS
+BASE_2_SKY_RA, ref: 206.08 test: 206.09 PASS
+BASE_2_SKY_DEC, ref: 45.41 test: 45.41 PASS
+BASE_2_ALTAZ_AZ, ref: 328.40 test: 328.41 PASS
+BASE_2_ALTAZ_ALT, ref: -3.79 test: -3.78 PASS
+ALTAZ_2_BASE_LHA, ref: 48.13 test: 48.15 PASS
+ALTAZ_2_BASE_DEC, ref: 45.41 test: 45.42 PASS
+- - - - - - - - - - - - - - - - - - - - - - - - - - 
+refName: Polaris Australis
+SKY_2_BASE_LHA, ref: 204.07 test: 204.07 PASS
+SKY_2_BASE_DEC, ref: -88.87 test: -88.87 PASS
+BASE_2_SKY_RA, ref: 322.03 test: 322.03 PASS
+BASE_2_SKY_DEC, ref: -88.87 test: -88.87 PASS
+BASE_2_ALTAZ_AZ, ref: 179.42 test: 179.42 PASS
+BASE_2_ALTAZ_ALT, ref: 36.75 test: 36.74 PASS
+ALTAZ_2_BASE_LHA, ref: 204.07 test: 204.45 FAIL
+ALTAZ_2_BASE_DEC, ref: -88.87 test: -88.88 PASS
+- - - - - - - - - - - - - - - - - - - - - - - - - - 
+refName: Polaris Australis
+SKY_2_BASE_LHA, ref: 117.65 test: 117.65 PASS
+SKY_2_BASE_DEC, ref: -88.87 test: -88.87 PASS
+BASE_2_SKY_RA, ref: 322.03 test: 322.03 PASS
+BASE_2_SKY_DEC, ref: -88.87 test: -88.87 PASS
+BASE_2_ALTAZ_AZ, ref: 181.26 test: 181.26 PASS
+BASE_2_ALTAZ_ALT, ref: 37.25 test: 37.24 PASS
+ALTAZ_2_BASE_LHA, ref: 117.65 test: 117.27 FAIL
+ALTAZ_2_BASE_DEC, ref: -88.87 test: -88.87 PASS
+- - - - - - - - - - - - - - - - - - - - - - - - - - 
+refName: Jupiter
+SKY_2_BASE_LHA, ref: 75.76 test: 75.76 PASS
+SKY_2_BASE_DEC, ref: -0.07 test: -0.07 PASS
+BASE_2_SKY_RA, ref: 3.92 test: 3.92 PASS
+BASE_2_SKY_DEC, ref: -0.07 test: -0.07 PASS
+BASE_2_ALTAZ_AZ, ref: 278.79 test: 278.78 PASS
+BASE_2_ALTAZ_ALT, ref: 11.26 test: 11.26 PASS
+ALTAZ_2_BASE_LHA, ref: 75.76 test: 75.75 PASS
+ALTAZ_2_BASE_DEC, ref: -0.07 test: -0.07 PASS
+- - - - - - - - - - - - - - - - - - - - - - - - - - 
+refName: Jupiter
+SKY_2_BASE_LHA, ref: 100.41 test: 100.41 PASS
+SKY_2_BASE_DEC, ref: -0.07 test: -0.07 PASS
+BASE_2_SKY_RA, ref: 3.91 test: 3.91 PASS
+BASE_2_SKY_DEC, ref: -0.07 test: -0.07 PASS
+BASE_2_ALTAZ_AZ, ref: 263.52 test: 263.52 PASS
+BASE_2_ALTAZ_ALT, ref: -8.16 test: -8.17 PASS
+ALTAZ_2_BASE_LHA, ref: 100.41 test: 100.41 PASS
+ALTAZ_2_BASE_DEC, ref: -0.07 test: -0.08 PASS
+- - - - - - - - - - - - - - - - - - - - - - - - - - 
+____________________________________________________

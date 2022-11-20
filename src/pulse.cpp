@@ -1,5 +1,8 @@
 #include <Arduino.h>
 #include "pulse.h"
+#include "enums.h"
+
+
 
 volatile bool pulseState1 = false;
 volatile bool pulseState3 = false;
@@ -24,7 +27,8 @@ bool dir5 = FORWARD; // timer 5 direction
 const uint32_t prescaler = 8;
 const uint32_t clock = 16000000;
 const uint32_t maxFrequency = clock / prescaler / 2;
-// timer 1A interrupt service routine
+
+///  @brief timer 1A interrupt service routine
 ISR(TIMER1_COMPA_vect) {
     pulseState1 = !pulseState1;
     if (dir1 == FORWARD) {
@@ -49,7 +53,7 @@ ISR(TIMER1_COMPA_vect) {
     }
 }
 
-// timer 3A interrupt service routine
+///  @brief timer 3A interrupt service routine
 ISR(TIMER3_COMPA_vect) {
     pulseState3 = !pulseState3;
     if (dir3 == FORWARD) {
@@ -74,7 +78,7 @@ ISR(TIMER3_COMPA_vect) {
     }
 }
 
-// timer 4A interrupt service routine
+///  @brief timer 4A interrupt service routine
 ISR(TIMER4_COMPA_vect) {
     pulseState4 = !pulseState4;
     if (dir4 == FORWARD) {
@@ -99,7 +103,7 @@ ISR(TIMER4_COMPA_vect) {
     }
 }
 
-// timer 5A interrupt service routine
+///  @brief timer 5A interrupt service routine
 ISR(TIMER5_COMPA_vect) {
     pulseState5 = !pulseState5;
     if (dir5 == FORWARD) {
@@ -124,6 +128,7 @@ ISR(TIMER5_COMPA_vect) {
     }
 }
 
+/// @brief get the current pulse count.
 long PulseGenerator::getCount(){
     if (pulsePin == oc1a) return count1;
     else if (pulsePin == oc3a) return count3;
@@ -131,7 +136,8 @@ long PulseGenerator::getCount(){
     else if (pulsePin == oc5a) return count5;
     else return 0;
 }
-// Disable Timer by setting prescaler to 0
+
+/// @brief Disable the timer via turning off the clock source.
 void PulseGenerator::disable(){
     switch(pulsePin){
         case oc1a:
@@ -157,7 +163,7 @@ void PulseGenerator::disable(){
     }
     // digitalWrite(pulsePin, LOW);
 }
-// Enable Timer by setting prescaler to 64
+/// @brief Enable Timer by setting prescaler to 64
 void PulseGenerator::enable(){
     switch(pulsePin){
         case oc1a:
@@ -183,10 +189,13 @@ void PulseGenerator::enable(){
     }
 }
 
+/// @brief Calculate the OCR value for the given frequency.
+/// @param freq The frequency in Hz.
 uint16_t calcOcr(uint32_t frequency){return clock/(2*prescaler*frequency);}
-// Setup timers
-//Refer to table 17-2, pg 145 and table 17-4, pg 155, and table 17-6, pg 157
-// of the datasheet for more info.
+
+/// @brief Setup timers
+///Refer to table 17-2, pg 145 and table 17-4, pg 155, and table 17-6, pg 157
+/// of the datasheet for more info.
 void PulseGenerator::init(PulsePin pulsePin, uint32_t frequency){
     // Serial.println("init()");
     this->pulsePin = pulsePin;
@@ -275,6 +284,7 @@ void PulseGenerator::init(PulsePin pulsePin, uint32_t frequency){
     pinMode(pulsePin, OUTPUT);
 }
 
+/// @brief Reset the pulse count to 0.
 void PulseGenerator::resetCount(){
     noInterrupts();
     switch(pulsePin){
@@ -294,6 +304,8 @@ void PulseGenerator::resetCount(){
     interrupts();
 }
 
+/// @brief Set the pulse count.
+/// @param count The new pulse count.
 void PulseGenerator::setCount(long count){
     noInterrupts();
     switch(pulsePin){
@@ -313,6 +325,9 @@ void PulseGenerator::setCount(long count){
     interrupts();
 }
 
+/// @brief Set the direction of the pulse generator. This ensures accurate count
+/// is maintained regardless of direction
+/// @param dir 0 for forward, 1 for reverse
 void PulseGenerator::setDirection(bool dir){
     switch(pulsePin){
         case oc1a:
@@ -330,6 +345,8 @@ void PulseGenerator::setDirection(bool dir){
     }
 }
 
+/// @brief  Set the frequency of the pulse generator.
+/// @param frequency Frequency in Hz.
 void PulseGenerator::setFrequency(uint32_t frequency){
     // noInterrupts();
     uint16_t ocr =  calcOcr(frequency);
@@ -370,6 +387,8 @@ void PulseGenerator::setRunMode(bool mode) {
     }
 }
 
+/// @brief Set the pulse count target. When in targeting mode, pulse generator
+/// will stop when target is reached.
 void PulseGenerator::setTarget(long target){
     switch(pulsePin){
         case oc1a:

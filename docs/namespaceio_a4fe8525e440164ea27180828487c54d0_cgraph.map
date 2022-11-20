@@ -1,0 +1,5 @@
+<map id="io::setupLimits" name="io::setupLimits">
+<area shape="rect" id="node1" title="set up the limit switches." alt="" coords="5,32,128,60"/>
+<area shape="rect" id="node2" href="$io_8cpp.html#a3f14ce2607fabb3872bf7f7fdf833c8e" title="Triggered when the upper declination limit is reached." alt="" coords="177,5,292,33"/>
+<area shape="rect" id="node3" href="$io_8cpp.html#a5c2764459fde95d3cea01d44396297c7" title="Triggered when the lower declination limit is reached." alt="" coords="176,57,293,85"/>
+</map>

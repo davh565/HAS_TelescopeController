@@ -1,30 +1,19 @@
 
-#include "src/pinConfig.h"
-#include "HAS_TelescopeController.h"
+#include "src/config.h"
+// #include "HAS_TelescopeController.h"
 #include "src/comms.h"
 #include "src/ctrl.h"
 #include "src/pos.h"
-// #include "src/io.h"
+#include "src/io.h"
 #include "src/stepper.h"
-
 #include "src/utils.h"
 
+//TODO: move variables to appropriate modules. Ideally only setup and loop should be in this file
 String buffer ="";
-
 command currentCmd;
 String coordString;
 // bool g_isSlewing = false;
 bool initialSync = false;
-
-
-#define DI_MODE 21
-#define DI_DEC_DIR 24
-#define DI_DEC_PUL 25
-#define DI_RA_DIR 22
-#define DI_RA_PUL 23
-#define DI_TRACK A9
-#define AI_POT A8
-double trackRateHz = 250.0;
 double slewRateHz = 250.0;
 int raDir;
 int decDir;
@@ -32,36 +21,9 @@ bool isRaPul;
 bool isDecPul;
 bool isTrack;
 int potVal;
-
-io::Stepper raStp;
-io::Stepper decStp;
-pos::Position getMotorPositions(){
-    pos::Position pos;
-    pos.frame = MOTOR;
-    pos.ra = raStp.getStepCount()/raStp.getPulsesPerDeg();
-    pos.dec = decStp.getStepCount()/decStp.getPulsesPerDeg();
-    return pos;
-}
-
-
 uint32_t maxFreq = 50000;
-stepperCalibration raCal = {30742.88868,-0.4805,32558};
+stepperCalibration raCal = {29918.22352,-0.4805,32558};
 stepperCalibration decCal = {99603.48705,-1.2116,74717};
-////////////////////////////////////////////////////////////////////////////////
-/// Main Program
-////////////////////////////////////////////////////////////////////////////////
-
-// void declination_Stop(){
-//   event_time = millis();
-//   if (event_time - prior_event_time > 1000){
-//     delay(10); //wait for bouncing to settle
-//     if (digitalRead(2)) {
-//       Serial.println("Declination Halted");
-//       prior_event_time = event_time;
-//     }
-//   }
-// }
-
 namespace pos{
     const Position homePosition = {BASE, 0.00, 47.2536};
     Position targetPosition = {SKY, 0, 0};
@@ -69,73 +31,41 @@ namespace pos{
 }
 namespace ctrl{
     autoManualMode state = MANUAL;
+        
 }
 
+io::Stepper raStp;
+io::Stepper decStp;
+
+////////////////////////////////////////////////////////////////////////////////
+/// Main Program
+////////////////////////////////////////////////////////////////////////////////
 
 
-// void declination_Stop(){
-//     curr_DE = millis();
-//     if (curr_DE - prev_DE > 1000){
-//         if (!digitalRead(DI_PIN_DEC)) {
-//             //Insert code to stop the declination
-//             if ((isDecEn == true) && (isDecDir == false)) isDecEn = false;
-//             //En = false;
-//             Serial.println("Declination Halted");
-//             prev_DE = curr_DE;
-//         }
-//     }
-// }
-
-// void RA_Home(){
-//     curr_RA = millis();
-//     if (curr_RA - prev_RA > 1000){
-//         if (!digitalRead(DI_PIN_RA)) {
-//             if ((isRaEn == true) && (isRaDir == true)) isRaEn = false;
-//             Serial.println("RA Home");
-//             prev_RA = curr_RA;
-//         }
-//     }
-// }
-
+/// @brief Main program entry point.
 void setup() {
     Serial.begin(9600);
     Serial1.begin(9600);
+    io::setupPinModes();
 
-    pinMode(DI_MODE, INPUT_PULLUP);
-    pinMode(DI_RA_DIR, INPUT_PULLUP);
-    pinMode(DI_RA_PUL, INPUT_PULLUP);
-    pinMode(DI_DEC_DIR, INPUT_PULLUP);
-    pinMode(DI_DEC_PUL, INPUT_PULLUP);
-    pinMode(DI_TRACK, INPUT_PULLUP);
-    pinMode(AI_POT, INPUT);
 
     raStp.init(DO_RA_STP_DIR, PWM_RA_STP_PUL, maxFreq, raCal);
     decStp.init(DO_DEC_STP_DIR, PWM_DEC_STP_PUL, maxFreq, decCal);
 
-    // attachInterrupt(digitalPinToInterrupt(DI_PIN_DEC), declination_Stop, CHANGE);
-    // attachInterrupt(digitalPinToInterrupt(DI_PIN_RA), RA_Home, CHANGE);
-
-  // ctrl::waitForSync();
-
 }
 
-  // command currentCmd;
+/// @brief Main loop
 void loop() {
-    // The sidereal time is updated to account for the elapsed time since last 
-    // loop. Then the base position is updated based on calculated movement. 
-    // Finally, the base position is converted to celestial coordinates.
-    pos::SiderealTime::update();
+
+    pos::SiderealTime::update(); // Update the sidereal time
+    pos::currentLocation.updateSiderealTime(pos::SiderealTime::getValue()); // Pass the sidereal time to the current location
+    pos::currentLocation.updatePosition(io::getMotorPositions(raStp, decStp)); // Update the current location from the motor positions
     ctrl::state = (digitalRead(DI_MODE) == LOW) ? AUTO : MANUAL;
-    pos::currentLocation.updatePosition(getMotorPositions());
     // io::inputUpdate();
 
-    // if (g_isSlewing) ctrl::simSlew(pos::currentLocation, pos::targetPosition);
-
-    // switch(ctrl::state){
-    // case AUTO:
-        if (comms::readStringUntilChar(buffer, '#')) {
-            currentCmd = comms::parseCommand(buffer);
-            switch (currentCmd) {
+    if (comms::readStringUntilChar(buffer, '#')) {
+        currentCmd = comms::parseCommand(buffer);
+        switch (currentCmd) {
             case GET_RA:
             // Serial1.println("GET_RA");
             comms::sendReply(comms::double2RaStr(pos::currentLocation.getCoord(SKY, RA)));
@@ -168,7 +98,7 @@ void loop() {
             switch (ctrl::state){
                 case AUTO:
                 comms::sendReply(ctrl::checkTargetReachable(pos::targetPosition));
-                ctrl::move(pos::currentLocation, pos::targetPosition);
+                ctrl::move(pos::currentLocation, pos::targetPosition,raStp, decStp);
                 // g_isSlewing = true;
                 break;
                 case MANUAL:
@@ -181,7 +111,7 @@ void loop() {
             case STOP_SLEW:
             switch (ctrl::state){
                 case AUTO:
-                ctrl::stopAllMovement();
+                ctrl::stopAllMovement(raStp, decStp);
                 break;
                 case MANUAL:
                 break;
@@ -211,13 +141,10 @@ void loop() {
             //        Serial1.println("WARN: invalid command received");
             buffer = "";
             break;
-            }
-        
-        // Serial1.print("RX " + comms::receive);
         }
-    // break;
-    // case MANUAL:
-    // default:
+    
+    }
+
     if(ctrl::state == MANUAL){
         potVal = analogRead(AI_POT);
         slewRateHz = 0.095*potVal*potVal;
@@ -231,10 +158,10 @@ void loop() {
         // digitalWrite(DO_RA_EN,isRaPul);
         // digitalWrite(DO_DEC_EN,isDecPul);
         if(isRaPul){
-            raStp.run(raDir, slewRateHz);
+            raStp.run(raDir, slewRateHz/2);
         }
         else if(isTrack){
-            raStp.run(FORWARD, trackRateHz);
+            raStp.run(FORWARD, ctrl::trackRateHz);
         }
         else{
             raStp.stop();
@@ -249,8 +176,9 @@ void loop() {
         static unsigned long lastTime = 0;
         if(millis() - lastTime > 1000){
             lastTime = millis();
-            Serial.println("RA: " + String(raStp.getStepCount()) + " DEC: " + String(decStp.getStepCount()) + " MODE: " + String(digitalRead(DI_MODE)));
+            Serial1.println("RA: " + String(raStp.getPulseCount()) + " DEC: " + String(decStp.getPulseCount()) + " MODE: " + String(digitalRead(DI_MODE)));
         }
     }
-    // io::outputUpdate();
+    // ctrl::horizonStop(pos::currentLocation, raStp, decStp); // Check if the current location is below the horizon and stop the motors if it is
+    // io::limitStop(decStp); //Should be last function called in loop to ensure limit switches will stop motors
 }

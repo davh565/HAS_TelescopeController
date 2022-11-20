@@ -66,11 +66,11 @@ namespace pos {
     void FrameSet::updatePosition(Position newPos){
         switch (newPos.frame){
             case BASE:
-                Serial1.println("Error: Position should be updated from motor or sky frame only");
-                // base = newPos;
-                // base2Motor();
-                // base2Sky(SiderealTime::getValue());
-                // base2Altaz();
+                // Serial1.println("Error: Position should be updated from motor or sky frame only");
+                base = newPos;
+                base2Motor();
+                base2Sky();
+                base2Altaz();
                 break;
             case MOTOR:
                 motor = newPos;
@@ -85,12 +85,12 @@ namespace pos {
                 base2Altaz();
                 break;
             case ALTAZ:
-                Serial1.println("Error: Position should be updated from motor or sky frame only");
-                // altaz = newPos;
-                // altaz2Base();
-                // base2Motor();
-                // base2Sky(SiderealTime::getInstance().getSiderealTime());
-                // break;
+                // Serial1.println("Error: Position should be updated from motor or sky frame only");
+                altaz = newPos;
+                altaz2Base();
+                base2Motor();
+                base2Sky();
+                break;
             default:
                 break;
         }
@@ -160,36 +160,54 @@ namespace pos {
     /// @brief The base frame local hour angle is equal to motor coordinates 
     /// plus a fixed offset determined by the physical home position of the 
     /// telescope.
-    void  FrameSet::motor2Base() {
+    Position  FrameSet::motor2Base(Position motor, Position home){
+        Position base;
+        base.frame = BASE;
         base.lha = wrap360(motor.degRa + home.lha);
         base.dec = wrap180(motor.degDec + home.dec);
+        return base;
     }
-    void FrameSet::base2Motor(){
+    Position FrameSet::base2Motor(Position base, Position home){
+        Position motor;
+        motor.frame = MOTOR;
         motor.degRa = wrap360(base.lha - home.lha);
         motor.degDec = wrap180(base.dec - home.dec);
+        return motor;
     }
 
     /// @brief Conversion from local hour angle to right ascension, based on the
     /// current sidereal time.
-    void FrameSet::base2Sky(){
+    Position FrameSet::base2Sky(Position base, double siderealTime){
+        Position sky;
+        sky.frame = SKY;
         sky.ra = wrap360((siderealTime) - base.lha);
         sky.dec = wrap180(base.dec);
+        return sky;
     }
 
     /// @brief Conversion from right ascension to local hour angle, based on the
     /// current sidereal time.
-    void FrameSet::sky2Base(){
+    Position FrameSet::sky2Base(Position sky, double siderealTime){
+        Position base;
+        base.frame = BASE;
         base.lha = wrap360((siderealTime) - sky.ra);
         base.dec = wrap180(sky.dec);
+        return base;
     }
 
-    void FrameSet::base2Altaz(){
-        altaz.az = wrap360(atand2(sin(base.lha), cosd(base.lha) * sind(lat) - tand(base.dec) * cosd(lat))+180);
+    Position FrameSet::base2Altaz(Position base, double lat){
+        Position altaz;
+        altaz.frame = ALTAZ;
+        altaz.az = wrap360(atand2(sind(base.lha), cosd(base.lha) * sind(lat) - tand(base.dec) * cosd(lat))+180);
         altaz.alt = wrap180(asind(sind(lat) * sind(base.dec) + cosd(lat) * cosd(base.dec) * cosd(base.lha)));
+        return altaz;
     }
-    void FrameSet::altaz2Base(){
-        base.lha = wrap360(atand2(sin(altaz.az), cosd(altaz.az) * sind(lat) + tand(altaz.alt) * cosd(lat)));
-        base.dec = wrap180(asind(sind(lat) * sind(altaz.alt) - cosd(lat) * cosd(altaz.alt) * cosd(altaz.az)));
+    Position FrameSet::altaz2Base(Position altaz, double lat){
+        Position base;
+        base.frame = BASE;
+        base.lha = wrap360(atand2(sind(wrap360(altaz.az-180)), cosd(wrap360(altaz.az-180)) * sind(lat) + tand(altaz.alt) * cosd(lat)));
+        base.dec = wrap180(asind(sind(lat) * sind(altaz.alt) - cosd(lat) * cosd(altaz.alt) * cosd(wrap360(altaz.az-180))));
+        return base;
     }
     
 
@@ -234,12 +252,16 @@ namespace pos {
         static unsigned long prevMillis = millis();
         unsigned long currentMillis = millis();
         unsigned long deltaMillis = currentMillis - prevMillis;
-        const double siderealDay = 86164090.5; // milliseconds
+        if (deltaMillis >= 150){
+            const double msPerSiderealDay = 1.160576e-8; // milliseconds
 
-        double deltaDeg = deltaMillis / siderealDay * 360;
-        // Serial1.println(valueDeg);
-        valueDeg +=  wrap360(deltaDeg*2.4);
-        // Serial1.println(valueDeg);
-        prevMillis = currentMillis;
+            double deltaDeg = deltaMillis * msPerSiderealDay * 360;
+            // Serial1.println(valueDeg);
+            valueDeg +=  wrap360(deltaDeg);
+            // Serial.println(msPerSiderealDay*86164100,15);
+            // Serial.println("deltaDeg: " + String(deltaDeg,10) + " valueDeg: " + String(valueDeg));
+            prevMillis = currentMillis;
+            
+        }
     }
 }

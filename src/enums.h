@@ -1,8 +1,7 @@
 #ifndef HAS_ENUMS
 #define HAS_ENUMS
 
-
-
+/// @brief Commands issued via Stellarium
 enum command{ 
     GET_RA,
     GET_DEC,
@@ -24,10 +23,5 @@ enum direction{
   FORWARD,
   REVERSE
 };
-
-// enum axis{
-//   DECL,
-//   RA
-// };
 
 #endif

@@ -1,8 +1,9 @@
 #ifndef HAS_POS
 #define HAS_POS
-#include "pinConfig.h"
+#include "config.h"
 #include "enums.h"
 
+/// @brief The coordinate frame of a position
 enum frame{
     BASE,
     SKY,
@@ -34,9 +35,16 @@ namespace pos {
     /// reference frames, and provides methods to convert between them.
     class FrameSet {
     public:
+        Position __ALTAZ_2_BASE(Position altaz, double lat); //For Testing Only
+        Position __BASE_2_ALTAZ(Position base, double lat          ); //For Testing Only
+        Position __BASE_2_MOTOR(Position base, Position home       ); //For Testing Only
+        Position __BASE_2_SKY  (Position base, double siderealTime ); //For Testing Only
+        Position __MOTOR_2_BASE(Position motor, Position home      ); //For Testing Only
+        Position __SKY_2_BASE  (Position sky, double siderealTime  ); //For Testing Only
+        void __SET_POSITION(frame frame, double coord1, double coord2); // for testing only, disable in production
+        double __GET_SIDEREAL_TIME(){return siderealTime;}
         FrameSet();
         double getCoord(frame frame, int coord);
-        double __GET_SIDEREAL_TIME(){return siderealTime;}
         Position getPosition(frame frame);
         void incrementCoord(frame frame, int coordType, double coordValue);
         void syncTo(Position targetSky);
@@ -44,11 +52,9 @@ namespace pos {
         void updatePosition(Position newPos);
         void updatePosition(frame frame, double coord1, double coord2);
         void updateSiderealTime(double siderealTime);
-        void __SET_POSITION(frame frame, double coord1, double coord2); // for testing only, disable in production
-         /// @brief this setter should only be used on initial sync during startup.
-         /// otherwise use the updateSiderealTime() method to ensure that base
-         /// coordinates are updated. 
-        void initialiseSiderealTime(double siderealTime){this->siderealTime = siderealTime;}
+        void initialiseSiderealTime(double siderealTime){this->siderealTime = siderealTime;}//this setter should only be
+        // used on initial sync during startup. Otherwise use the updateSiderealTime() 
+        //method to ensure that base coordinates are updated. 
     private:
         double siderealTime;
         Position altaz;
@@ -56,18 +62,24 @@ namespace pos {
         Position home;
         Position motor;
         Position sky;
-        void altaz2Base();
-        void base2Altaz();
-        void base2Motor();
-        void base2Sky();
-        void motor2Base();
-        void sky2Base();
+        Position altaz2Base(Position altaz, double lat);
+        Position base2Altaz(Position base, double lat);
+        Position base2Motor(Position base, Position home);
+        Position base2Sky(Position base, double siderealTime);
+        Position motor2Base(Position motor, Position home);
+        Position sky2Base(Position sky, double siderealTime);
+        void altaz2Base(){base = altaz2Base(altaz, siderealTime);}
+        void base2Altaz(){altaz = base2Altaz(base, lat);}
+        void base2Motor(){motor = base2Motor(base, home);}
+        void base2Sky(){sky = base2Sky(base, siderealTime);}
+        void motor2Base(){base = motor2Base(motor, home);}
+        void sky2Base(){base = sky2Base(sky, siderealTime);}
         //void base2Dome();
         //void dome2Base();
     };
 
-    /// @brief Singleton pattern controls access to siderealTime value. This value 
-    /// determines the conversion between base and celestial frames
+    /// @brief The Sidereal time determines the conversion between base and celestial frames.
+    /// This class implements the Singleton pattern, as there should only ever be one instance
     class SiderealTime{
     public:
         static SiderealTime& getInstance(){

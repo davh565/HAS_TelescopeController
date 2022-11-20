@@ -1,0 +1,10 @@
+<map id="pos::FrameSet::base2Sky" name="pos::FrameSet::base2Sky">
+<area shape="rect" id="node1" title="Conversion from local hour angle to right ascension, based on the current sidereal time." alt="" coords="1003,178,1207,206"/>
+<area shape="rect" id="node2" href="$classpos_1_1_frame_set.html#a46fac6dd6873164192de2021c845a2d7" title="Set current position, and convert to other frames." alt="" coords="716,126,955,154"/>
+<area shape="rect" id="node8" href="$classpos_1_1_frame_set.html#a59383820704617951e387a27f01c29b5" title="when the sidereal time is updated, sky coordinates must be recalculated" alt="" coords="105,203,381,231"/>
+<area shape="rect" id="node3" href="$classpos_1_1_frame_set.html#a6565c9994bc2411b877a63c371f5f781" title=" " alt="" coords="447,5,650,51"/>
+<area shape="rect" id="node4" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,126,57,154"/>
+<area shape="rect" id="node5" href="$classpos_1_1_frame_set.html#a5bf0ab0ac8e084f5a6208fdf010cbed9" title=" " alt="" coords="435,126,662,154"/>
+<area shape="rect" id="node7" href="$classpos_1_1_frame_set.html#a9cf56603bfb247151763b432268f1044" title=" " alt="" coords="429,178,668,206"/>
+<area shape="rect" id="node6" href="$namespacectrl.html#ad392b47fcb1a8daa5887890985a5e0b0" title="Stop the motors if the current location is below the horizon." alt="" coords="177,126,310,154"/>
+</map>

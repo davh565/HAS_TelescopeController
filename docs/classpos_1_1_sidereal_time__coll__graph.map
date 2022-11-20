@@ -1,0 +1,3 @@
+<map id="pos::SiderealTime" name="pos::SiderealTime">
+<area shape="rect" id="node1" title="The Sidereal time determines the conversion between base and celestial frames. This class implements ..." alt="" coords="5,5,220,328"/>
+</map>
