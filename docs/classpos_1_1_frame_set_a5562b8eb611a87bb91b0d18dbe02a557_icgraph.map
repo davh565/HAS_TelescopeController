@@ -1,9 +1,0 @@
-<map id="pos::FrameSet::altaz2Base" name="pos::FrameSet::altaz2Base">
-<area shape="rect" id="node1" title=" " alt="" coords="860,101,1072,129"/>
-<area shape="rect" id="node2" href="$classpos_1_1_frame_set.html#a46fac6dd6873164192de2021c845a2d7" title="Set current position, and convert to other frames." alt="" coords="573,101,812,129"/>
-<area shape="rect" id="node3" href="$classpos_1_1_frame_set.html#a6565c9994bc2411b877a63c371f5f781" title=" " alt="" coords="305,5,507,51"/>
-<area shape="rect" id="node4" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,101,57,129"/>
-<area shape="rect" id="node5" href="$classpos_1_1_frame_set.html#a5bf0ab0ac8e084f5a6208fdf010cbed9" title=" " alt="" coords="293,126,519,154"/>
-<area shape="rect" id="node7" href="$classpos_1_1_frame_set.html#a9cf56603bfb247151763b432268f1044" title=" " alt="" coords="287,178,525,206"/>
-<area shape="rect" id="node6" href="$namespacectrl.html#ad392b47fcb1a8daa5887890985a5e0b0" title="Stop the motors if the current location is below the horizon." alt="" coords="105,126,239,154"/>
-</map>

@@ -1,8 +1,8 @@
 {
-    "sketch": "tests\\tests.ino",
+    "sketch": ".test\\controller\\controller.ino",
     "board": "arduino:avr:mega",
     "programmer": "arduino:avrisp",
     "output": "../ArduinoOutput",
-    "port": "COM5",
+    "port": "COM3",
     "configuration": "cpu=atmega2560"
 }

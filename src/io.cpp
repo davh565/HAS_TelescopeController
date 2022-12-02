@@ -40,21 +40,29 @@ namespace io{
 
     /// @brief set up the limit switches.
     void setupLimits(){
-        attachInterrupt(digitalPinToInterrupt(DI_DEC_LIM_LO), decLimLoISR, LOW);
-        attachInterrupt(digitalPinToInterrupt(DI_DEC_LIM_HI), decLimHiISR, LOW);
+        pinMode(DI_DEC_LIM_LO, INPUT_PULLUP);
+        pinMode(DI_DEC_LIM_HI, INPUT_PULLUP);
+        // attachInterrupt(digitalPinToInterrupt(DI_DEC_LIM_LO), decLimLoISR, LOW);
+        // attachInterrupt(digitalPinToInterrupt(DI_DEC_LIM_HI), decLimHiISR, LOW);
     }
 
     /// @brief stop the declination motor if a limit switch is triggered.
     /// @param dec the declination stepper motor.
     void limitStop(Stepper& dec){
-        if(g_decLimLo && dec.getDirection() == REVERSE){
+        if(digitalRead(DI_DEC_LIM_LO) && dec.getDirection() == REVERSE){
             dec.stop();
-            g_decLimLo = false;
+            // g_decLimLo = false;
         }
-        if(g_decLimHi && dec.getDirection() == FORWARD){
+        if(digitalRead(DI_DEC_LIM_HI) && dec.getDirection() == FORWARD){
             dec.stop();
-            g_decLimHi = false;
+            // g_decLimHi = false;
         }
 
+    }
+
+    bool decLimCheck(int dir){
+        if(dir == REVERSE && digitalRead(DI_DEC_LIM_LO)) return true;
+        if(dir == FORWARD && digitalRead(DI_DEC_LIM_HI)) return true;
+        return false;
     }
 }

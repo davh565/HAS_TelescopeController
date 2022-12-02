@@ -1,4 +1,0 @@
-<map id="io::Stepper" name="io::Stepper">
-<area shape="rect" id="node1" title="Stepper motor class." alt="" coords="5,411,284,1149"/>
-<area shape="rect" id="node2" href="$class_pulse_generator.html" title="Pulse Generator class, Should not have more instances than available hardware timers,..." alt="" coords="37,5,252,345"/>
-</map>

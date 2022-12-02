@@ -39,14 +39,23 @@ namespace ctrl {
     /// @param currentLocation the current location of the telescope
     /// @param ra the RA stepper motor
     /// @param dec the Dec stepper motor
-    void horizonStop(pos::FrameSet& currentLocation, io::Stepper& ra, io::Stepper& dec){
+    void horizonStop(pos::FrameSet& currentLocation, io::Stepper& ra, io::Stepper& dec, autoManualMode ctrlMode){
+        // const double threshold = 0.5;
+        static int raTripDir = ra.getDirection();
+        static int decTripDir = dec.getDirection();
         static bool isBelowHorizon = false;
+        if (ctrlMode == MANUAL) return;
         if (currentLocation.getCoord(ALTAZ, ALT) < minAltitude) {
-            stopAllMovement(ra, dec);
-            pos::FrameSet newTarget = currentLocation;
-            newTarget.updateCoord(ALTAZ, ALT, minAltitude+0.2);
-            pos::Position newPos = newTarget.getPosition(SKY);
-            move(currentLocation, newPos, ra, dec);
+            if (!isBelowHorizon) {
+                raTripDir = ra.getDirection();
+                decTripDir = dec.getDirection();
+                isBelowHorizon = true;
+            }
+            if (raTripDir == ra.getDirection()) ra.stop();
+            if (decTripDir == dec.getDirection()) dec.stop();
+        }
+        else {
+            isBelowHorizon = false;
         }
     }
 
@@ -56,16 +65,13 @@ namespace ctrl {
     /// @param ra the RA stepper
     /// @param dec the DEC stepper
     void move(pos::FrameSet& currentLocation, pos::Position& targetPosition, io::Stepper& ra, io::Stepper& dec) {
-        ra.setFrequency(20000);
-        dec.setFrequency(60000);
+        ra.setFrequency(ra.getMaxFrequency());
+        dec.setFrequency(ra.getMaxFrequency());
         double deltaRa = -wrap180(targetPosition.ra - currentLocation.getCoord(SKY, RA));
         double deltaDec = -wrap180(targetPosition.dec - currentLocation.getCoord(SKY, DECL));
-        // double estRaMoveTime = deltaRa1*ra.getPulsesPerDeg()/ra.getFrequency();
-        // double trackingOffset = estRaMoveTime*trackRateHz/ra.getPulsesPerDeg();
-        double trackingOffset = deltaRa*trackRateHz/double(ra.getFrequency());
+        double trackingOffset = abs(deltaRa)*trackRateHz/double(ra.getFrequency());
         double deltaRaTotal = wrap180(deltaRa + trackingOffset);
         ra.runAngle(deltaRaTotal);
         dec.runAngle(deltaDec);
-        // io::moveSteppers(deltaRa, deltaDec);
     }
 }

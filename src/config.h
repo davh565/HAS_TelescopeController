@@ -44,14 +44,14 @@
 // #define <ICP5>       48
 // #define <ICP4>       49
 
-#define AI_POT_SPEED    A6
-#define DI_BTN_TRACK    A7
-#define AI_POT_SPEED    A8
-#define DI_BTN_TRACK    A9
-#define AI_POT_SPEED    A10
+// #define AI_POT_SPEED    A6
+// #define DI_BTN_TRACK    A7
+// #define AI_POT_SPEED    A8
+// #define DI_BTN_TRACK    A9
+// #define AI_POT_SPEED    A10
 
-#define DI_BTN_TRACK    A11
-#define DI_RA_ENC_A     A12
-#define DI_RA_ENC_B     A13
-#define DI_RA_ENC_B     A14
+// #define DI_BTN_TRACK    A11
+// #define DI_RA_ENC_A     A12
+// #define DI_RA_ENC_B     A13
+// #define DI_RA_ENC_B     A14
 // #define <PCINT23>    A15

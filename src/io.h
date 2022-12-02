@@ -13,5 +13,7 @@ namespace io{
     void setupLimits();
     void stopMotors();
     void limitStop(Stepper& dec);
+    bool decLimCheck(int dir);
+
 }
 #endif

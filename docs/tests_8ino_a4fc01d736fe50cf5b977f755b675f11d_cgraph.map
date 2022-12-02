@@ -1,8 +1,0 @@
-<map id="setup" name="setup">
-<area shape="rect" id="node1" title=" " alt="" coords="5,57,65,85"/>
-<area shape="rect" id="node2" href="$classio_1_1_stepper.html#a04102606f6aa6cda60e8580bd0b6433b" title="Initialise stepper motor." alt="" coords="113,57,240,85"/>
-<area shape="rect" id="node3" href="$class_pulse_generator.html#a05a7b4c5f58b2b09156aea6780090cbd" title="Setup timers Refer to table 17&#45;2, pg 145 and table 17&#45;4, pg 155, and table 17&#45;6, pg 157 of the datash..." alt="" coords="322,5,481,33"/>
-<area shape="rect" id="node5" href="$class_pulse_generator.html#a175b8eb09e7ac8ab2a0b05fc2689fe99" title="Set the direction of the pulse generator. This ensures accurate count is maintained regardless of dir..." alt="" coords="290,57,513,85"/>
-<area shape="rect" id="node6" href="$class_pulse_generator.html#ac9ea693293af9a0b2c160899639407d0" title="sets motor to either targeting mode or constant run mode." alt="" coords="288,109,515,137"/>
-<area shape="rect" id="node4" href="$pulse_8cpp.html#a5e49ad1caf27e9a33052a428ffd4626b" title="Calculate the OCR value for the given frequency." alt="" coords="563,5,637,33"/>
-</map>

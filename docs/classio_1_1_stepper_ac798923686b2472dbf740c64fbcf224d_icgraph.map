@@ -1,7 +1,0 @@
-<map id="io::Stepper::enable" name="io::Stepper::enable">
-<area shape="rect" id="node1" title="Enable the stepper motor by enabling the pulse generator." alt="" coords="344,57,499,85"/>
-<area shape="rect" id="node2" href="$classio_1_1_stepper.html#a735e92dd186abc0044ade5777608340c" title="Run the stepper motor at specified speed indefinitely." alt="" coords="137,5,265,33"/>
-<area shape="rect" id="node4" href="$classio_1_1_stepper.html#a83337e3036b25fe52d22bea3d6074be1" title="Run the stepper motor for a number of pulses from current position." alt="" coords="113,57,288,85"/>
-<area shape="rect" id="node5" href="$classio_1_1_stepper.html#aa0cd44bd6b7eebf0745124cb36bd7236" title="Run the stepper motor to a target position." alt="" coords="105,109,296,137"/>
-<area shape="rect" id="node3" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,5,57,33"/>
-</map>

@@ -4,15 +4,18 @@
 
 namespace io{
 
+    extern decLimCheck(int dir);
+
     /// @brief Initialise stepper motor.
     /// @param pinDIR The pin number for the direction output.
     /// @param pinPUL The pin number for the pulse output.
     /// @param maxFrequency The maximum frequency of the pulse output.
     /// @param calParams The calibration parameters for the stepper motor.
-    void Stepper::init(int pinDIR, PulsePin pinPUL, uint32_t maxFrequency, stepperCalibration calParams){
+    void Stepper::init(int pinDIR, PulsePin pinPUL, uint32_t maxFrequency, bool enableLimits, stepperCalibration calParams){
         this->pinDIR = pinDIR;
         this->maxFrequency = maxFrequency;
         this->pulsesPerDeg = calParams.pulsesPerDeg;
+        this->enableLimits = enableLimits;
         this->correctionSlope = calParams.correctionSlope;
         this->correctionIntercept = calParams.correctionIntercept;
         frequency = maxFrequency;
@@ -47,6 +50,7 @@ namespace io{
     /// @brief Enable or disable the stepper motor.
     /// @param isEnabled false to disable, true to enable.
     void Stepper::setEnabled(bool isEnabled){
+        if(enableLimits && decLimCheck(dir)) return;
         this->isEnabled = isEnabled;
         // Serial.println("Stepper::setEnabled()");
         if (isEnabled) Pulse.enable();
@@ -60,6 +64,7 @@ namespace io{
         Pulse.setRunMode(TARGET);
         if (steps < 0) setDirection(REVERSE);
         else setDirection(FORWARD);
+        if(enableLimits && decLimCheck(dir)) return;
         long currentStep = getPulseCount();
         setTarget(currentStep + steps);
         enable();
@@ -72,11 +77,13 @@ namespace io{
         long currentStep = getPulseCount();
         if (target > currentStep) {
             setDirection(FORWARD);
+            if(enableLimits && decLimCheck(dir)) return;
             setTarget(target);
             enable();
         }
         else if (target < currentStep) {
             setDirection(REVERSE);
+            if(enableLimits && decLimCheck(dir)) return;
             setTarget(target);
             enable();
         }
@@ -106,6 +113,7 @@ namespace io{
     /// @brief  Run the stepper motor at specified speed indefinitely
     void Stepper::run(direction dir, uint32_t frequency){
         setDirection(dir);
+        if(enableLimits && decLimCheck(dir)) return;
         setFrequency(frequency);
         Pulse.setRunMode(CONST);
         enable();
@@ -115,6 +123,7 @@ namespace io{
     /// @param dir 0 for forward, 1 for reverse.
     void Stepper::run(direction dir){
         setDirection(dir);
+        if(enableLimits && decLimCheck(dir)) return;
         Pulse.setRunMode(CONST);
         enable();
     }

@@ -1,4 +1,0 @@
-<map id="comms::readStringUntilChar" name="comms::readStringUntilChar">
-<area shape="rect" id="node1" title="Read a string from the serial buffer until a specified character is encountered." alt="" coords="105,5,324,33"/>
-<area shape="rect" id="node2" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,5,57,33"/>
-</map>

@@ -20,6 +20,7 @@ namespace io{
     private:
         bool isEnabled;
         // bool flagResetCount;
+        bool enableLimits;
         double pulsesPerDeg;
         double correctionSlope;
         double correctionIntercept;
@@ -37,6 +38,7 @@ namespace io{
         PulseGenerator Pulse;
         int getDirection(){return dir;}
         uint32_t getFrequency() {return frequency;}
+        uint32_t getMaxFrequency() {return maxFrequency;}
         bool getEnabled() {return isEnabled;}
         double getPulsesPerDeg() {return pulsesPerDeg;}
         long getPulseCount() {return Pulse.getCount();}
@@ -50,7 +52,7 @@ namespace io{
         void enable();
         void runPulses(){runPulses(0);}
         void stop();
-        void init(int pinDIR, PulsePin pinPUL, uint32_t maxFrequency, stepperCalibration calParams);
+        void init(int pinDIR, PulsePin pinPUL, uint32_t maxFrequency, bool enableLimits, stepperCalibration calParams);
     };
 }
 #endif

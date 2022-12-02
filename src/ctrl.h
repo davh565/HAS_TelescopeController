@@ -19,12 +19,12 @@ enum autoManualMode{
 /// @brief The ctrl namespace contains higher level control functionality for 
 /// controlling the telescope.
 namespace ctrl {
-    const double trackRateHz = 125;
-    const double minAltitude = 4.8;
+    const double trackRateHz = 124;
+    const double minAltitude = 2;
     // void commandActions(command cmd);
     String checkTargetReachable(pos::Position target);
     void stopAllMovement(io::Stepper& ra, io::Stepper& dec);
-    void horizonStop(pos::FrameSet& currentLocation, io::Stepper& ra, io::Stepper& dec); // Check if the current location is below the horizon and stop the motors if it is
+    void horizonStop(pos::FrameSet& currentLocation, io::Stepper& ra, io::Stepper& dec, autoManualMode ctrlMode); // Check if the current location is below the horizon and stop the motors if it is
     
     // void calibrateHomePosition();
     void move(pos::FrameSet& currentLocation, pos::Position& targetPosition, io::Stepper& ra, io::Stepper& dec);

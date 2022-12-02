@@ -1,6 +1,0 @@
-<map id="pos::FrameSet::updateSiderealTime" name="pos::FrameSet::updateSiderealTime">
-<area shape="rect" id="node1" title="when the sidereal time is updated, sky coordinates must be recalculated" alt="" coords="5,32,281,60"/>
-<area shape="rect" id="node2" href="$classpos_1_1_frame_set.html#ab002a2c93143492fa7db8fa63cf11381" title="Conversion from local hour angle to right ascension, based on the current sidereal time." alt="" coords="329,32,533,60"/>
-<area shape="rect" id="node3" href="$utils_8cpp.html#acf65966ebf2cce2f5d458ba1226825b7" title="wrap values to plus or minus 180 degrees." alt="" coords="581,5,664,33"/>
-<area shape="rect" id="node4" href="$utils_8cpp.html#a53a50376d1ca5e6b1e4f090961fe0a4f" title="wrap values from 0 to 360 degrees." alt="" coords="581,57,664,85"/>
-</map>

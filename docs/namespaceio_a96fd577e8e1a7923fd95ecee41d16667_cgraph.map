@@ -1,6 +1,0 @@
-<map id="io::getMotorPositions" name="io::getMotorPositions">
-<area shape="rect" id="node1" title="get the current position in degrees in the motor reference frame." alt="" coords="5,32,176,60"/>
-<area shape="rect" id="node2" href="$classio_1_1_stepper.html#afd4af6eef5212943b99925ff14af53a6" title=" " alt="" coords="235,5,444,33"/>
-<area shape="rect" id="node4" href="$classio_1_1_stepper.html#a41c6829eede7e52c256fedc9b060342d" title=" " alt="" coords="224,57,455,85"/>
-<area shape="rect" id="node3" href="$class_pulse_generator.html#aedd3381ac01cc14dd41d803d59bc80b2" title="get the current pulse count." alt="" coords="503,5,705,33"/>
-</map>
