@@ -1,0 +1,11 @@
+<map id="ctrl::move" name="ctrl::move">
+<area shape="rect" id="node1" title="Move the telescope to the target position." alt="" coords="5,109,93,137"/>
+<area shape="rect" id="node2" href="$classpos_1_1_frame_set.html#a977417d0b36bd251545ddfd429984868" title=" " alt="" coords="143,5,343,33"/>
+<area shape="rect" id="node3" href="$classio_1_1_stepper.html#a2bfb81a8bf93253784e904fe255de558" title=" " alt="" coords="141,57,344,85"/>
+<area shape="rect" id="node4" href="$classio_1_1_stepper.html#a3024f2368d51f7cb79a15d62e4e593cc" title="Move the stepper motor by a number of degrees. If the frequency is above the correction xIntercept,..." alt="" coords="159,109,327,137"/>
+<area shape="rect" id="node6" href="$classio_1_1_stepper.html#af23414a1c095a3327989ae7cc1640e3b" title="Set the frequency of the stepper motor. Cap at maxFrequency if input is greater." alt="" coords="142,161,343,189"/>
+<area shape="rect" id="node9" href="$utils_8cpp.html#acf65966ebf2cce2f5d458ba1226825b7" title="wrap values to plus or minus 180 degrees." alt="" coords="201,213,284,241"/>
+<area shape="rect" id="node5" href="$classio_1_1_stepper.html#a65dd6d4870b2b39ba0a120cffc8617be" title=" " alt="" coords="421,109,596,137"/>
+<area shape="rect" id="node7" href="$class_pulse_generator.html#abb0f55b05cb47121268df198c683d012" title="Set the frequency of the pulse generator." alt="" coords="392,161,625,189"/>
+<area shape="rect" id="node8" href="$pulse_8cpp.html#a5e49ad1caf27e9a33052a428ffd4626b" title="Calculate the OCR value for the given frequency." alt="" coords="673,161,748,189"/>
+</map>

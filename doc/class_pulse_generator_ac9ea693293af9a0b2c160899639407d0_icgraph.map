@@ -1,0 +1,13 @@
+<map id="PulseGenerator::setRunMode" name="PulseGenerator::setRunMode">
+<area shape="rect" id="node1" title="sets motor to either targeting mode or constant run mode." alt="" coords="743,109,969,137"/>
+<area shape="rect" id="node2" href="$classio_1_1_stepper.html#a04102606f6aa6cda60e8580bd0b6433b" title="Initialise stepper motor." alt="" coords="536,5,663,33"/>
+<area shape="rect" id="node4" href="$classio_1_1_stepper.html#a735e92dd186abc0044ade5777608340c" title="Run the stepper motor at specified speed indefinitely." alt="" coords="108,71,236,99"/>
+<area shape="rect" id="node6" href="$classio_1_1_stepper.html#a83337e3036b25fe52d22bea3d6074be1" title="Run the stepper motor for a number of pulses from current position." alt="" coords="512,109,687,137"/>
+<area shape="rect" id="node7" href="$classio_1_1_stepper.html#aa0cd44bd6b7eebf0745124cb36bd7236" title="Run the stepper motor to a target position." alt="" coords="504,161,695,189"/>
+<area shape="rect" id="node8" href="$classio_1_1_stepper.html#aa27dcfc80c29dbbc30a6f1fec5b47298" title="Stop the stepper motor. This is achieved by setting the target step count to the current step count...." alt="" coords="531,213,668,241"/>
+<area shape="rect" id="node3" href="$_h_a_s___telescope_controller_8ino.html#a4fc01d736fe50cf5b977f755b675f11d" title="Main Program." alt="" coords="341,5,401,33"/>
+<area shape="rect" id="node5" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,200,57,228"/>
+<area shape="rect" id="node9" href="$namespaceio.html#a773508c2ed345cf874dc566aa57e9ce4" title="stop the declination motor if a limit switch is triggered." alt="" coords="120,200,224,228"/>
+<area shape="rect" id="node10" href="$namespacectrl.html#a4fbc9180a52083f002d7e787a25fa884" title="Stop all movement of the telescope." alt="" coords="287,252,456,280"/>
+<area shape="rect" id="node11" href="$namespacectrl.html#ad392b47fcb1a8daa5887890985a5e0b0" title="Stop the motors if the current location is below the horizon." alt="" coords="105,304,239,332"/>
+</map>

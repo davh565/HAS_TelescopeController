@@ -1,0 +1,4 @@
+<map id="PulseGenerator::init" name="PulseGenerator::init">
+<area shape="rect" id="node1" title="Setup timers Refer to table 17&#45;2, pg 145 and table 17&#45;4, pg 155, and table 17&#45;6, pg 157 of the datash..." alt="" coords="5,5,164,33"/>
+<area shape="rect" id="node2" href="$pulse_8cpp.html#a5e49ad1caf27e9a33052a428ffd4626b" title="Calculate the OCR value for the given frequency." alt="" coords="212,5,287,33"/>
+</map>

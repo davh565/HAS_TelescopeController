@@ -1,0 +1,5 @@
+<map id="pos::FrameSet::base2Sky" name="pos::FrameSet::base2Sky">
+<area shape="rect" id="node1" title="Conversion from local hour angle to right ascension, based on the current sidereal time." alt="" coords="5,32,209,60"/>
+<area shape="rect" id="node2" href="$utils_8cpp.html#acf65966ebf2cce2f5d458ba1226825b7" title="wrap values to plus or minus 180 degrees." alt="" coords="257,5,340,33"/>
+<area shape="rect" id="node3" href="$utils_8cpp.html#a53a50376d1ca5e6b1e4f090961fe0a4f" title="wrap values from 0 to 360 degrees." alt="" coords="257,57,340,85"/>
+</map>

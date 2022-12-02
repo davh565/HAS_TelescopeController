@@ -1,0 +1,3 @@
+<map id="PulseGeneratorSoft" name="PulseGeneratorSoft">
+<area shape="rect" id="node1" title="Software&#45;based Pulse Generator. Reccomend using hardware timers for more accurate timing." alt="" coords="5,5,248,328"/>
+</map>
