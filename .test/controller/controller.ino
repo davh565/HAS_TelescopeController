@@ -4,32 +4,11 @@
 #include "src/ui.h"
 
 
-bool autoMan = true;
+bool autoMan = false;
 bool track = false;
 ui::HandheldController hhc;
 ui::Display disp;
 
-// /// @brief check functionality of buttons and potentiometer.
-// void buttonTest(LiquidCrystal_PCF8574& lcd, HandheldController& hhc){
-//     hhc.updateButtons();
-//         lcd.home();
-//         // lcd.clear();
-//         lcd.print("ButtonTest");
-//         lcd.setCursor(0, 1);
-//         lcd.print(!hhc.getBtnRaMinus());
-//         lcd.print(!hhc.getBtnRaPlus());
-//         lcd.print(!hhc.getBtnDecPlus());
-//         lcd.print(!hhc.getBtnDecMinus());
-//         lcd.print(!hhc.getBtnMenu());
-//         lcd.print(!hhc.getBtnAutoMan());
-//         lcd.print(!hhc.getBtnGoTo());
-//         lcd.print(!hhc.getBtnTrack());
-//         lcd.print(" ");
-//         lcd.print(hhc.getPotValue());
-//         lcd.print(" ");
-//         delay(5);
-
-// }
 
 
 void setup(){
@@ -40,13 +19,12 @@ void setup(){
     // lcd.createChar(2, dotOn);
 }
 
-
     void loop(){
         hhc.updateButtons();
-        hhc.updateStates(autoMan, track);
-        disp.updateCoords(312.5, 45.5);
-        disp.updateAutoManState(autoMan);
-        disp.updateTrackState(track);
+        disp.updateStates(hhc,false,true);
+        disp.show();
+        // hhc.updateStates(autoMan, track, disp.menuState);
+
         // buttonTest(lcd,hhc);
         
 

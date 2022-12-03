@@ -3,7 +3,6 @@
 
 enum Menu {
     REBOOT,
-    
     TEST_BTNS,
     SERIAL_MON,
 };
