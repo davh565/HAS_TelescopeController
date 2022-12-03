@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <LiquidCrystal_PCF8574.h>
 #include "ui.h"
+#include <avr/wdt.h>
 
 namespace ui{
 
@@ -132,8 +133,12 @@ void Display::init(){
     byte enArrow[] =   {0b00000, 0b00001, 0b00001, 0b00101,
                         0b01001, 0b11111, 0b01000, 0b00100};
 
-    menuState = false;
     menuIdx = 0;
+    dbgMenuIdx = 0;
+    prevMenuIdx = 0;
+    prevDbgMenuIdx = 0;
+    mode = SYNC;
+    prevMode = SYNC;
 
     Wire.begin();
     Wire.beginTransmission(0x27);
@@ -150,60 +155,113 @@ void Display::init(){
 }
 
 void Display::updateStates(HandheldController hhc, bool sync, bool home){
-    if (hhc.getBtnMenuRise()){
-        menuState = !menuState;
-    }
-    if (menuState){
-        if (hhc.getBtnDecPlusRise()) menuIdx++;
-        if (hhc.getBtnDecMinusRise()) menuIdx--;
-        if (menuIdx < 0) menuIdx = 4;
-        if (menuIdx > 4) menuIdx = 0;
-    }
-    else{
-        if (hhc.getBtnAutoManRise()) autoManState = !autoManState;
-        if (hhc.getBtnTrackRise()) trackState = !trackState;
-    }
     syncState = sync;
     homeState = home;
+    if (hhc.getBtnMenuRise()){
+        if (mode != MENU_MAIN){
+            lastMode = mode;
+            mode = MENU_MAIN;
+        }
+        else mode = lastMode;
+    }
+    switch(mode){
+    case MENU_MAIN:
+        if (hhc.getBtnDecPlusRise()) menuIdx++;
+        if (hhc.getBtnDecMinusRise()) menuIdx--;
+        if (menuIdx < 0) menuIdx = 2;
+        if (menuIdx > 2) menuIdx = 0;
+        if (menuIdx == ITM_COORDS && hhc.getBtnRaPlusRise()) mode = COORDS;
+        else if (menuIdx == ITM_SYNC_STATUS && hhc.getBtnRaPlusRise()) mode = SYNC;
+        else if (menuIdx == ITM_DEBUG && hhc.getBtnRaPlusRise()) mode = MENU_DEBUG;
+        break;
+    case MENU_DEBUG:
+        if (hhc.getBtnDecPlusRise()) dbgMenuIdx++;
+        if (hhc.getBtnDecMinusRise()) dbgMenuIdx--;
+        if (dbgMenuIdx < 0) dbgMenuIdx = 2;
+        if (dbgMenuIdx > 2) dbgMenuIdx = 0;
+        if (dbgMenuIdx == ITM_TEST_BTNS && hhc.getBtnRaPlusRise()) mode = BTN_TST;
+        // else if (menuIdx == ITM_HORZ_LIM && hhc.getBtnRaPlusRise()) mode = SYNC;
+        else if (dbgMenuIdx == ITM_REBOOT && hhc.getBtnRaPlusRise()) reboot();
+        break;
+
+    case SYNC:
+        if (hhc.getBtnAutoManRise()) autoManState = !autoManState;
+        if (hhc.getBtnTrackRise()) trackState = !trackState;
+        break;
+    case COORDS:
+        if (hhc.getBtnAutoManRise()) autoManState = !autoManState;
+        if (hhc.getBtnTrackRise()) trackState = !trackState;
+        if (!syncState) mode = SYNC;
+        break;
+    }
 }
 
-void Display::show(){
-    String options[5] = {"item1", "item2", "item3", "item4", "item5"};
-    static bool prevMenuState = false;
-    if (prevMenuState != menuState) lcd.clear();
-    if (menuState){
-        // lcd.clear();
-        showMenu("MENU", options);
+    void Display::show(HandheldController hhc){
+        // static bool prevSyncState = false;
+        static bool prevMenuState = false;
+        static int8_t prevMenuIdx = 0;
+        switch (mode){
+            case MENU_MAIN:
+                if (prevMode != MENU_MAIN || prevMenuIdx != menuIdx) lcd.clear();
+                showMenu();
+            break;
+            case MENU_DEBUG:
+                if (prevMode != MENU_DEBUG || prevDbgMenuIdx != dbgMenuIdx) lcd.clear();
+                showMenuDebug();
+            break;
+            case COORDS:
+                if (prevMode != COORDS) lcd.clear();
+                showCoords(312.5, 45.5);
+                showAutoManState();
+                showTrackState();
+            break;
+            case SYNC:
+                if (prevMode != SYNC) lcd.clear();
+                showSyncHome();
+                showAutoManState();
+                showTrackState();
+                break;
+            case BTN_TST:
+                if (prevMode != BTN_TST) lcd.clear();
+                testButtons(hhc);
+            break;
+        }
+        prevMenuIdx = menuIdx;
+        prevDbgMenuIdx = dbgMenuIdx;
+        prevMode = mode;
     }
-    else{
-        static bool prevSyncState = false;
-        if(prevSyncState != syncState) lcd.clear();
-        if (syncState) showCoords(312.5, 45.5);
-        else showSyncHome();
-        showAutoManState();
-        showTrackState();
-        prevSyncState = syncState;
-    }
-    prevMenuState = menuState;
-}
 
 void Display::showSyncHome(){
     lcd.setCursor(0, 0);
-    if(syncState) lcd.print("SYNCED");
+    if(syncState) lcd.print("SYNCED    ");
     else lcd.print("NOT SYNCED");
     lcd.setCursor(0, 1);
-    if(homeState) lcd.print("HOME");
+    if(homeState) lcd.print("HOME    ");
     else lcd.print("NOT HOME");
 }
 
-void Display::showMenu(String name, String options[MENU_SIZE]){
+void Display::showMenu(){
+    String options[3] = {"COORDS", "SYNC STATUS", "DEBUG"};
     // lcd.clear();
     lcd.setCursor(0, 0);
-    lcd.print(name + ":");
+    lcd.print("MENU:");
     lcd.setCursor(15,0);
     lcd.print("\01");
     lcd.setCursor(0, 1);
     lcd.print(options[menuIdx] + " \04");
+    lcd.setCursor(15,1);
+    lcd.print("\02");
+    }
+
+void Display::showMenuDebug(){
+    String options[3] = {"TEST BUTTONS", "TGL HORZ LIM", "REBOOT"};
+    // lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("DEBUG:");
+    lcd.setCursor(15,0);
+    lcd.print("\01");
+    lcd.setCursor(0, 1);
+    lcd.print(options[dbgMenuIdx] + " \04");
     lcd.setCursor(15,1);
     lcd.print("\02");
     }
@@ -239,27 +297,32 @@ void Display::showCoords(double ra, double dec){
     lcd.print(double2DecStr(dec));
 }
 
+
+void Display::reboot(){
+    wdt_disable();
+    wdt_enable(WDTO_15MS);
+    while (1) {}
+}
 /// @brief check functionality of buttons and potentiometer.
-/// @param lcd reference to the lcd object
-/// @param hhc reference to the handheld controller object
-void testButtons(HandheldController& hhc){
+void Display::testButtons(HandheldController hhc){
     hhc.updateButtons();
         lcd.home();
         // lcd.clear();
+        lcd.setCursor(0, 0);
         lcd.print("ButtonTest");
         lcd.setCursor(0, 1);
-        lcd.print(!hhc.getBtnRaMinus());
-        lcd.print(!hhc.getBtnRaPlus());
-        lcd.print(!hhc.getBtnDecPlus());
-        lcd.print(!hhc.getBtnDecMinus());
-        lcd.print(!hhc.getBtnMenu());
-        lcd.print(!hhc.getBtnAutoMan());
-        lcd.print(!hhc.getBtnGoTo());
-        lcd.print(!hhc.getBtnTrack());
+        lcd.print(hhc.getBtnRaMinus());
+        lcd.print(hhc.getBtnRaPlus());
+        lcd.print(hhc.getBtnDecPlus());
+        lcd.print(hhc.getBtnDecMinus());
+        lcd.print(hhc.getBtnMenu());
+        lcd.print(hhc.getBtnAutoMan());
+        lcd.print(hhc.getBtnGoTo());
+        lcd.print(hhc.getBtnTrack());
         lcd.print(" ");
         lcd.print(hhc.getPotValue());
         lcd.print(" ");
-        delay(5);
+        // delay(5);
 
 }
 

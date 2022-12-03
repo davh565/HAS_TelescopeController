@@ -19,7 +19,7 @@ enum autoManualMode{
 /// @brief The ctrl namespace contains higher level control functionality for 
 /// controlling the telescope.
 namespace ctrl {
-    const double trackRateHz = 124;
+    const double trackRateHz = 125;
     const double minAltitude = 2;
     // void commandActions(command cmd);
     String checkTargetReachable(pos::Position target);

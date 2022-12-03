@@ -1,16 +1,24 @@
 #ifndef HAS_UI
 #define HAS_UI
 
-enum Menu {
-    REBOOT,
-    TEST_BTNS,
-    SERIAL_MON,
+enum MenuMain {
+    ITM_COORDS,
+    ITM_SYNC_STATUS,
+    ITM_DEBUG
 };
+enum MenuDebug {
+    ITM_TEST_BTNS,
+    ITM_HORZ_LIM,
+    ITM_REBOOT
+};
+
 enum DisplayMode {
-COORD,
-SYNC_MSG,
+COORDS,
+SYNC,
 MENU_MAIN,
-DEBUG
+MENU_DEBUG,
+BTN_TST
+// DEBUG
 };
 
 namespace ui{
@@ -73,8 +81,9 @@ namespace ui{
         Display(){;}
         void init();
         void updateStates(HandheldController hhc, bool sync, bool home);
-        void show();
-        void showMenu(String name, String options[MENU_SIZE] );
+        void show(HandheldController hhc);
+        void showMenu();
+        void showMenuDebug();
         void showMessage(String msg, uint8_t duration);
         void showAutoManState();
         void showTrackState();
@@ -83,17 +92,22 @@ namespace ui{
 
 
         private:
-        bool menuState;
         bool trackState;
         bool autoManState;
         bool syncState;
         bool homeState;
         int8_t menuIdx;
+        int8_t prevMenuIdx;
+        int8_t dbgMenuIdx;
+        int8_t prevDbgMenuIdx;
         void reboot();
-        void testButtons(HandheldController& hhc);
+        void testButtons(HandheldController hhc);
         void serialDebug();
         void home();
-
+        DisplayMode mode;
+        DisplayMode prevMode;
+        DisplayMode lastMode;
+        // HandheldController ctrlr;
         String double2RaStr(double raDegrees);
         String double2DecStr(double decDegrees);
 

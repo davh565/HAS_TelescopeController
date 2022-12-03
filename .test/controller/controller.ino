@@ -21,8 +21,8 @@ void setup(){
 
     void loop(){
         hhc.updateButtons();
-        disp.updateStates(hhc,false,true);
-        disp.show();
+        disp.updateStates(hhc,true,true);
+        disp.show(hhc);
         // hhc.updateStates(autoMan, track, disp.menuState);
 
         // buttonTest(lcd,hhc);
