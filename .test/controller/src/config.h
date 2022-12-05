@@ -19,19 +19,25 @@
 #define PWM_BZR         9
 // #define <RESERVED>   10
 // #define <TIMER1>     11 // If additional hardware Pulse Gen required, use this pin. Otherwise, use as PCINT for encoders.
-#define DI_DEC_ENC_A    11
-#define DI_DEC_ENC_B    12
+// #define DI_DEC_ENC_A    11
+// #define DI_DEC_ENC_B    12
+#define DO_LCD_E        11
+#define DO_LCD_RS       12
 // #define <LED>        13 // Arduino board LED.
 
-#define TXD3_DEBUG      14
-#define RXD3_DEBUG      15
-#define TXD2_R_PI       16
-#define RXD2_R_PI       17
+// #define TXD3_DEBUG      14
+// #define RXD3_DEBUG      15
+// #define TXD2_R_PI       16
+// #define RXD2_R_PI       17
 
-// #define <INT3/TXD1>  18 // Can be used as an INT intterupt, or for serial comms.
-// #define <INT2/RXD1>  19 // Can be used as an INT intterupt, or for serial comms.
-#define SDA_LCD         20
-#define SCL_LCD         21
+#define DO_LCD_D4       18 // Can be used as an INT intterupt, or for serial comms.
+#define DO_LCD_D5       19 // Can be used as an INT intterupt, or for serial comms.
+#define DO_LCD_D6       20
+#define DO_LCD_D7       21
+// #define TXD1_DEBUG      18 // Can be used as an INT intterupt, or for serial comms.
+// #define RXD1_DEBUG      19 // Can be used as an INT intterupt, or for serial comms.
+// #define SDA_LCD         20
+// #define SCL_LCD         21
 
 // #define <TIMER5>     46 // If additional hardware Pulse Gen required, use this pin.
 // #define <T5>         47 // Can be used as counter input for Timer5. See AtMega2560 datasheheet Chp. 17 for more info.

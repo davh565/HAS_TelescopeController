@@ -9,7 +9,6 @@
 /// and controlling sensors and actuators.
 namespace io{
     pos::Position getMotorPositions(Stepper& ra, Stepper& dec);
-    void setupPinModes();
     void setupLimits();
     void stopMotors();
     void limitStop(Stepper& dec);

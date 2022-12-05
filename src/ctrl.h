@@ -16,6 +16,11 @@ enum autoManualMode{
     MANUAL,
     BOTH
 };
+
+enum trackMode{
+    NO_TRACK,
+    TRACK
+};
 /// @brief The ctrl namespace contains higher level control functionality for 
 /// controlling the telescope.
 namespace ctrl {

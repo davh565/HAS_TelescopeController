@@ -39,7 +39,7 @@ namespace io{
         int getDirection(){return dir;}
         uint32_t getFrequency() {return frequency;}
         uint32_t getMaxFrequency() {return maxFrequency;}
-        bool getEnabled() {return isEnabled;}
+        bool getEnabled() {return Pulse.getEnabled();}
         double getPulsesPerDeg() {return pulsesPerDeg;}
         long getPulseCount() {return Pulse.getCount();}
         void setFrequency(uint32_t frequency);

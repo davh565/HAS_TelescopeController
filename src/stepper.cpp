@@ -21,7 +21,6 @@ namespace io{
         frequency = maxFrequency;
 
         dir = FORWARD;
-        isEnabled = false;
         pinMode(pinDIR, OUTPUT);
         // Serial.println("StepFreq: "+ String(maxFrequency));
         Pulse.init(pinPUL, maxFrequency);
@@ -51,7 +50,6 @@ namespace io{
     /// @param isEnabled false to disable, true to enable.
     void Stepper::setEnabled(bool isEnabled){
         if(enableLimits && decLimCheck(dir)) return;
-        this->isEnabled = isEnabled;
         // Serial.println("Stepper::setEnabled()");
         if (isEnabled) Pulse.enable();
         else Pulse.disable();

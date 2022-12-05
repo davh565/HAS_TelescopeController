@@ -1,5 +1,6 @@
 #ifndef HAS_UI
 #define HAS_UI
+#include "pos.h"
 
 enum MenuMain {
     ITM_COORDS,
@@ -81,7 +82,7 @@ namespace ui{
         Display(){;}
         void init();
         void updateStates(HandheldController hhc, bool sync, bool home);
-        void show(HandheldController hhc);
+        void show(HandheldController hhc, pos::Position pos);
         void showMenu();
         void showMenuDebug();
         void showMessage(String msg, uint8_t duration);

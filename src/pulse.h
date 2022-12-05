@@ -23,6 +23,7 @@ enum PulsePin: uint8_t {
 /// hardware timers, but this is not currently enforced.
 class PulseGenerator{
     public:
+    bool getEnabled();
     long getCount();
     void disable();
     void enable();

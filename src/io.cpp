@@ -27,21 +27,11 @@ namespace io{
         return pos;
 }
 
-    /// @brief set the pin modes for I/O pins.
-    void setupPinModes(){
-        pinMode(DI_MODE, INPUT_PULLUP);
-        pinMode(DI_RA_DIR, INPUT_PULLUP);
-        pinMode(DI_RA_PUL, INPUT_PULLUP);
-        pinMode(DI_DEC_DIR, INPUT_PULLUP);
-        pinMode(DI_DEC_PUL, INPUT_PULLUP);
-        pinMode(DI_TRACK, INPUT_PULLUP);
-        pinMode(AI_POT, INPUT);
-    }
-
     /// @brief set up the limit switches.
     void setupLimits(){
         pinMode(DI_DEC_LIM_LO, INPUT_PULLUP);
         pinMode(DI_DEC_LIM_HI, INPUT_PULLUP);
+        pinMode(DI_RA_LIM_IDX, INPUT_PULLUP);
         // attachInterrupt(digitalPinToInterrupt(DI_DEC_LIM_LO), decLimLoISR, LOW);
         // attachInterrupt(digitalPinToInterrupt(DI_DEC_LIM_HI), decLimHiISR, LOW);
     }

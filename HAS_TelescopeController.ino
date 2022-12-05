@@ -1,10 +1,11 @@
-
+#include <avr/wdt.h>
 #include "src/config.h"
 #include "src/comms.h"
 #include "src/ctrl.h"
 #include "src/pos.h"
 #include "src/io.h"
 #include "src/stepper.h"
+#include "src/ui.h"
 #include "src/utils.h"
 
 //TODO: move variables to appropriate modules. Ideally only setup and loop should be in this file
@@ -13,13 +14,6 @@ command currentCmd;
 String coordString;
 // bool g_isSlewing = false;
 bool initialSync = false;
-double slewRateHz = 250.0;
-int raDir;
-int decDir;
-bool isRaPul;
-bool isDecPul;
-bool isTrack;
-int potVal;
 uint32_t maxFreqRa = 30000;
 uint32_t maxFreqDec = 50000;
 stepperCalibration raCal = {29918.22352,-0.4805,32558};
@@ -29,14 +23,16 @@ namespace pos{
     Position targetPosition = {SKY, 0, 0};
     FrameSet currentLocation;
 }
-namespace ctrl{
-    autoManualMode state = MANUAL;
-        
-}
 
+namespace ctrl{
+    autoManualMode ctrlMode;
+    trackMode trkMode;
+
+}
 io::Stepper raStp;
 io::Stepper decStp;
-
+ui::HandheldController hhc;
+ui::Display disp;
 ////////////////////////////////////////////////////////////////////////////////
 /// Main Program
 ////////////////////////////////////////////////////////////////////////////////
@@ -45,9 +41,13 @@ io::Stepper decStp;
 /// @brief Main program entry point.
 void setup() {
     io::setupLimits();
-    io::setupPinModes();
+    ctrl::ctrlMode = MANUAL;
+    ctrl::trkMode = NO_TRACK;
+    hhc.initButtons(AI_POT_SPEED, DI_MUX_SIG, DO_MUX_ADDR_A, DO_MUX_ADDR_B, DO_MUX_ADDR_C);
+    disp.init();
     Serial.begin(9600);
-    Serial1.begin(9600);
+    // Serial1.begin(9600);
+    wdt_enable(WDTO_8S); // Enable Watchdog Timer, 8s
 
 
     raStp.init(DO_RA_STP_DIR, PWM_RA_STP_PUL, maxFreqRa, false, raCal);
@@ -61,7 +61,11 @@ void loop() {
     pos::SiderealTime::update(); // Update the sidereal time
     pos::currentLocation.updateSiderealTime(pos::SiderealTime::getValue()); // Pass the sidereal time to the current location
     pos::currentLocation.updatePosition(io::getMotorPositions(raStp, decStp)); // Update the current location from the motor positions
-    ctrl::state = (digitalRead(DI_MODE) == LOW) ? AUTO : MANUAL;
+    hhc.updateButtons();
+    disp.updateStates(hhc,true,true);
+    disp.show(hhc,pos::currentLocation.getPosition(SKY));
+    ctrl::ctrlMode = (disp.getAutoManState()) ? AUTO : MANUAL;
+    ctrl::trkMode = (disp.getTrackState()) ? TRACK : NO_TRACK;
 
     if (comms::readStringUntilChar(buffer, '#')) {
         currentCmd = comms::parseCommand(buffer);
@@ -91,7 +95,7 @@ void loop() {
             break;
 
             case SLEW_TO_TARGET:
-            switch (ctrl::state){
+            switch (ctrl::ctrlMode){
                 case AUTO:
                 comms::sendReply(ctrl::checkTargetReachable(pos::targetPosition));
                 ctrl::move(pos::currentLocation, pos::targetPosition,raStp, decStp);
@@ -105,7 +109,7 @@ void loop() {
             break;
 
             case STOP_SLEW:
-            switch (ctrl::state){
+            switch (ctrl::ctrlMode){
                 case AUTO:
                 ctrl::stopAllMovement(raStp, decStp);
                 break;
@@ -141,42 +145,48 @@ void loop() {
     
     }
 
-    if(ctrl::state == MANUAL){
-        potVal = analogRead(AI_POT);
-        slewRateHz = 0.095*potVal*potVal; //quadradic curve allows for fine control at low end, while still allowing fast slew at high end
-        // Serial.println(slewRateHz);
-        raDir = !digitalRead(DI_RA_DIR);
-        isRaPul = !digitalRead(DI_RA_PUL);
-        decDir = !digitalRead(DI_DEC_DIR);
-        isDecPul = !digitalRead(DI_DEC_PUL);
-        isTrack = !digitalRead(DI_TRACK);
-
+    if(ctrl::ctrlMode == MANUAL){
+        double slewRateHz = 0.095*hhc.getPotValue()*hhc.getPotValue(); //quadradic curve allows for fine control at low end, while still allowing fast slew at high end
         // digitalWrite(DO_RA_EN,isRaPul);
         // digitalWrite(DO_DEC_EN,isDecPul);
-        if(isRaPul){
-            raStp.run(raDir, slewRateHz/2);
+        if(hhc.getBtnRaPlus()){
+            raStp.run(REVERSE, slewRateHz/2);
         }
-        else if(isTrack){
+        else if(hhc.getBtnRaMinus()){
+            raStp.run(FORWARD, slewRateHz/2);
+        }
+        else if(ctrl::trkMode == TRACK){
             raStp.run(FORWARD, ctrl::trackRateHz);
         }
         else{
             raStp.stop();
         }
-        if(isDecPul){
-            decStp.run(decDir, slewRateHz);
+
+        if(hhc.getBtnDecPlus()){
+            decStp.run(FORWARD, slewRateHz);
+        }
+        else if(hhc.getBtnDecMinus()){
+            decStp.run(REVERSE, slewRateHz);
         }
         else{
             decStp.stop();
         }
-
-        // static unsigned long lastTime = 0;
-        // if(millis() - lastTime > 1000){
-        //     lastTime = millis();
-        //     Serial1.println("RA: " + String(raStp.getPulseCount()) + " DEC: " + String(decStp.getPulseCount()) + " MODE: " + String(digitalRead(DI_MODE)));
-        // }
     }
+    
+    // static unsigned long prevMillis = millis();
+    // if(millis()-prevMillis>=500){
+    //     // Serial.println("AUTO: " + String(disp.getAutoManState()));
+    //     // Serial.println("TRACK: " + String(disp.getTrackState()));
+    //     // Serial.println("RUN_RA: " + String(raStp.getEnabled()));
+    //     // Serial.println("RUN_DEC: " + String(decStp.getEnabled()));
+    //     Serial.println("RUN_DEC: " + String(hhc.getBtnDecMinus()));
+    //     prevMillis = millis();
+    // }
+
+    // Serial.println(disp.getAutoManState());
     // // // // // // // // // SAFTEY LIMITS // // // // // // // // // // // //
-    ctrl::horizonStop(pos::currentLocation, raStp, decStp, ctrl::state);
+    // ctrl::horizonStop(pos::currentLocation, raStp, decStp, ctrl::ctrlMode);
     io::limitStop(decStp); //Should be last function called in loop to ensure limit switches will stop motors
     // // // // // // // // // // // // // // // // // // // // // // // // // /
+    wdt_reset();
 }

@@ -3,7 +3,10 @@
 #include "enums.h"
 
 
-
+volatile bool enabled1 = false;
+volatile bool enabled3 = false;
+volatile bool enabled4 = false;
+volatile bool enabled5 = false;
 volatile bool pulseState1 = false;
 volatile bool pulseState3 = false;
 volatile bool pulseState4 = false;
@@ -38,6 +41,8 @@ ISR(TIMER1_COMPA_vect) {
             bitWrite(TCCR1B, CS10, LOW);
             bitWrite(TCCR1B, CS11, LOW);
             bitWrite(TCCR1B, CS12, LOW);
+            enabled1 = false;
+
             // digitalWrite(oc1a, LOW);
         }
     }
@@ -48,6 +53,7 @@ ISR(TIMER1_COMPA_vect) {
             bitWrite(TCCR1B, CS10, LOW);
             bitWrite(TCCR1B, CS11, LOW);
             bitWrite(TCCR1B, CS12, LOW);
+            enabled1 = false;
             // digitalWrite(oc1a, LOW);
         }
     }
@@ -63,6 +69,8 @@ ISR(TIMER3_COMPA_vect) {
             bitWrite(TCCR3B, CS30, LOW);
             bitWrite(TCCR3B, CS31, LOW);
             bitWrite(TCCR3B, CS32, LOW);
+            enabled3 = false;
+
             // digitalWrite(oc3a, LOW);
         }
     }
@@ -73,6 +81,7 @@ ISR(TIMER3_COMPA_vect) {
             bitWrite(TCCR3B, CS30, LOW);
             bitWrite(TCCR3B, CS31, LOW);
             bitWrite(TCCR3B, CS32, LOW);
+            enabled3 = false;
             // digitalWrite(oc3a, LOW);
         }
     }
@@ -88,6 +97,7 @@ ISR(TIMER4_COMPA_vect) {
             bitWrite(TCCR4B, CS40, LOW);
             bitWrite(TCCR4B, CS41, LOW);
             bitWrite(TCCR4B, CS42, LOW);
+            enabled4 = false;
             // digitalWrite(oc4a, LOW);
         }
     }
@@ -98,6 +108,7 @@ ISR(TIMER4_COMPA_vect) {
             bitWrite(TCCR4B, CS40, LOW);
             bitWrite(TCCR4B, CS41, LOW);
             bitWrite(TCCR4B, CS42, LOW);
+            enabled4 = false;
             // digitalWrite(oc4a, LOW);
         }
     }
@@ -113,6 +124,7 @@ ISR(TIMER5_COMPA_vect) {
             bitWrite(TCCR5B, CS50, LOW);
             bitWrite(TCCR5B, CS51, LOW);
             bitWrite(TCCR5B, CS52, LOW);
+            enabled5 = false;
             // digitalWrite(oc5a, LOW);
         }
     }
@@ -123,6 +135,7 @@ ISR(TIMER5_COMPA_vect) {
             bitWrite(TCCR5B, CS50, LOW);
             bitWrite(TCCR5B, CS51, LOW);
             bitWrite(TCCR5B, CS52, LOW);
+            enabled5 = false;
             // digitalWrite(oc5a, LOW);
         }
     }
@@ -139,54 +152,87 @@ long PulseGenerator::getCount(){
 
 /// @brief Disable the timer via turning off the clock source.
 void PulseGenerator::disable(){
+    noInterrupts();
     switch(pulsePin){
         case oc1a:
             bitWrite(TCCR1B, CS10, LOW);
             bitWrite(TCCR1B, CS11, LOW);
             bitWrite(TCCR1B, CS12, LOW);
+            enabled1 = false;
             break;
         case oc3a:
             bitWrite(TCCR3B, CS30, LOW);
             bitWrite(TCCR3B, CS31, LOW);
             bitWrite(TCCR3B, CS32, LOW);
+            enabled3 = false;
             break;
         case oc4a:
             bitWrite(TCCR4B, CS40, LOW);
             bitWrite(TCCR4B, CS41, LOW);
             bitWrite(TCCR4B, CS42, LOW);
+            enabled4 = false;
             break;
         case oc5a:
             bitWrite(TCCR5B, CS50, LOW);
             bitWrite(TCCR5B, CS51, LOW);
             bitWrite(TCCR5B, CS52, LOW);
+            enabled5 = false;
             break;
     }
+    interrupts();
     // digitalWrite(pulsePin, LOW);
 }
 /// @brief Enable Timer by setting prescaler to 64
 void PulseGenerator::enable(){
+    noInterrupts();
     switch(pulsePin){
         case oc1a:
             // bitWrite(TCCR1B, CS10, HIGH);
             bitWrite(TCCR1B, CS11, HIGH);
             // bitWrite(TCCR1B, CS12, LOW);
+            enabled1 = true;
             break;
         case oc3a:
             // bitWrite(TCCR3B, CS30, HIGH);
             bitWrite(TCCR3B, CS31, HIGH);
             // bitWrite(TCCR3B, CS32, LOW);
+            enabled3 = true;
             break;
         case oc4a:
             // bitWrite(TCCR4B, CS40, HIGH);
             bitWrite(TCCR4B, CS41, HIGH);
             // bitWrite(TCCR4B, CS42, LOW);
+            enabled4 = true;
             break;
         case oc5a:
             // bitWrite(TCCR5B, CS50, HIGH);
             bitWrite(TCCR5B, CS51, HIGH);
             // bitWrite(TCCR5B, CS52, LOW);
+            enabled5 = true;
             break;
     }
+    interrupts();
+}
+/// @brief Enable Timer by setting prescaler to 64
+bool PulseGenerator::getEnabled(){
+    bool retVal;
+    noInterrupts();
+    switch(pulsePin){
+        case oc1a:
+            retVal = enabled1;
+            break;
+        case oc3a:
+            retVal = enabled3;
+            break;
+        case oc4a:
+            retVal = enabled4;
+            break;
+        case oc5a:
+            retVal = enabled5;
+            break;
+    }
+    interrupts();
+    return retVal;
 }
 
 /// @brief Calculate the OCR value for the given frequency.
@@ -214,6 +260,7 @@ void PulseGenerator::init(PulsePin pulsePin, uint32_t frequency){
         bitWrite(TCCR1B, CS10, LOW);
         bitWrite(TCCR1B, CS11, LOW);
         bitWrite(TCCR1B, CS12, LOW);
+        enabled1 = false;
         // Compare output mode set to toggle on match channel A
         bitWrite(TCCR1A, COM1A0, HIGH);
         bitWrite(TCCR1A, COM1A1, LOW);
@@ -233,6 +280,7 @@ void PulseGenerator::init(PulsePin pulsePin, uint32_t frequency){
         bitWrite(TCCR3B, CS30, LOW);
         bitWrite(TCCR3B, CS31, LOW);
         bitWrite(TCCR3B, CS32, LOW);
+        enabled3 = false;
         // Compare output mode set to toggle on match channel A
         bitWrite(TCCR3A, COM3A0, HIGH);
         bitWrite(TCCR3A, COM3A1, LOW);
@@ -252,6 +300,7 @@ void PulseGenerator::init(PulsePin pulsePin, uint32_t frequency){
         bitWrite(TCCR4B, CS40, LOW);
         bitWrite(TCCR4B, CS41, LOW);
         bitWrite(TCCR4B, CS42, LOW);
+        enabled4 = false;
         // Compare output mode set to toggle on match channel A
         bitWrite(TCCR4A, COM4A0, HIGH);
         bitWrite(TCCR4A, COM4A1, LOW);
@@ -267,10 +316,11 @@ void PulseGenerator::init(PulsePin pulsePin, uint32_t frequency){
         bitWrite(TCCR5A, WGM51, HIGH);
         bitWrite(TCCR5B, WGM52, HIGH);
         bitWrite(TCCR5B, WGM53, HIGH);
-        // Set prescaler to 256
+                // Disable Timer
         bitWrite(TCCR5B, CS50, LOW);
         bitWrite(TCCR5B, CS51, LOW);
-        bitWrite(TCCR5B, CS52, HIGH);
+        bitWrite(TCCR5B, CS52, LOW);
+        enabled5 = false;
         // Compare output mode set to toggle on match channel A
         bitWrite(TCCR5A, COM5A0, HIGH);
         bitWrite(TCCR5A, COM5A1, LOW);
