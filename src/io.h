@@ -13,6 +13,7 @@ namespace io{
     void stopMotors();
     void limitStop(Stepper& dec);
     bool decLimCheck(int dir);
+    bool isHome();
 
 }
 #endif

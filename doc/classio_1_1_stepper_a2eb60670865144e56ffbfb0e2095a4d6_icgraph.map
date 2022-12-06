@@ -1,5 +1,0 @@
-<map id="io::Stepper::getDirection" name="io::Stepper::getDirection">
-<area shape="rect" id="node1" title=" " alt="" coords="257,5,449,33"/>
-<area shape="rect" id="node2" href="$namespaceio.html#a773508c2ed345cf874dc566aa57e9ce4" title="stop the declination motor if a limit switch is triggered." alt="" coords="105,5,209,33"/>
-<area shape="rect" id="node3" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,5,57,33"/>
-</map>

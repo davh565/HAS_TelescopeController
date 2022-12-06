@@ -1,5 +1,0 @@
-<map id="io::Stepper::getPulsesPerDeg" name="io::Stepper::getPulsesPerDeg">
-<area shape="rect" id="node1" title=" " alt="" coords="324,5,555,33"/>
-<area shape="rect" id="node2" href="$namespaceio.html#a96fd577e8e1a7923fd95ecee41d16667" title="get the current position in degrees in the motor reference frame." alt="" coords="105,5,276,33"/>
-<area shape="rect" id="node3" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,5,57,33"/>
-</map>

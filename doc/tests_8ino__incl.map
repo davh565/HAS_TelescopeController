@@ -1,9 +1,0 @@
-<map id="tests.ino" name="tests.ino">
-<area shape="rect" id="node1" title=" " alt="" coords="81,5,161,33"/>
-<area shape="rect" id="node2" href="$config_8h.html" title=" " alt="" coords="5,81,107,109"/>
-<area shape="rect" id="node3" href="$stepper_8h.html" title=" " alt="" coords="131,81,243,109"/>
-<area shape="rect" id="node4" title=" " alt="" coords="104,233,192,261"/>
-<area shape="rect" id="node5" href="$enums_8h.html" title=" " alt="" coords="100,157,180,185"/>
-<area shape="rect" id="node6" href="$utils_8h.html" title=" " alt="" coords="204,157,265,185"/>
-<area shape="rect" id="node7" href="$pulse_8h.html" title=" " alt="" coords="290,157,361,185"/>
-</map>

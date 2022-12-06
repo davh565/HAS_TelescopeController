@@ -50,6 +50,11 @@ namespace io{
 
     }
 
+    bool isHome(){
+        if(digitalRead(DI_DEC_LIM_LO) && !digitalRead(DI_RA_LIM_IDX)) return true;
+        else return false;
+    }
+
     bool decLimCheck(int dir){
         if(dir == REVERSE && digitalRead(DI_DEC_LIM_LO)) return true;
         if(dir == FORWARD && digitalRead(DI_DEC_LIM_HI)) return true;

@@ -1,6 +1,0 @@
-<map id="io::Stepper::getFrequency" name="io::Stepper::getFrequency">
-<area shape="rect" id="node1" title=" " alt="" coords="423,32,625,60"/>
-<area shape="rect" id="node2" href="$namespacectrl.html#ac6298cdb7b00cb4c3fe67adbc4f98e7b" title="Move the telescope to the target position." alt="" coords="287,32,375,60"/>
-<area shape="rect" id="node3" href="$namespacectrl.html#ad392b47fcb1a8daa5887890985a5e0b0" title="Stop the motors if the current location is below the horizon." alt="" coords="105,5,239,33"/>
-<area shape="rect" id="node4" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,32,57,60"/>
-</map>

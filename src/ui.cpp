@@ -5,6 +5,7 @@
 #include "ui.h"
 #include "config.h"
 
+
 /// @brief Functionality realated to the handheld controller buttons and LCD.
 /// Could probably use a rewrite, was put together pretty quickly.
 namespace ui{
@@ -181,26 +182,41 @@ void Display::updateStates(HandheldController hhc, bool sync, bool home){
     case MENU_DEBUG:
         if (hhc.getBtnDecPlusRise()) dbgMenuIdx++;
         if (hhc.getBtnDecMinusRise()) dbgMenuIdx--;
-        if (dbgMenuIdx < 0) dbgMenuIdx = 2;
-        if (dbgMenuIdx > 2) dbgMenuIdx = 0;
+        if (dbgMenuIdx < 0) dbgMenuIdx = 1;
+        if (dbgMenuIdx > 1) dbgMenuIdx = 0;
         if (dbgMenuIdx == ITM_TEST_BTNS && hhc.getBtnRaPlusRise()) mode = BTN_TST;
         // else if (menuIdx == ITM_HORZ_LIM && hhc.getBtnRaPlusRise()) mode = SYNC;
         else if (dbgMenuIdx == ITM_REBOOT && hhc.getBtnRaPlusRise()) reboot();
         break;
 
     case SYNC:
-        if (hhc.getBtnAutoManRise()) autoManState = !autoManState;
-        if (hhc.getBtnTrackRise()) trackState = !trackState;
+        if (hhc.getBtnAutoManRise()){
+            autoManState = !autoManState;
+            tone(PWM_BZR,NOTE_A5,BEEP_TIME);
+
+        } 
+        if (hhc.getBtnTrackRise()){
+            trackState = !trackState;
+            tone(PWM_BZR,NOTE_D6,BEEP_TIME);
+
+        }
         break;
     case COORDS:
-        if (hhc.getBtnAutoManRise()) autoManState = !autoManState;
-        if (hhc.getBtnTrackRise()) trackState = !trackState;
+        if (hhc.getBtnAutoManRise()){
+            autoManState = !autoManState;
+            tone(PWM_BZR,NOTE_A5,BEEP_TIME);
+        } 
+        if (hhc.getBtnTrackRise()){
+            trackState = !trackState;
+            tone(PWM_BZR,NOTE_D6,BEEP_TIME);
+
+        }
         if (!syncState) mode = SYNC;
         break;
     }
 }
 
-    void Display::show(HandheldController hhc, pos::Position pos){
+    void Display::show(HandheldController hhc, pos::Position pos, bool homing){
         // static bool prevSyncState = false;
         static bool prevMenuState = false;
         static int8_t prevMenuIdx = 0;
@@ -217,13 +233,13 @@ void Display::updateStates(HandheldController hhc, bool sync, bool home){
                 if (prevMode != COORDS) lcd.clear();
                 showCoords(pos.ra, pos.dec);
                 showAutoManState();
-                showTrackState();
+                showTrackState(homing);
             break;
             case SYNC:
                 if (prevMode != SYNC) lcd.clear();
                 showSyncHome();
                 showAutoManState();
-                showTrackState();
+                showTrackState(homing);
                 break;
             case BTN_TST:
                 if (prevMode != BTN_TST) lcd.clear();
@@ -258,7 +274,7 @@ void Display::showMenu(){
     }
 
 void Display::showMenuDebug(){
-    String options[3] = {"TEST BUTTONS", "TGL HORZ LIM", "REBOOT"};
+    String options[2] = {"TEST BUTTONS", "REBOOT"};
     // lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("DEBUG:");
@@ -281,8 +297,12 @@ void Display::showAutoManState(){
         lcd.print("|MAN");
     }
 }
-void Display::showTrackState(){
-    if (trackState){
+void Display::showTrackState(bool homing){
+    if (homing){
+        lcd.setCursor(12, 1);
+        lcd.print("|HOM");
+    }
+    else if (trackState){
         lcd.setCursor(12, 1);
         lcd.print("|TRK");
     }

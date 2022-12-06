@@ -9,7 +9,6 @@ enum MenuMain {
 };
 enum MenuDebug {
     ITM_TEST_BTNS,
-    ITM_HORZ_LIM,
     ITM_REBOOT
 };
 
@@ -82,16 +81,19 @@ namespace ui{
         Display(){;}
         void init();
         void updateStates(HandheldController hhc, bool sync, bool home);
-        void show(HandheldController hhc, pos::Position pos);
+        void show(HandheldController hhc, pos::Position pos, bool homing);
         void showMenu();
         void showMenuDebug();
         void showMessage(String msg, uint8_t duration);
         void showAutoManState();
-        void showTrackState();
+        void showTrackState(bool homing);
         void showCoords(double ra, double dec);
         void showSyncHome();
         bool getTrackState(){return trackState;}
+        void setTrackState(bool trackState){this->trackState = trackState;}
         bool getAutoManState(){return autoManState;}
+        DisplayMode getDisplayMode(){return mode;}
+        void setDisplayMode (DisplayMode mode){this->mode = mode;}
 
 
         private:

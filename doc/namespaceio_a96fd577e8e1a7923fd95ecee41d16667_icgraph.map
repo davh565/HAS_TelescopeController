@@ -1,4 +1,0 @@
-<map id="io::getMotorPositions" name="io::getMotorPositions">
-<area shape="rect" id="node1" title="get the current position in degrees in the motor reference frame." alt="" coords="105,5,276,33"/>
-<area shape="rect" id="node2" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,5,57,33"/>
-</map>

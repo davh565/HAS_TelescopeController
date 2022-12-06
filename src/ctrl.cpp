@@ -9,6 +9,7 @@
 // extern bool g_isSlewing;
 
 namespace ctrl {
+    bool isHoming = false;
   // pos::Position localPosition;
     
 
@@ -25,6 +26,13 @@ namespace ctrl {
         else str = "2 ERROR: OBJECT NOT REACHABLE#";
         return str;
     }
+
+    scopeState getScopeStatus(io::Stepper& ra, io::Stepper& dec){
+        if (!ra.getEnabled() && !dec.getEnabled()) return IDLE;
+        else if (!dec.getEnabled() && ra.getFrequency()== trackRateHz && ra.getDirection() == FORWARD) return TRACKING;
+        else return SLEWING;
+    }
+
 
     /// @brief Stop all movement of the telescope
     /// @param ra the RA stepper motor
@@ -74,4 +82,23 @@ namespace ctrl {
         ra.runAngle(deltaRaTotal);
         dec.runAngle(deltaDec);
     }
+
+    void moveHome(io::Stepper& ra, io::Stepper& dec){
+        if (ra.getPulseCount() == 0) return;
+        // direction dir = (ra.getPulseCount() > 0) ? FORWARD : REVERSE;
+        dec.setFrequency(dec.getMaxFrequency());
+        dec.run(REVERSE);
+        isHoming = true;
+    }
+    void homeStop(io::Stepper& ra, io::Stepper& dec){
+        if(isHoming){
+            if (digitalRead(DI_DEC_LIM_LO)) dec.stop();
+            if (!digitalRead(DI_RA_LIM_IDX)) ra.stop();
+            if(digitalRead(DI_DEC_LIM_LO) && !digitalRead(DI_RA_LIM_IDX)) isHoming = false;
+        }
+    
+
+    }
+
+    bool getHoming(){return isHoming;}
 }

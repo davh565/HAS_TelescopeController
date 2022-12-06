@@ -1,5 +1,0 @@
-<map id="pos::SiderealTime::_update" name="pos::SiderealTime::_update">
-<area shape="rect" id="node1" title="Updates the current sidreal time based on elapsed time since last update. should be called once per l..." alt="" coords="312,5,471,51"/>
-<area shape="rect" id="node2" href="$classpos_1_1_sidereal_time.html#a1bd2bee5fde9d2478afc0e8849dbd4a4" title=" " alt="" coords="105,5,264,51"/>
-<area shape="rect" id="node3" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,14,57,42"/>
-</map>

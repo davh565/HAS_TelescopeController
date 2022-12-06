@@ -1,5 +1,0 @@
-<map id="PulseGenerator::init" name="PulseGenerator::init">
-<area shape="rect" id="node1" title="Setup timers Refer to table 17&#45;2, pg 145 and table 17&#45;4, pg 155, and table 17&#45;6, pg 157 of the datash..." alt="" coords="288,5,447,33"/>
-<area shape="rect" id="node2" href="$classio_1_1_stepper.html#a04102606f6aa6cda60e8580bd0b6433b" title="Initialise stepper motor." alt="" coords="113,5,240,33"/>
-<area shape="rect" id="node3" href="$_h_a_s___telescope_controller_8ino.html#a4fc01d736fe50cf5b977f755b675f11d" title="Main Program." alt="" coords="5,5,65,33"/>
-</map>

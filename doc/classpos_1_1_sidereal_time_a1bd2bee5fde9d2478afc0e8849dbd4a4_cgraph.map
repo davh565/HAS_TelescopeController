@@ -1,6 +1,0 @@
-<map id="pos::SiderealTime::update" name="pos::SiderealTime::update">
-<area shape="rect" id="node1" title=" " alt="" coords="5,40,164,85"/>
-<area shape="rect" id="node2" href="$classpos_1_1_sidereal_time.html#a54778a0a6bd6f81006b6174ef27aa2a9" title="Updates the current sidreal time based on elapsed time since last update. should be called once per l..." alt="" coords="212,5,371,51"/>
-<area shape="rect" id="node4" href="$classpos_1_1_sidereal_time.html#a39041d9339a1b78cf1e26e840f596d45" title=" " alt="" coords="212,75,371,120"/>
-<area shape="rect" id="node3" href="$utils_8cpp.html#a53a50376d1ca5e6b1e4f090961fe0a4f" title="wrap values from 0 to 360 degrees." alt="" coords="419,14,501,42"/>
-</map>

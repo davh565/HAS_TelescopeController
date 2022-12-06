@@ -1,3 +1,5 @@
+/**@file HAS_TelescopeController.ino */
+
 #include <avr/wdt.h>
 #include "src/config.h"
 #include "src/comms.h"
@@ -27,7 +29,6 @@ namespace pos{
 namespace ctrl{
     autoManualMode ctrlMode;
     trackMode trkMode;
-
 }
 io::Stepper raStp;
 io::Stepper decStp;
@@ -47,7 +48,7 @@ void setup() {
     disp.init();
     Serial.begin(9600);
     // Serial1.begin(9600);
-    wdt_enable(WDTO_8S); // Enable Watchdog Timer, 8s
+    wdt_enable(WDTO_2S); // Enable Watchdog Timer, 8s
 
 
     raStp.init(DO_RA_STP_DIR, PWM_RA_STP_PUL, maxFreqRa, false, raCal);
@@ -62,10 +63,14 @@ void loop() {
     pos::currentLocation.updateSiderealTime(pos::SiderealTime::getValue()); // Pass the sidereal time to the current location
     pos::currentLocation.updatePosition(io::getMotorPositions(raStp, decStp)); // Update the current location from the motor positions
     hhc.updateButtons();
-    disp.updateStates(hhc,true,true);
-    disp.show(hhc,pos::currentLocation.getPosition(SKY));
+    disp.updateStates(hhc,initialSync,io::isHome());
+    disp.show(hhc,pos::currentLocation.getPosition(SKY),ctrl::getHoming());
     ctrl::ctrlMode = (disp.getAutoManState()) ? AUTO : MANUAL;
     ctrl::trkMode = (disp.getTrackState()) ? TRACK : NO_TRACK;
+
+    if(ctrl::trkMode == TRACK && ctrl::getScopeStatus(raStp, decStp) == IDLE){
+            raStp.run(FORWARD, ctrl::trackRateHz);
+    }
 
     if (comms::readStringUntilChar(buffer, '#')) {
         currentCmd = comms::parseCommand(buffer);
@@ -85,6 +90,8 @@ void loop() {
                 pos::SiderealTime::sync(pos::homePosition, pos::targetPosition);
                 pos::currentLocation.initialiseSiderealTime(pos::SiderealTime::getValue());
                 initialSync = true;
+                disp.setDisplayMode(COORDS);
+                // disp.setTrackState(true);
             }
             pos::currentLocation.syncTo(pos::targetPosition);
 
@@ -147,28 +154,38 @@ void loop() {
 
     if(ctrl::ctrlMode == MANUAL){
         double slewRateHz = 0.095*hhc.getPotValue()*hhc.getPotValue(); //quadradic curve allows for fine control at low end, while still allowing fast slew at high end
+        DisplayMode dispMode = disp.getDisplayMode();
         // digitalWrite(DO_RA_EN,isRaPul);
         // digitalWrite(DO_DEC_EN,isDecPul);
-        if(hhc.getBtnRaPlus()){
-            raStp.run(REVERSE, slewRateHz/2);
+        if(ctrl::getHoming())disp.setTrackState(false);
+        if(hhc.getBtnGoToRise()) {
+            ctrl::moveHome(raStp,decStp);
+            tone(PWM_BZR,NOTE_C6,BEEP_TIME);
         }
-        else if(hhc.getBtnRaMinus()){
-            raStp.run(FORWARD, slewRateHz/2);
+        if(hhc.getBtnRaPlus() && (dispMode == COORDS || dispMode == SYNC) ){
+            if (ctrl::getHoming()) raStp.run(REVERSE, raStp.getMaxFrequency());
+            else raStp.run(REVERSE, slewRateHz/2);
+        }
+        else if(hhc.getBtnRaMinus()&& (dispMode == COORDS || dispMode == SYNC)){
+            if (ctrl::getHoming()) raStp.run(FORWARD, raStp.getMaxFrequency());
+            else raStp.run(FORWARD, slewRateHz/2);
         }
         else if(ctrl::trkMode == TRACK){
             raStp.run(FORWARD, ctrl::trackRateHz);
         }
-        else{
+        else if (!ctrl::getHoming()){
             raStp.stop();
         }
 
-        if(hhc.getBtnDecPlus()){
-            decStp.run(FORWARD, slewRateHz);
+        if(hhc.getBtnDecPlus() && (dispMode == COORDS || dispMode == SYNC)){
+            if (ctrl::getHoming()) decStp.run(FORWARD, decStp.getMaxFrequency());
+            else decStp.run(FORWARD, slewRateHz);
         }
-        else if(hhc.getBtnDecMinus()){
+        else if(hhc.getBtnDecMinus()&& (dispMode == COORDS || dispMode == SYNC)){
+            // if (ctrl::getHoming()) decStp.run(REVERSE, decStp.getMaxFrequency());
             decStp.run(REVERSE, slewRateHz);
         }
-        else{
+        else if (!ctrl::getHoming()){
             decStp.stop();
         }
     }
@@ -184,6 +201,7 @@ void loop() {
     // }
 
     // Serial.println(disp.getAutoManState());
+    ctrl::homeStop(raStp,decStp);
     // // // // // // // // // SAFTEY LIMITS // // // // // // // // // // // //
     // ctrl::horizonStop(pos::currentLocation, raStp, decStp, ctrl::ctrlMode);
     io::limitStop(decStp); //Should be last function called in loop to ensure limit switches will stop motors

@@ -1,3 +1,0 @@
-<map id="PulseGenerator" name="PulseGenerator">
-<area shape="rect" id="node1" title="Pulse Generator class, Should not have more instances than available hardware timers,..." alt="" coords="5,5,220,345"/>
-</map>

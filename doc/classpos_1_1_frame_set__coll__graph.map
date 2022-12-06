@@ -1,4 +1,0 @@
-<map id="pos::FrameSet" name="pos::FrameSet">
-<area shape="rect" id="node1" title="Stores Position coordinates for a single position across multiple reference frames,..." alt="" coords="5,428,229,1063"/>
-<area shape="rect" id="node2" href="$structpos_1_1_position.html" title="A Position is a combination of two coordinates, each in decimal degrees. The unions allow for differe..." alt="" coords="34,5,201,293"/>
-</map>

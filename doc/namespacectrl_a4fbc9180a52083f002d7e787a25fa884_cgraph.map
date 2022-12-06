@@ -1,9 +1,0 @@
-<map id="ctrl::stopAllMovement" name="ctrl::stopAllMovement">
-<area shape="rect" id="node1" title="Stop all movement of the telescope." alt="" coords="5,57,175,85"/>
-<area shape="rect" id="node2" href="$classio_1_1_stepper.html#aa27dcfc80c29dbbc30a6f1fec5b47298" title="Stop the stepper motor. This is achieved by setting the target step count to the current step count...." alt="" coords="223,57,360,85"/>
-<area shape="rect" id="node3" href="$classio_1_1_stepper.html#afd4af6eef5212943b99925ff14af53a6" title=" " alt="" coords="417,5,626,33"/>
-<area shape="rect" id="node5" href="$class_pulse_generator.html#ac9ea693293af9a0b2c160899639407d0" title="sets motor to either targeting mode or constant run mode." alt="" coords="408,57,635,85"/>
-<area shape="rect" id="node6" href="$classio_1_1_stepper.html#aa0b16c22be5ef935994d5966eb202599" title=" " alt="" coords="435,109,608,137"/>
-<area shape="rect" id="node4" href="$class_pulse_generator.html#aedd3381ac01cc14dd41d803d59bc80b2" title="get the current pulse count." alt="" coords="684,5,887,33"/>
-<area shape="rect" id="node7" href="$class_pulse_generator.html#a43c6e5a24b400613cf3da8f31ad8a7c6" title="Set the pulse count target. When in targeting mode, pulse generator will stop when target is reached." alt="" coords="683,109,888,137"/>
-</map>
