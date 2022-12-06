@@ -1,3 +1,6 @@
 <map id="io::Stepper::runPulses" name="io::Stepper::runPulses">
-<area shape="rect" id="node1" title=" " alt="" coords="5,29,156,55"/>
+<area shape="rect" id="node1" title=" " alt="" coords="419,29,569,55"/>
+<area shape="rect" id="node2" href="$classio_1_1_stepper.html#a3024f2368d51f7cb79a15d62e4e593cc" title="Move the stepper motor by a number of degrees. If the frequency is above the correction xIntercept,..." alt="" coords="227,29,371,55"/>
+<area shape="rect" id="node3" href="$namespacectrl.html#ac6298cdb7b00cb4c3fe67adbc4f98e7b" title="Move the telescope to the target position." alt="" coords="100,29,179,55"/>
+<area shape="rect" id="node4" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,29,52,55"/>
 </map>

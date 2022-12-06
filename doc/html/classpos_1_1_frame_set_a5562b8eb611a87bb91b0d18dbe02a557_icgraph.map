@@ -1,3 +1,11 @@
 <map id="pos::FrameSet::altaz2Base" name="pos::FrameSet::altaz2Base">
-<area shape="rect" id="node1" title=" " alt="" coords="5,29,187,55"/>
+<area shape="rect" id="node1" title=" " alt="" coords="609,92,791,117"/>
+<area shape="rect" id="node2" href="$classpos_1_1_frame_set.html#a1da5357aef24d4143e235d2ebe60833d" title=" " alt="" coords="375,27,545,67"/>
+<area shape="rect" id="node5" href="$classpos_1_1_frame_set.html#a46fac6dd6873164192de2021c845a2d7" title="Set current position, and convert to other frames." alt="" coords="359,120,561,145"/>
+<area shape="rect" id="node3" href="$namespacepos.html#a0e80a822ec0efb82276b134371e232cb" title=" " alt="" coords="129,5,290,31"/>
+<area shape="rect" id="node4" href="$tests_8ino.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,5,60,31"/>
+<area shape="rect" id="node6" href="$classpos_1_1_frame_set.html#a6565c9994bc2411b877a63c371f5f781" title=" " alt="" coords="123,55,296,95"/>
+<area shape="rect" id="node7" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="186,120,233,145"/>
+<area shape="rect" id="node8" href="$classpos_1_1_frame_set.html#a5bf0ab0ac8e084f5a6208fdf010cbed9" title=" " alt="" coords="115,169,304,195"/>
+<area shape="rect" id="node9" href="$classpos_1_1_frame_set.html#a9cf56603bfb247151763b432268f1044" title=" " alt="" coords="108,219,311,244"/>
 </map>
