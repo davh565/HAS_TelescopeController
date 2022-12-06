@@ -1,0 +1,18 @@
+<map id="ctrl::moveHome" name="ctrl::moveHome">
+<area shape="rect" id="node1" title=" " alt="" coords="5,132,117,157"/>
+<area shape="rect" id="node2" href="$classio_1_1_stepper.html#abfb1fdfad25f12ead153ce6f999b313c" title=" " alt="" coords="165,57,363,83"/>
+<area shape="rect" id="node3" href="$classio_1_1_stepper.html#afd4af6eef5212943b99925ff14af53a6" title=" " alt="" coords="175,107,353,132"/>
+<area shape="rect" id="node5" href="$classio_1_1_stepper.html#a735e92dd186abc0044ade5777608340c" title="Run the stepper motor at specified speed indefinitely." alt="" coords="209,156,319,181"/>
+<area shape="rect" id="node13" href="$classio_1_1_stepper.html#af23414a1c095a3327989ae7cc1640e3b" title="Set the frequency of the stepper motor. Cap at maxFrequency if input is greater." alt="" coords="421,255,593,280"/>
+<area shape="rect" id="node4" href="$class_pulse_generator.html#aedd3381ac01cc14dd41d803d59bc80b2" title="get the current pulse count." alt="" coords="421,5,593,31"/>
+<area shape="rect" id="node6" href="$namespaceio.html#a994496fb40c493062f144c5e42f5117c" title=" " alt="" coords="920,57,1039,83"/>
+<area shape="rect" id="node7" href="$classio_1_1_stepper.html#ac798923686b2472dbf740c64fbcf224d" title="Enable the stepper motor by enabling the pulse generator." alt="" coords="442,107,573,132"/>
+<area shape="rect" id="node11" href="$classio_1_1_stepper.html#a38ca9483ac98be75b137e5589305c03a" title="set the direction of the stepper motor" alt="" coords="426,156,589,181"/>
+<area shape="rect" id="node16" href="$class_pulse_generator.html#ac9ea693293af9a0b2c160899639407d0" title="sets motor to either targeting mode or constant run mode." alt="" coords="411,205,604,231"/>
+<area shape="rect" id="node8" href="$classio_1_1_stepper.html#ac50216a9a50379802d468cca72178b67" title="Enable or disable the stepper motor." alt="" coords="672,107,831,132"/>
+<area shape="rect" id="node9" href="$class_pulse_generator.html#a748055a5182a593642735f0ddab65244" title="Disable the timer via turning off the clock source." alt="" coords="899,107,1060,132"/>
+<area shape="rect" id="node10" href="$class_pulse_generator.html#a3a3768987e9c853010ab997d791e4e36" title="Enable Timer by setting prescaler to 64." alt="" coords="900,156,1059,181"/>
+<area shape="rect" id="node12" href="$class_pulse_generator.html#a175b8eb09e7ac8ab2a0b05fc2689fe99" title="Set the direction of the pulse generator. This ensures accurate count is maintained regardless of dir..." alt="" coords="657,156,846,181"/>
+<area shape="rect" id="node14" href="$class_pulse_generator.html#abb0f55b05cb47121268df198c683d012" title="Set the frequency of the pulse generator." alt="" coords="652,255,851,280"/>
+<area shape="rect" id="node15" href="$src_2pulse_8cpp.html#a5e49ad1caf27e9a33052a428ffd4626b" title="Calculate the OCR value for the given frequency." alt="" coords="946,255,1013,280"/>
+</map>

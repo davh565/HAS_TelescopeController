@@ -1,0 +1,17 @@
+<map id="wrap360" name="wrap360">
+<area shape="rect" id="node1" title="wrap values from 0 to 360 degrees." alt="" coords="545,283,616,309"/>
+<area shape="rect" id="node2" href="$classpos_1_1_sidereal_time.html#ac1b102826f07ae4cf7f2c684897b83bb" title="the initial syncronisation must be done from a known location" alt="" coords="337,56,471,96"/>
+<area shape="rect" id="node6" href="$classpos_1_1_sidereal_time.html#a54778a0a6bd6f81006b6174ef27aa2a9" title="Updates the current sidreal time based on elapsed time since last update. should be called once per l..." alt="" coords="337,120,471,160"/>
+<area shape="rect" id="node8" href="$classpos_1_1_frame_set.html#a4be0ef0fad478216b92355480c3836e7" title=" " alt="" coords="313,185,495,210"/>
+<area shape="rect" id="node9" href="$classpos_1_1_frame_set.html#a0df05288b5233c985bd45e810f79a831" title=" " alt="" coords="313,234,495,259"/>
+<area shape="rect" id="node10" href="$classpos_1_1_frame_set.html#acc2c706774199bd769e3261a19dcf812" title=" " alt="" coords="312,283,496,309"/>
+<area shape="rect" id="node11" href="$classpos_1_1_frame_set.html#a46c6d5691553ed5d2c777129b20bd08a" title="Conversion from local hour angle to right ascension, based on the current sidereal time." alt="" coords="317,333,491,358"/>
+<area shape="rect" id="node12" href="$classpos_1_1_frame_set.html#a2d3f2a2658788a516581a59949a7a986" title="The base frame local hour angle is equal to motor coordinates plus a fixed offset determined by the p..." alt="" coords="311,382,497,407"/>
+<area shape="rect" id="node13" href="$classpos_1_1_frame_set.html#aa6447ef05a604cfab189bbaacb4d9505" title="Conversion from right ascension to local hour angle, based on the current sidereal time." alt="" coords="317,431,491,457"/>
+<area shape="rect" id="node14" href="$tests_8ino.html#a9fe5a8cd74847af9e4ae68faf81d0aa7" title=" " alt="" coords="367,481,441,506"/>
+<area shape="rect" id="node3" href="$classpos_1_1_sidereal_time.html#aea9c99c48afbd3c73b58d4373b46c757" title="sets the current sidreal time. This function assumes that the telescope is in the home position,..." alt="" coords="114,5,249,45"/>
+<area shape="rect" id="node4" href="$classpos_1_1_sidereal_time.html#a0052c61e0afd7740ac0728d601c85c91" title=" " alt="" coords="100,70,263,95"/>
+<area shape="rect" id="node5" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,99,52,125"/>
+<area shape="rect" id="node7" href="$classpos_1_1_sidereal_time.html#a1bd2bee5fde9d2478afc0e8849dbd4a4" title=" " alt="" coords="114,120,249,160"/>
+<area shape="rect" id="node15" href="$tests_8ino.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="154,481,209,506"/>
+</map>

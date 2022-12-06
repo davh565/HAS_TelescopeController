@@ -1,0 +1,18 @@
+<map id="pos::TEST_FRAMESET" name="pos::TEST_FRAMESET">
+<area shape="rect" id="node1" title=" " alt="" coords="5,352,167,377"/>
+<area shape="rect" id="node2" href="$classpos_1_1_frame_set.html#a1da5357aef24d4143e235d2ebe60833d" title=" " alt="" coords="245,26,415,66"/>
+<area shape="rect" id="node4" href="$classpos_1_1_frame_set.html#a6cb8b03e45547a823e1cdbeec00344a9" title=" " alt="" coords="247,95,413,135"/>
+<area shape="rect" id="node6" href="$classpos_1_1_frame_set.html#a67fc9d2ed3da2f06cf336f4aa80ea7a6" title=" " alt="" coords="247,287,413,327"/>
+<area shape="rect" id="node8" href="$classpos_1_1_frame_set.html#a56913573a8f925a5877215eea608be02" title=" " alt="" coords="253,223,407,263"/>
+<area shape="rect" id="node9" href="$classpos_1_1_frame_set.html#aec143e991efb67772ab12062f9a6ddc0" title=" " alt="" coords="251,159,409,199"/>
+<area shape="rect" id="node11" href="$tests_8ino.html#a528d1a327ca7d94b5cb8c121d2eb9b93" title=" " alt="" coords="285,352,375,377"/>
+<area shape="rect" id="node12" href="$tests_8ino.html#a4fb007178d48c0e41aa2eeb6699e40fa" title=" " alt="" coords="286,401,374,427"/>
+<area shape="rect" id="node13" href="$tests_8ino.html#ab691469a403c8ef2fe6e7cefc26d7b89" title=" " alt="" coords="284,451,376,476"/>
+<area shape="rect" id="node14" href="$classpos_1_1_frame_set.html#afcdc5489bfb6621199b4ba1b8257a93c" title="get the position in the chosen frame" alt="" coords="239,500,421,525"/>
+<area shape="rect" id="node15" href="$tests_8ino.html#a187bf6eb683ee60bf55da57271278f77" title=" " alt="" coords="291,573,369,599"/>
+<area shape="rect" id="node16" href="$classpos_1_1_frame_set.html#a59383820704617951e387a27f01c29b5" title="when the sidereal time is updated, sky coordinates must be recalculated" alt="" coords="215,623,445,648"/>
+<area shape="rect" id="node3" href="$classpos_1_1_frame_set.html#a5562b8eb611a87bb91b0d18dbe02a557" title=" " alt="" coords="493,29,675,55"/>
+<area shape="rect" id="node5" href="$classpos_1_1_frame_set.html#a21154b344d9c23bcfea99d06060fc7a2" title=" " alt="" coords="493,103,675,128"/>
+<area shape="rect" id="node7" href="$classpos_1_1_frame_set.html#ab002a2c93143492fa7db8fa63cf11381" title=" " alt="" coords="497,459,671,484"/>
+<area shape="rect" id="node10" href="$classpos_1_1_frame_set.html#a8d8c3d16d244c2b5a2b934c54b41af0d" title=" " alt="" coords="497,176,671,201"/>
+</map>

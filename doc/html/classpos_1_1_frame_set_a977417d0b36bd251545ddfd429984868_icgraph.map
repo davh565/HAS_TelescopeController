@@ -1,0 +1,9 @@
+<map id="pos::FrameSet::getCoord" name="pos::FrameSet::getCoord">
+<area shape="rect" id="node1" title=" " alt="" coords="337,120,505,145"/>
+<area shape="rect" id="node2" href="$namespacectrl.html#a802445b7f11ebf82272c96dbddd3e5f1" title="Stop the motors if the current location is below the horizon." alt="" coords="136,5,253,31"/>
+<area shape="rect" id="node3" href="$classpos_1_1_frame_set.html#a6565c9994bc2411b877a63c371f5f781" title=" " alt="" coords="108,55,281,95"/>
+<area shape="rect" id="node4" href="$namespacectrl.html#ac6298cdb7b00cb4c3fe67adbc4f98e7b" title="Move the telescope to the target position." alt="" coords="155,120,234,145"/>
+<area shape="rect" id="node6" href="$namespacepos.html#a84150706e7675671c2da6d64c59d73ac" title=" " alt="" coords="128,169,261,195"/>
+<area shape="rect" id="node7" href="$classpos_1_1_frame_set.html#a5bf0ab0ac8e084f5a6208fdf010cbed9" title=" " alt="" coords="100,219,289,244"/>
+<area shape="rect" id="node5" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,120,52,145"/>
+</map>

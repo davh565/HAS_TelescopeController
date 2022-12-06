@@ -1,0 +1,15 @@
+<map id="io::Stepper::runPulses" name="io::Stepper::runPulses">
+<area shape="rect" id="node1" title="Run the stepper motor for a number of pulses from current position." alt="" coords="5,140,156,165"/>
+<area shape="rect" id="node2" href="$namespaceio.html#a994496fb40c493062f144c5e42f5117c" title=" " alt="" coords="704,16,823,41"/>
+<area shape="rect" id="node3" href="$classio_1_1_stepper.html#ac798923686b2472dbf740c64fbcf224d" title="Enable the stepper motor by enabling the pulse generator." alt="" coords="235,65,366,91"/>
+<area shape="rect" id="node7" href="$classio_1_1_stepper.html#afd4af6eef5212943b99925ff14af53a6" title=" " alt="" coords="211,115,390,140"/>
+<area shape="rect" id="node9" href="$classio_1_1_stepper.html#a38ca9483ac98be75b137e5589305c03a" title="set the direction of the stepper motor" alt="" coords="219,164,382,189"/>
+<area shape="rect" id="node11" href="$class_pulse_generator.html#ac9ea693293af9a0b2c160899639407d0" title="sets motor to either targeting mode or constant run mode." alt="" coords="204,213,397,239"/>
+<area shape="rect" id="node12" href="$classio_1_1_stepper.html#aa0b16c22be5ef935994d5966eb202599" title=" " alt="" coords="227,263,374,288"/>
+<area shape="rect" id="node4" href="$classio_1_1_stepper.html#ac50216a9a50379802d468cca72178b67" title="Enable or disable the stepper motor." alt="" coords="461,65,619,91"/>
+<area shape="rect" id="node5" href="$class_pulse_generator.html#a748055a5182a593642735f0ddab65244" title="Disable the timer via turning off the clock source." alt="" coords="683,65,844,91"/>
+<area shape="rect" id="node6" href="$class_pulse_generator.html#a3a3768987e9c853010ab997d791e4e36" title="Enable Timer by setting prescaler to 64." alt="" coords="684,115,843,140"/>
+<area shape="rect" id="node8" href="$class_pulse_generator.html#aedd3381ac01cc14dd41d803d59bc80b2" title="get the current pulse count." alt="" coords="454,115,626,140"/>
+<area shape="rect" id="node10" href="$class_pulse_generator.html#a175b8eb09e7ac8ab2a0b05fc2689fe99" title="Set the direction of the pulse generator. This ensures accurate count is maintained regardless of dir..." alt="" coords="445,164,635,189"/>
+<area shape="rect" id="node13" href="$class_pulse_generator.html#a43c6e5a24b400613cf3da8f31ad8a7c6" title="Set the pulse count target. When in targeting mode, pulse generator will stop when target is reached." alt="" coords="453,263,627,288"/>
+</map>

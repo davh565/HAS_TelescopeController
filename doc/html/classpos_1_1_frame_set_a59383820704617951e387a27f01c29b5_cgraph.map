@@ -1,0 +1,4 @@
+<map id="pos::FrameSet::updateSiderealTime" name="pos::FrameSet::updateSiderealTime">
+<area shape="rect" id="node1" title="when the sidereal time is updated, sky coordinates must be recalculated" alt="" coords="5,29,236,55"/>
+<area shape="rect" id="node2" href="$classpos_1_1_frame_set.html#ab002a2c93143492fa7db8fa63cf11381" title=" " alt="" coords="284,29,459,55"/>
+</map>

@@ -1,0 +1,30 @@
+<map id="setup" name="setup">
+<area shape="rect" id="node1" title=" " alt="" coords="5,604,60,629"/>
+<area shape="rect" id="node2" href="$tests_8ino.html#a4fb007178d48c0e41aa2eeb6699e40fa" title=" " alt="" coords="410,592,498,617"/>
+<area shape="rect" id="node3" href="$namespacepos.html#a0e80a822ec0efb82276b134371e232cb" title=" " alt="" coords="119,355,280,380"/>
+<area shape="rect" id="node18" href="$namespacecomms.html#a95f4a250a3addad9229bbcfd7d680c2d" title=" " alt="" coords="108,653,291,679"/>
+<area shape="rect" id="node20" href="$namespacecomms.html#a23a1799f3fb8ff7de80c02cf4318d687" title=" " alt="" coords="108,555,291,580"/>
+<area shape="rect" id="node22" href="$namespacecomms.html#aa7168a8b94cb163251c582c818665702" title=" " alt="" coords="112,604,287,629"/>
+<area shape="rect" id="node24" href="$namespacecomms.html#abebd6360189392ea1dc422e11e0d63cd" title=" " alt="" coords="112,752,287,777"/>
+<area shape="rect" id="node26" href="$tests_8ino.html#a9fe5a8cd74847af9e4ae68faf81d0aa7" title=" " alt="" coords="162,703,237,728"/>
+<area shape="rect" id="node4" href="$classpos_1_1_frame_set.html#a1da5357aef24d4143e235d2ebe60833d" title=" " alt="" coords="369,137,539,177"/>
+<area shape="rect" id="node6" href="$classpos_1_1_frame_set.html#a6cb8b03e45547a823e1cdbeec00344a9" title=" " alt="" coords="371,201,537,241"/>
+<area shape="rect" id="node8" href="$classpos_1_1_frame_set.html#a67fc9d2ed3da2f06cf336f4aa80ea7a6" title=" " alt="" coords="371,315,537,355"/>
+<area shape="rect" id="node10" href="$classpos_1_1_frame_set.html#a56913573a8f925a5877215eea608be02" title=" " alt="" coords="377,379,531,419"/>
+<area shape="rect" id="node11" href="$classpos_1_1_frame_set.html#aec143e991efb67772ab12062f9a6ddc0" title=" " alt="" coords="375,22,533,62"/>
+<area shape="rect" id="node13" href="$tests_8ino.html#a528d1a327ca7d94b5cb8c121d2eb9b93" title=" " alt="" coords="409,543,499,568"/>
+<area shape="rect" id="node14" href="$tests_8ino.html#ab691469a403c8ef2fe6e7cefc26d7b89" title=" " alt="" coords="408,641,500,667"/>
+<area shape="rect" id="node15" href="$classpos_1_1_frame_set.html#afcdc5489bfb6621199b4ba1b8257a93c" title="get the position in the chosen frame" alt="" coords="363,87,545,112"/>
+<area shape="rect" id="node16" href="$tests_8ino.html#a187bf6eb683ee60bf55da57271278f77" title=" " alt="" coords="415,715,493,740"/>
+<area shape="rect" id="node17" href="$classpos_1_1_frame_set.html#a59383820704617951e387a27f01c29b5" title="when the sidereal time is updated, sky coordinates must be recalculated" alt="" coords="339,265,569,291"/>
+<area shape="rect" id="node5" href="$classpos_1_1_frame_set.html#a5562b8eb611a87bb91b0d18dbe02a557" title=" " alt="" coords="617,140,799,165"/>
+<area shape="rect" id="node7" href="$classpos_1_1_frame_set.html#a21154b344d9c23bcfea99d06060fc7a2" title=" " alt="" coords="617,213,799,239"/>
+<area shape="rect" id="node9" href="$classpos_1_1_frame_set.html#ab002a2c93143492fa7db8fa63cf11381" title=" " alt="" coords="621,303,795,328"/>
+<area shape="rect" id="node12" href="$classpos_1_1_frame_set.html#a8d8c3d16d244c2b5a2b934c54b41af0d" title=" " alt="" coords="621,29,795,55"/>
+<area shape="rect" id="node19" href="$namespacecomms.html#ae13fefddfb6f1bf8d55617d2bb39e712" title="Convert a string of the form &quot;$DD*MM:SS&quot; to a decimal angle in degrees." alt="" coords="375,764,533,789"/>
+<area shape="rect" id="node21" href="$namespacecomms.html#a1f609eeacdeb2c3fb5b5b43c01b91b29" title="Converts an angle in decimal degrees to the form &quot;$DD*MM:SS&quot; for DEC." alt="" coords="375,444,533,469"/>
+<area shape="rect" id="node23" href="$namespacecomms.html#a10b0ad81b34be0565cda10390c60ec3f" title="Convert a decimal angle in degees to a string of the form &quot;HH:MM:SS.SS&quot; for RA." alt="" coords="379,493,529,519"/>
+<area shape="rect" id="node25" href="$namespacecomms.html#a7cef0b7a3731964deae703d629d02f9f" title="Convert a string of the form &quot;HH:MM:SS&quot; to a decimal angle in degrees." alt="" coords="380,912,528,937"/>
+<area shape="rect" id="node27" href="$src_2utils_8cpp.html#acf65966ebf2cce2f5d458ba1226825b7" title="wrap values to plus or minus 180 degrees." alt="" coords="419,863,489,888"/>
+<area shape="rect" id="node28" href="$src_2utils_8cpp.html#a53a50376d1ca5e6b1e4f090961fe0a4f" title="wrap values from 0 to 360 degrees." alt="" coords="419,813,489,839"/>
+</map>

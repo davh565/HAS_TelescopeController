@@ -1,0 +1,5 @@
+<map id="pos::FrameSet::syncTo" name="pos::FrameSet::syncTo">
+<area shape="rect" id="node1" title="sets the celestial coordinates of the current position to match the target position,..." alt="" coords="5,67,164,92"/>
+<area shape="rect" id="node2" href="$classpos_1_1_frame_set.html#a21154b344d9c23bcfea99d06060fc7a2" title=" " alt="" coords="212,29,393,55"/>
+<area shape="rect" id="node3" href="$classpos_1_1_frame_set.html#a8d8c3d16d244c2b5a2b934c54b41af0d" title=" " alt="" coords="215,103,390,128"/>
+</map>

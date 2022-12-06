@@ -1,0 +1,10 @@
+<map id="pos::FrameSet::base2Altaz" name="pos::FrameSet::base2Altaz">
+<area shape="rect" id="node1" title=" " alt="" coords="5,153,187,179"/>
+<area shape="rect" id="node2" href="$src_2utils_8cpp.html#a641aa2f5857b3ec1774eccd45f81d385" title="arcsine function with output in degrees" alt="" coords="243,5,297,31"/>
+<area shape="rect" id="node3" href="$src_2utils_8cpp.html#a92f5c48b251d840a82617475c97522be" title="arctangent2 function with output in degrees" alt="" coords="239,55,301,80"/>
+<area shape="rect" id="node4" href="$src_2utils_8cpp.html#ac151199b78aaafa744eb5f97a678ca1e" title="cosine function with input in degrees" alt="" coords="245,104,295,129"/>
+<area shape="rect" id="node5" href="$src_2utils_8cpp.html#a1a03ad4dd79b7963736cf7d5f290f3b6" title="sine function with input in degrees" alt="" coords="247,153,293,179"/>
+<area shape="rect" id="node6" href="$src_2utils_8cpp.html#ab3422e2ae71ae00ae021b81dbbbb554f" title="tangent function with input in degrees" alt="" coords="247,203,293,228"/>
+<area shape="rect" id="node7" href="$src_2utils_8cpp.html#acf65966ebf2cce2f5d458ba1226825b7" title="wrap values to plus or minus 180 degrees." alt="" coords="235,252,305,277"/>
+<area shape="rect" id="node8" href="$src_2utils_8cpp.html#a53a50376d1ca5e6b1e4f090961fe0a4f" title="wrap values from 0 to 360 degrees." alt="" coords="235,301,305,327"/>
+</map>

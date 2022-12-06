@@ -1,0 +1,52 @@
+<map id="loop" name="loop">
+<area shape="rect" id="node1" title="Main loop." alt="" coords="5,1113,52,1139"/>
+<area shape="rect" id="node2" href="$namespacectrl.html#a6ca42df475c62967002b88ae91e6d157" title="check if the target position is reachable." alt="" coords="125,5,305,31"/>
+<area shape="rect" id="node3" href="$namespacecomms.html#ae13fefddfb6f1bf8d55617d2bb39e712" title="Convert a string of the form &quot;$DD*MM:SS&quot; to a decimal angle in degrees." alt="" coords="136,55,295,80"/>
+<area shape="rect" id="node4" href="$namespacecomms.html#a1f609eeacdeb2c3fb5b5b43c01b91b29" title="Converts an angle in decimal degrees to the form &quot;$DD*MM:SS&quot; for DEC." alt="" coords="136,104,295,129"/>
+<area shape="rect" id="node5" href="$namespacecomms.html#a10b0ad81b34be0565cda10390c60ec3f" title="Convert a decimal angle in degees to a string of the form &quot;HH:MM:SS.SS&quot; for RA." alt="" coords="140,153,291,179"/>
+<area shape="rect" id="node6" href="$namespacecomms.html#abaaaf836c3ebf360cf4d3eb3c6cea4e2" title="Extract the coordinate substring from a command string." alt="" coords="142,203,289,228"/>
+<area shape="rect" id="node7" href="$classui_1_1_display.html#af51f3a6decabac36dbf1604083238ed7" title=" " alt="" coords="119,252,311,277"/>
+<area shape="rect" id="node8" href="$classui_1_1_handheld_controller.html#a2c39497184ecd83b24dafde6d588e574" title=" " alt="" coords="141,302,290,342"/>
+<area shape="rect" id="node9" href="$classui_1_1_handheld_controller.html#ab72f8456da3665cbe7bb27bd4417f0c0" title=" " alt="" coords="141,366,290,406"/>
+<area shape="rect" id="node10" href="$classui_1_1_handheld_controller.html#a17c0987dd455c74ec49bd9030af5e60f" title=" " alt="" coords="141,430,290,470"/>
+<area shape="rect" id="node11" href="$classui_1_1_handheld_controller.html#a2857a70397babb36146aab6cb279b622" title=" " alt="" coords="141,494,290,534"/>
+<area shape="rect" id="node12" href="$classui_1_1_handheld_controller.html#a8a25358d51446afa692cb376b5fec8e6" title=" " alt="" coords="141,558,290,598"/>
+<area shape="rect" id="node13" href="$classui_1_1_display.html#ace3400e0df1979a94ab8e3f0baa6eef5" title=" " alt="" coords="123,623,307,648"/>
+<area shape="rect" id="node14" href="$namespacectrl.html#a84a7632a22f1c517f6952da5fdd7db6f" title=" " alt="" coords="160,672,271,697"/>
+<area shape="rect" id="node15" href="$classio_1_1_stepper.html#abfb1fdfad25f12ead153ce6f999b313c" title=" " alt="" coords="379,1299,576,1324"/>
+<area shape="rect" id="node16" href="$namespaceio.html#a96fd577e8e1a7923fd95ecee41d16667" title="get the current position in degrees in the motor reference frame." alt="" coords="143,985,288,1011"/>
+<area shape="rect" id="node19" href="$classui_1_1_handheld_controller.html#a3891bc4b219c88ac1c0fde4b8fb4bdc0" title=" " alt="" coords="141,822,290,862"/>
+<area shape="rect" id="node20" href="$namespacectrl.html#a8ca70c864ce1681e0bd6e4755dacf6a1" title=" " alt="" coords="145,1084,286,1109"/>
+<area shape="rect" id="node24" href="$classui_1_1_display.html#a6a2d1da94a5014336cf095833befaf0f" title=" " alt="" coords="129,936,301,961"/>
+<area shape="rect" id="node25" href="$classpos_1_1_sidereal_time.html#a1747ebc52c81de9d75f73aee92a266cb" title=" " alt="" coords="148,1797,283,1837"/>
+<area shape="rect" id="node28" href="$namespacectrl.html#a9a173d9014157b230d74d1257d0c929a" title=" " alt="" coords="162,721,269,747"/>
+<area shape="rect" id="node29" href="$classio_1_1_stepper.html#aa27dcfc80c29dbbc30a6f1fec5b47298" title="Stop the stepper motor. This is achieved by setting the target step count to the current step count...." alt="" coords="418,885,537,911"/>
+<area shape="rect" id="node30" href="$classpos_1_1_frame_set.html#ad47bef47702de247b64007271ab4d53e" title=" " alt="" coords="134,1134,297,1174"/>
+<area shape="rect" id="node31" href="$namespaceio.html#af65bd94e2a8a40fa4c6ab7c5ea4dab1d" title=" " alt="" coords="173,1199,257,1224"/>
+<area shape="rect" id="node32" href="$namespaceio.html#a773508c2ed345cf874dc566aa57e9ce4" title="stop the declination motor if a limit switch is triggered." alt="" coords="170,1035,261,1060"/>
+<area shape="rect" id="node33" href="$namespacectrl.html#ac6298cdb7b00cb4c3fe67adbc4f98e7b" title="Move the telescope to the target position." alt="" coords="176,1248,255,1273"/>
+<area shape="rect" id="node34" href="$namespacectrl.html#a9bec9e01e09cac8e6bd5f531e7176feb" title=" " alt="" coords="159,1349,271,1375"/>
+<area shape="rect" id="node35" href="$classio_1_1_stepper.html#a735e92dd186abc0044ade5777608340c" title="Run the stepper motor at specified speed indefinitely." alt="" coords="422,1400,533,1425"/>
+<area shape="rect" id="node36" href="$namespacecomms.html#a1ad4e8abed80def7dd10c9949dfece95" title="Determine the command type from the input string." alt="" coords="133,1451,297,1476"/>
+<area shape="rect" id="node37" href="$namespacecomms.html#a7cef0b7a3731964deae703d629d02f9f" title="Convert a string of the form &quot;HH:MM:SS&quot; to a decimal angle in degrees." alt="" coords="141,1500,289,1525"/>
+<area shape="rect" id="node38" href="$namespacecomms.html#a2fdbf7ebdfea19c587de9a6f52523c67" title="Read a string from the serial buffer until a specified character is encountered." alt="" coords="123,1549,308,1575"/>
+<area shape="rect" id="node39" href="$namespacecomms.html#aa981ad32d0271d677121dc12c6f3c16d" title="Send a reply to Stellarium/." alt="" coords="148,1599,283,1624"/>
+<area shape="rect" id="node40" href="$classui_1_1_display.html#a10ea3e52ee7902831965cc641c8112e5" title=" " alt="" coords="123,1648,307,1673"/>
+<area shape="rect" id="node41" href="$classui_1_1_display.html#ab855a2c1f897be73b9bd56d8aef47070" title=" " alt="" coords="129,1697,301,1723"/>
+<area shape="rect" id="node42" href="$classui_1_1_display.html#a69b77d768d6734827deb0cb47ba8e5d5" title=" " alt="" coords="155,1747,276,1772"/>
+<area shape="rect" id="node43" href="$namespacectrl.html#a4fbc9180a52083f002d7e787a25fa884" title="Stop all movement of the telescope." alt="" coords="142,887,289,912"/>
+<area shape="rect" id="node44" href="$classpos_1_1_sidereal_time.html#a0052c61e0afd7740ac0728d601c85c91" title=" " alt="" coords="134,1861,297,1887"/>
+<area shape="rect" id="node45" href="$classpos_1_1_frame_set.html#a453fbcc22e789566d077ed323aaf098a" title="sets the celestial coordinates of the current position to match the target position,..." alt="" coords="136,1911,295,1936"/>
+<area shape="rect" id="node46" href="$classpos_1_1_sidereal_time.html#a1bd2bee5fde9d2478afc0e8849dbd4a4" title=" " alt="" coords="148,1961,283,2001"/>
+<area shape="rect" id="node47" href="$classui_1_1_handheld_controller.html#af11539206c6a0e6311f0c28be520801c" title=" " alt="" coords="141,2025,290,2065"/>
+<area shape="rect" id="node48" href="$classpos_1_1_frame_set.html#a46fac6dd6873164192de2021c845a2d7" title="Set current position, and convert to other frames." alt="" coords="114,2089,317,2115"/>
+<area shape="rect" id="node49" href="$classpos_1_1_frame_set.html#a59383820704617951e387a27f01c29b5" title="when the sidereal time is updated, sky coordinates must be recalculated" alt="" coords="100,2139,331,2164"/>
+<area shape="rect" id="node50" href="$classui_1_1_display.html#af69dbf73c5a2aaf363d0c98359acfa3b" title=" " alt="" coords="131,2188,299,2213"/>
+<area shape="rect" id="node17" href="$classio_1_1_stepper.html#afd4af6eef5212943b99925ff14af53a6" title=" " alt="" coords="624,936,803,961"/>
+<area shape="rect" id="node18" href="$classio_1_1_stepper.html#a41c6829eede7e52c256fedc9b060342d" title=" " alt="" coords="380,987,575,1012"/>
+<area shape="rect" id="node21" href="$classio_1_1_stepper.html#a2eb60670865144e56ffbfb0e2095a4d6" title=" " alt="" coords="396,1036,559,1061"/>
+<area shape="rect" id="node22" href="$classio_1_1_stepper.html#a14a6716c7937e3c2ec0459ab15376237" title=" " alt="" coords="398,1085,557,1111"/>
+<area shape="rect" id="node23" href="$classio_1_1_stepper.html#a2bfb81a8bf93253784e904fe255de558" title=" " alt="" coords="391,1192,563,1217"/>
+<area shape="rect" id="node26" href="$classpos_1_1_sidereal_time.html#a93f841e7fcfe0ed557f31707a8fca1a2" title=" " alt="" coords="410,1794,545,1834"/>
+<area shape="rect" id="node27" href="$classpos_1_1_sidereal_time.html#a39041d9339a1b78cf1e26e840f596d45" title=" " alt="" coords="410,1858,545,1898"/>
+</map>

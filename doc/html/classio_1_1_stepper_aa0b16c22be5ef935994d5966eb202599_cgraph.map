@@ -1,0 +1,4 @@
+<map id="io::Stepper::setTarget" name="io::Stepper::setTarget">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,152,31"/>
+<area shape="rect" id="node2" href="$class_pulse_generator.html#a43c6e5a24b400613cf3da8f31ad8a7c6" title="Set the pulse count target. When in targeting mode, pulse generator will stop when target is reached." alt="" coords="200,5,375,31"/>
+</map>

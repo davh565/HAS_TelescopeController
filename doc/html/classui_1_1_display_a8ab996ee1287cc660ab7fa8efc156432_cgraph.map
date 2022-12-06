@@ -1,0 +1,15 @@
+<map id="ui::Display::testButtons" name="ui::Display::testButtons">
+<area shape="rect" id="node1" title="check functionality of buttons and potentiometer." alt="" coords="5,333,164,358"/>
+<area shape="rect" id="node2" href="$classui_1_1_handheld_controller.html#aa6853b80fbc8d0a71b122c40ec967dc7" title=" " alt="" coords="212,5,361,45"/>
+<area shape="rect" id="node3" href="$classui_1_1_handheld_controller.html#a2c39497184ecd83b24dafde6d588e574" title=" " alt="" coords="212,69,361,109"/>
+<area shape="rect" id="node4" href="$classui_1_1_handheld_controller.html#ab72f8456da3665cbe7bb27bd4417f0c0" title=" " alt="" coords="212,133,361,173"/>
+<area shape="rect" id="node5" href="$classui_1_1_handheld_controller.html#a44e6c539104c7f39de2cd549a2aad14f" title=" " alt="" coords="212,197,361,237"/>
+<area shape="rect" id="node6" href="$classui_1_1_handheld_controller.html#adf0aeaa96b9e25d0090c594844090f68" title=" " alt="" coords="212,261,361,301"/>
+<area shape="rect" id="node7" href="$classui_1_1_handheld_controller.html#a2857a70397babb36146aab6cb279b622" title=" " alt="" coords="212,325,361,365"/>
+<area shape="rect" id="node8" href="$classui_1_1_handheld_controller.html#a8a25358d51446afa692cb376b5fec8e6" title=" " alt="" coords="212,389,361,429"/>
+<area shape="rect" id="node9" href="$classui_1_1_handheld_controller.html#a41b9dafc7b06f2a68de30ac8a08e055f" title=" " alt="" coords="212,453,361,493"/>
+<area shape="rect" id="node10" href="$classui_1_1_handheld_controller.html#a3891bc4b219c88ac1c0fde4b8fb4bdc0" title=" " alt="" coords="212,517,361,557"/>
+<area shape="rect" id="node11" href="$namespaceui.html#a4413caab022eafec1391f682ee311466" title=" " alt="" coords="258,582,315,607"/>
+<area shape="rect" id="node12" href="$classui_1_1_handheld_controller.html#af11539206c6a0e6311f0c28be520801c" title=" " alt="" coords="212,632,361,672"/>
+<area shape="rect" id="node13" href="$classui_1_1_handheld_controller.html#ad64c79a94446cb6ebc6d4f81b8b1b305" title=" " alt="" coords="409,632,559,672"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="io::Stepper::setFrequency" name="io::Stepper::setFrequency">
+<area shape="rect" id="node1" title="Set the frequency of the stepper motor. Cap at maxFrequency if input is greater." alt="" coords="5,5,177,31"/>
+<area shape="rect" id="node2" href="$class_pulse_generator.html#abb0f55b05cb47121268df198c683d012" title="Set the frequency of the pulse generator." alt="" coords="225,5,424,31"/>
+<area shape="rect" id="node3" href="$src_2pulse_8cpp.html#a5e49ad1caf27e9a33052a428ffd4626b" title="Calculate the OCR value for the given frequency." alt="" coords="472,5,539,31"/>
+</map>

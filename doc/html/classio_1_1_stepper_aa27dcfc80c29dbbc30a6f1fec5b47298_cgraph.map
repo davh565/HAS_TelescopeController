@@ -1,0 +1,8 @@
+<map id="io::Stepper::stop" name="io::Stepper::stop">
+<area shape="rect" id="node1" title="Stop the stepper motor. This is achieved by setting the target step count to the current step count...." alt="" coords="5,55,124,80"/>
+<area shape="rect" id="node2" href="$classio_1_1_stepper.html#afd4af6eef5212943b99925ff14af53a6" title=" " alt="" coords="179,5,358,31"/>
+<area shape="rect" id="node4" href="$class_pulse_generator.html#ac9ea693293af9a0b2c160899639407d0" title="sets motor to either targeting mode or constant run mode." alt="" coords="172,55,365,80"/>
+<area shape="rect" id="node5" href="$classio_1_1_stepper.html#aa0b16c22be5ef935994d5966eb202599" title=" " alt="" coords="195,104,342,129"/>
+<area shape="rect" id="node3" href="$class_pulse_generator.html#aedd3381ac01cc14dd41d803d59bc80b2" title="get the current pulse count." alt="" coords="415,5,587,31"/>
+<area shape="rect" id="node6" href="$class_pulse_generator.html#a43c6e5a24b400613cf3da8f31ad8a7c6" title="Set the pulse count target. When in targeting mode, pulse generator will stop when target is reached." alt="" coords="413,104,588,129"/>
+</map>

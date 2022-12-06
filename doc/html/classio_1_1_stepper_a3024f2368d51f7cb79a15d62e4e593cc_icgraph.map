@@ -1,0 +1,5 @@
+<map id="io::Stepper::runAngle" name="io::Stepper::runAngle">
+<area shape="rect" id="node1" title="Move the stepper motor by a number of degrees. If the frequency is above the correction xIntercept,..." alt="" coords="227,5,371,31"/>
+<area shape="rect" id="node2" href="$namespacectrl.html#ac6298cdb7b00cb4c3fe67adbc4f98e7b" title="Move the telescope to the target position." alt="" coords="100,5,179,31"/>
+<area shape="rect" id="node3" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,5,52,31"/>
+</map>

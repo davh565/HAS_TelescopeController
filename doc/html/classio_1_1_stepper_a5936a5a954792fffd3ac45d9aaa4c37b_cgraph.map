@@ -1,0 +1,4 @@
+<map id="io::Stepper::resetPulseCount" name="io::Stepper::resetPulseCount">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,195,31"/>
+<area shape="rect" id="node2" href="$class_pulse_generator.html#a4bb1b33bf49fd5571f9045303d466440" title="Reset the pulse count to 0." alt="" coords="243,5,425,31"/>
+</map>

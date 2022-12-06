@@ -1,0 +1,7 @@
+<map id="comms::testDouble2RaStr" name="comms::testDouble2RaStr">
+<area shape="rect" id="node1" title=" " alt="" coords="5,80,180,105"/>
+<area shape="rect" id="node2" href="$tests_8ino.html#a4fb007178d48c0e41aa2eeb6699e40fa" title=" " alt="" coords="259,5,347,31"/>
+<area shape="rect" id="node3" href="$tests_8ino.html#ab691469a403c8ef2fe6e7cefc26d7b89" title=" " alt="" coords="257,55,349,80"/>
+<area shape="rect" id="node4" href="$namespacecomms.html#a10b0ad81b34be0565cda10390c60ec3f" title="Convert a decimal angle in degees to a string of the form &quot;HH:MM:SS.SS&quot; for RA." alt="" coords="228,104,379,129"/>
+<area shape="rect" id="node5" href="$tests_8ino.html#a187bf6eb683ee60bf55da57271278f77" title=" " alt="" coords="265,177,342,203"/>
+</map>

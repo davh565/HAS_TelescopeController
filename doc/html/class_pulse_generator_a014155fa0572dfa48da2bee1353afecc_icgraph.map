@@ -1,0 +1,6 @@
+<map id="PulseGenerator::getEnabled" name="PulseGenerator::getEnabled">
+<area shape="rect" id="node1" title="Enable Timer by setting prescaler to 64." alt="" coords="496,5,681,31"/>
+<area shape="rect" id="node2" href="$classio_1_1_stepper.html#a14a6716c7937e3c2ec0459ab15376237" title=" " alt="" coords="289,5,448,31"/>
+<area shape="rect" id="node3" href="$namespacectrl.html#a8ca70c864ce1681e0bd6e4755dacf6a1" title=" " alt="" coords="100,5,241,31"/>
+<area shape="rect" id="node4" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,5,52,31"/>
+</map>

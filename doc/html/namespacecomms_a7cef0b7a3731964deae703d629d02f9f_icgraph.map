@@ -1,0 +1,6 @@
+<map id="comms::raStr2Double" name="comms::raStr2Double">
+<area shape="rect" id="node1" title="Convert a string of the form &quot;HH:MM:SS&quot; to a decimal angle in degrees." alt="" coords="331,31,479,56"/>
+<area shape="rect" id="node2" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="172,5,219,31"/>
+<area shape="rect" id="node3" href="$namespacecomms.html#abebd6360189392ea1dc422e11e0d63cd" title=" " alt="" coords="108,55,283,80"/>
+<area shape="rect" id="node4" href="$tests_8ino.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,55,60,80"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="io::Stepper::getEnabled" name="io::Stepper::getEnabled">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,164,31"/>
+<area shape="rect" id="node2" href="$class_pulse_generator.html#a014155fa0572dfa48da2bee1353afecc" title="Enable Timer by setting prescaler to 64." alt="" coords="212,5,397,31"/>
+</map>

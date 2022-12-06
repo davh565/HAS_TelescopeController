@@ -1,0 +1,4 @@
+<map id="PulseGenerator::setFrequency" name="PulseGenerator::setFrequency">
+<area shape="rect" id="node1" title="Set the frequency of the pulse generator." alt="" coords="5,5,204,31"/>
+<area shape="rect" id="node2" href="$src_2pulse_8cpp.html#a5e49ad1caf27e9a33052a428ffd4626b" title="Calculate the OCR value for the given frequency." alt="" coords="252,5,319,31"/>
+</map>

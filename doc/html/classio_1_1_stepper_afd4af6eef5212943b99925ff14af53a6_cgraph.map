@@ -1,0 +1,4 @@
+<map id="io::Stepper::getPulseCount" name="io::Stepper::getPulseCount">
+<area shape="rect" id="node1" title=" " alt="" coords="5,5,184,31"/>
+<area shape="rect" id="node2" href="$class_pulse_generator.html#aedd3381ac01cc14dd41d803d59bc80b2" title="get the current pulse count." alt="" coords="232,5,404,31"/>
+</map>

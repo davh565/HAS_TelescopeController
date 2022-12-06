@@ -1,0 +1,14 @@
+<map id="ui::lcd" name="ui::lcd">
+<area shape="rect" id="node1" title=" " alt="" coords="508,220,565,245"/>
+<area shape="rect" id="node2" href="$classui_1_1_display.html#a4eaeddcbc2695a733c7f840fb234803c" title=" " alt="" coords="311,5,419,31"/>
+<area shape="rect" id="node4" href="$classui_1_1_display.html#a69b77d768d6734827deb0cb47ba8e5d5" title=" " alt="" coords="100,244,221,269"/>
+<area shape="rect" id="node6" href="$classui_1_1_display.html#adea7c1d610443c65435bf72f450cc2b7" title=" " alt="" coords="278,106,451,146"/>
+<area shape="rect" id="node7" href="$classui_1_1_display.html#a1bb6869991d4dfd1a8048608c5f675ab" title=" " alt="" coords="283,171,446,196"/>
+<area shape="rect" id="node8" href="$classui_1_1_display.html#af17b9ab9aa34957628d92b8d84227367" title=" " alt="" coords="288,220,441,245"/>
+<area shape="rect" id="node9" href="$classui_1_1_display.html#ae93c7b221ddbd9041e734cc25274bea2" title=" " alt="" coords="269,269,460,295"/>
+<area shape="rect" id="node10" href="$classui_1_1_display.html#acf93be3d85ccda5edc5c2d5c861e05a8" title=" " alt="" coords="272,319,457,344"/>
+<area shape="rect" id="node11" href="$classui_1_1_display.html#a03115085846f21dcdbd56f286a7c78c0" title=" " alt="" coords="273,368,457,393"/>
+<area shape="rect" id="node12" href="$classui_1_1_display.html#a8ab996ee1287cc660ab7fa8efc156432" title="check functionality of buttons and potentiometer." alt="" coords="285,417,444,443"/>
+<area shape="rect" id="node3" href="$_h_a_s___telescope_controller_8ino.html#a4fc01d736fe50cf5b977f755b675f11d" title="Main Program." alt="" coords="133,5,188,31"/>
+<area shape="rect" id="node5" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,244,52,269"/>
+</map>

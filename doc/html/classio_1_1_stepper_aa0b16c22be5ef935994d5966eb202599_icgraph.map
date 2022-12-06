@@ -1,0 +1,11 @@
+<map id="io::Stepper::setTarget" name="io::Stepper::setTarget">
+<area shape="rect" id="node1" title=" " alt="" coords="504,57,651,83"/>
+<area shape="rect" id="node2" href="$classio_1_1_stepper.html#a83337e3036b25fe52d22bea3d6074be1" title="Run the stepper motor for a number of pulses from current position." alt="" coords="300,8,451,33"/>
+<area shape="rect" id="node3" href="$classio_1_1_stepper.html#aa0cd44bd6b7eebf0745124cb36bd7236" title="Run the stepper motor to a target position." alt="" coords="295,57,456,83"/>
+<area shape="rect" id="node4" href="$classio_1_1_stepper.html#aa27dcfc80c29dbbc30a6f1fec5b47298" title="Stop the stepper motor. This is achieved by setting the target step count to the current step count...." alt="" coords="316,107,435,132"/>
+<area shape="rect" id="node5" href="$namespacectrl.html#a9a173d9014157b230d74d1257d0c929a" title=" " alt="" coords="120,5,227,31"/>
+<area shape="rect" id="node6" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,107,52,132"/>
+<area shape="rect" id="node7" href="$namespacectrl.html#a802445b7f11ebf82272c96dbddd3e5f1" title="Stop the motors if the current location is below the horizon." alt="" coords="115,107,232,132"/>
+<area shape="rect" id="node8" href="$namespaceio.html#a773508c2ed345cf874dc566aa57e9ce4" title="stop the declination motor if a limit switch is triggered." alt="" coords="128,156,219,181"/>
+<area shape="rect" id="node9" href="$namespacectrl.html#a4fbc9180a52083f002d7e787a25fa884" title="Stop all movement of the telescope." alt="" coords="100,205,247,231"/>
+</map>

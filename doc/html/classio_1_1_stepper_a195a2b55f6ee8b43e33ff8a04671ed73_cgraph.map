@@ -1,0 +1,11 @@
+<map id="io::Stepper::run" name="io::Stepper::run">
+<area shape="rect" id="node1" title="Run the stepper motor at current speed indefinitely." alt="" coords="5,81,116,107"/>
+<area shape="rect" id="node2" href="$namespaceio.html#a994496fb40c493062f144c5e42f5117c" title=" " alt="" coords="664,5,783,31"/>
+<area shape="rect" id="node3" href="$classio_1_1_stepper.html#ac798923686b2472dbf740c64fbcf224d" title="Enable the stepper motor by enabling the pulse generator." alt="" coords="195,56,326,81"/>
+<area shape="rect" id="node7" href="$classio_1_1_stepper.html#a38ca9483ac98be75b137e5589305c03a" title="set the direction of the stepper motor" alt="" coords="179,105,342,131"/>
+<area shape="rect" id="node9" href="$class_pulse_generator.html#ac9ea693293af9a0b2c160899639407d0" title="sets motor to either targeting mode or constant run mode." alt="" coords="164,155,357,180"/>
+<area shape="rect" id="node4" href="$classio_1_1_stepper.html#ac50216a9a50379802d468cca72178b67" title="Enable or disable the stepper motor." alt="" coords="421,56,579,81"/>
+<area shape="rect" id="node5" href="$class_pulse_generator.html#a748055a5182a593642735f0ddab65244" title="Disable the timer via turning off the clock source." alt="" coords="643,55,804,80"/>
+<area shape="rect" id="node6" href="$class_pulse_generator.html#a3a3768987e9c853010ab997d791e4e36" title="Enable Timer by setting prescaler to 64." alt="" coords="644,104,803,129"/>
+<area shape="rect" id="node8" href="$class_pulse_generator.html#a175b8eb09e7ac8ab2a0b05fc2689fe99" title="Set the direction of the pulse generator. This ensures accurate count is maintained regardless of dir..." alt="" coords="405,105,595,131"/>
+</map>

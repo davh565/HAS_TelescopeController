@@ -1,0 +1,8 @@
+<map id="io::Stepper::setDirection" name="io::Stepper::setDirection">
+<area shape="rect" id="node1" title="set the direction of the stepper motor" alt="" coords="469,55,632,80"/>
+<area shape="rect" id="node2" href="$classio_1_1_stepper.html#a735e92dd186abc0044ade5777608340c" title="Run the stepper motor at specified speed indefinitely." alt="" coords="285,5,396,31"/>
+<area shape="rect" id="node5" href="$classio_1_1_stepper.html#a83337e3036b25fe52d22bea3d6074be1" title="Run the stepper motor for a number of pulses from current position." alt="" coords="265,55,416,80"/>
+<area shape="rect" id="node6" href="$classio_1_1_stepper.html#aa0cd44bd6b7eebf0745124cb36bd7236" title="Run the stepper motor to a target position." alt="" coords="260,104,421,129"/>
+<area shape="rect" id="node3" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,5,52,31"/>
+<area shape="rect" id="node4" href="$namespacectrl.html#a9bec9e01e09cac8e6bd5f531e7176feb" title=" " alt="" coords="100,31,212,56"/>
+</map>

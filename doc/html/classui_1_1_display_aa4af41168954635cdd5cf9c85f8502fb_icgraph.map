@@ -1,0 +1,6 @@
+<map id="ui::Display::double2RaStr" name="ui::Display::double2RaStr">
+<area shape="rect" id="node1" title="Convert a decimal angle in degees to a string of the form &quot;HH:MM:SS&quot; for RA." alt="" coords="480,5,649,31"/>
+<area shape="rect" id="node2" href="$classui_1_1_display.html#a1bb6869991d4dfd1a8048608c5f675ab" title=" " alt="" coords="269,5,432,31"/>
+<area shape="rect" id="node3" href="$classui_1_1_display.html#a69b77d768d6734827deb0cb47ba8e5d5" title=" " alt="" coords="100,5,221,31"/>
+<area shape="rect" id="node4" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,5,52,31"/>
+</map>

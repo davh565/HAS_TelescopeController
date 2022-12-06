@@ -1,0 +1,24 @@
+<map id="ui::Display::show" name="ui::Display::show">
+<area shape="rect" id="node1" title=" " alt="" coords="5,221,127,247"/>
+<area shape="rect" id="node2" href="$namespaceui.html#a4413caab022eafec1391f682ee311466" title=" " alt="" coords="473,156,530,181"/>
+<area shape="rect" id="node3" href="$classui_1_1_display.html#adea7c1d610443c65435bf72f450cc2b7" title=" " alt="" coords="183,131,357,171"/>
+<area shape="rect" id="node4" href="$classui_1_1_display.html#a1bb6869991d4dfd1a8048608c5f675ab" title=" " alt="" coords="189,31,351,56"/>
+<area shape="rect" id="node7" href="$classui_1_1_display.html#af17b9ab9aa34957628d92b8d84227367" title=" " alt="" coords="193,196,347,221"/>
+<area shape="rect" id="node8" href="$classui_1_1_display.html#ae93c7b221ddbd9041e734cc25274bea2" title=" " alt="" coords="175,245,365,271"/>
+<area shape="rect" id="node9" href="$classui_1_1_display.html#acf93be3d85ccda5edc5c2d5c861e05a8" title=" " alt="" coords="177,295,363,320"/>
+<area shape="rect" id="node10" href="$classui_1_1_display.html#a03115085846f21dcdbd56f286a7c78c0" title=" " alt="" coords="178,344,362,369"/>
+<area shape="rect" id="node11" href="$classui_1_1_display.html#a8ab996ee1287cc660ab7fa8efc156432" title="check functionality of buttons and potentiometer." alt="" coords="191,423,349,448"/>
+<area shape="rect" id="node5" href="$classui_1_1_display.html#a581d86a5d935b6b691813aebda33be2c" title="Converts an angle in decimal degrees to the form &quot;DD°MM&#39;SS&quot; for DEC." alt="" coords="413,5,589,31"/>
+<area shape="rect" id="node6" href="$classui_1_1_display.html#aa4af41168954635cdd5cf9c85f8502fb" title="Convert a decimal angle in degees to a string of the form &quot;HH:MM:SS&quot; for RA." alt="" coords="417,55,586,80"/>
+<area shape="rect" id="node12" href="$classui_1_1_handheld_controller.html#aa6853b80fbc8d0a71b122c40ec967dc7" title=" " alt="" coords="427,206,576,246"/>
+<area shape="rect" id="node13" href="$classui_1_1_handheld_controller.html#a2c39497184ecd83b24dafde6d588e574" title=" " alt="" coords="427,270,576,310"/>
+<area shape="rect" id="node14" href="$classui_1_1_handheld_controller.html#ab72f8456da3665cbe7bb27bd4417f0c0" title=" " alt="" coords="427,334,576,374"/>
+<area shape="rect" id="node15" href="$classui_1_1_handheld_controller.html#a44e6c539104c7f39de2cd549a2aad14f" title=" " alt="" coords="427,398,576,438"/>
+<area shape="rect" id="node16" href="$classui_1_1_handheld_controller.html#adf0aeaa96b9e25d0090c594844090f68" title=" " alt="" coords="427,462,576,502"/>
+<area shape="rect" id="node17" href="$classui_1_1_handheld_controller.html#a2857a70397babb36146aab6cb279b622" title=" " alt="" coords="427,526,576,566"/>
+<area shape="rect" id="node18" href="$classui_1_1_handheld_controller.html#a8a25358d51446afa692cb376b5fec8e6" title=" " alt="" coords="427,590,576,630"/>
+<area shape="rect" id="node19" href="$classui_1_1_handheld_controller.html#a41b9dafc7b06f2a68de30ac8a08e055f" title=" " alt="" coords="427,654,576,694"/>
+<area shape="rect" id="node20" href="$classui_1_1_handheld_controller.html#a3891bc4b219c88ac1c0fde4b8fb4bdc0" title=" " alt="" coords="427,718,576,758"/>
+<area shape="rect" id="node21" href="$classui_1_1_handheld_controller.html#af11539206c6a0e6311f0c28be520801c" title=" " alt="" coords="427,782,576,822"/>
+<area shape="rect" id="node22" href="$classui_1_1_handheld_controller.html#ad64c79a94446cb6ebc6d4f81b8b1b305" title=" " alt="" coords="637,782,787,822"/>
+</map>

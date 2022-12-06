@@ -1,0 +1,12 @@
+<map id="setup" name="setup">
+<area shape="rect" id="node1" title="Main Program." alt="" coords="5,108,60,133"/>
+<area shape="rect" id="node2" href="$classui_1_1_display.html#a4eaeddcbc2695a733c7f840fb234803c" title=" " alt="" coords="129,5,237,31"/>
+<area shape="rect" id="node4" href="$classio_1_1_stepper.html#adf4a3bb20714b3bf48c816d0e014de11" title="Initialise stepper motor." alt="" coords="127,79,238,104"/>
+<area shape="rect" id="node9" href="$classui_1_1_handheld_controller.html#a5a62506deb4931d02de7c41149b737c2" title=" " alt="" coords="108,129,257,169"/>
+<area shape="rect" id="node10" href="$namespaceio.html#a4fe8525e440164ea27180828487c54d0" title="set up the limit switches." alt="" coords="129,193,236,219"/>
+<area shape="rect" id="node3" href="$namespaceui.html#a4413caab022eafec1391f682ee311466" title=" " alt="" coords="373,5,431,31"/>
+<area shape="rect" id="node5" href="$class_pulse_generator.html#a05a7b4c5f58b2b09156aea6780090cbd" title="Setup timers Refer to table 17&#45;2, pg 145 and table 17&#45;4, pg 155, and table 17&#45;6, pg 157 of the datash..." alt="" coords="333,55,471,80"/>
+<area shape="rect" id="node7" href="$class_pulse_generator.html#a175b8eb09e7ac8ab2a0b05fc2689fe99" title="Set the direction of the pulse generator. This ensures accurate count is maintained regardless of dir..." alt="" coords="307,104,497,129"/>
+<area shape="rect" id="node8" href="$class_pulse_generator.html#ac9ea693293af9a0b2c160899639407d0" title="sets motor to either targeting mode or constant run mode." alt="" coords="305,153,499,179"/>
+<area shape="rect" id="node6" href="$src_2pulse_8cpp.html#a5e49ad1caf27e9a33052a428ffd4626b" title="Calculate the OCR value for the given frequency." alt="" coords="547,55,613,80"/>
+</map>

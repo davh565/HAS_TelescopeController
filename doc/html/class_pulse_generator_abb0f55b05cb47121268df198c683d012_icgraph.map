@@ -1,0 +1,8 @@
+<map id="PulseGenerator::setFrequency" name="PulseGenerator::setFrequency">
+<area shape="rect" id="node1" title="Set the frequency of the pulse generator." alt="" coords="639,55,837,80"/>
+<area shape="rect" id="node2" href="$classio_1_1_stepper.html#af23414a1c095a3327989ae7cc1640e3b" title="Set the frequency of the stepper motor. Cap at maxFrequency if input is greater." alt="" coords="419,55,591,80"/>
+<area shape="rect" id="node3" href="$namespacectrl.html#ac6298cdb7b00cb4c3fe67adbc4f98e7b" title="Move the telescope to the target position." alt="" coords="117,5,195,31"/>
+<area shape="rect" id="node5" href="$namespacectrl.html#a9bec9e01e09cac8e6bd5f531e7176feb" title=" " alt="" coords="100,55,212,80"/>
+<area shape="rect" id="node6" href="$classio_1_1_stepper.html#a735e92dd186abc0044ade5777608340c" title="Run the stepper motor at specified speed indefinitely." alt="" coords="260,105,371,131"/>
+<area shape="rect" id="node4" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,55,52,80"/>
+</map>

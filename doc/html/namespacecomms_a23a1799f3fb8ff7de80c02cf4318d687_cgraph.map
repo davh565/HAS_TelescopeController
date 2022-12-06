@@ -1,0 +1,7 @@
+<map id="comms::testDouble2DecStr" name="comms::testDouble2DecStr">
+<area shape="rect" id="node1" title=" " alt="" coords="5,80,188,105"/>
+<area shape="rect" id="node2" href="$tests_8ino.html#a4fb007178d48c0e41aa2eeb6699e40fa" title=" " alt="" coords="271,5,359,31"/>
+<area shape="rect" id="node3" href="$tests_8ino.html#ab691469a403c8ef2fe6e7cefc26d7b89" title=" " alt="" coords="269,55,361,80"/>
+<area shape="rect" id="node4" href="$namespacecomms.html#a1f609eeacdeb2c3fb5b5b43c01b91b29" title="Converts an angle in decimal degrees to the form &quot;$DD*MM:SS&quot; for DEC." alt="" coords="236,104,395,129"/>
+<area shape="rect" id="node5" href="$tests_8ino.html#a187bf6eb683ee60bf55da57271278f77" title=" " alt="" coords="277,177,354,203"/>
+</map>

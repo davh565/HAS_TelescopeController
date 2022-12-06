@@ -1,0 +1,11 @@
+<map id="ctrl::horizonStop" name="ctrl::horizonStop">
+<area shape="rect" id="node1" title="Stop the motors if the current location is below the horizon." alt="" coords="5,55,123,80"/>
+<area shape="rect" id="node2" href="$classpos_1_1_frame_set.html#a977417d0b36bd251545ddfd429984868" title=" " alt="" coords="171,5,339,31"/>
+<area shape="rect" id="node3" href="$classio_1_1_stepper.html#a2eb60670865144e56ffbfb0e2095a4d6" title=" " alt="" coords="173,55,336,80"/>
+<area shape="rect" id="node4" href="$classio_1_1_stepper.html#aa27dcfc80c29dbbc30a6f1fec5b47298" title="Stop the stepper motor. This is achieved by setting the target step count to the current step count...." alt="" coords="195,104,314,129"/>
+<area shape="rect" id="node5" href="$classio_1_1_stepper.html#afd4af6eef5212943b99925ff14af53a6" title=" " alt="" coords="394,55,573,80"/>
+<area shape="rect" id="node7" href="$class_pulse_generator.html#ac9ea693293af9a0b2c160899639407d0" title="sets motor to either targeting mode or constant run mode." alt="" coords="387,104,580,129"/>
+<area shape="rect" id="node8" href="$classio_1_1_stepper.html#aa0b16c22be5ef935994d5966eb202599" title=" " alt="" coords="410,153,557,179"/>
+<area shape="rect" id="node6" href="$class_pulse_generator.html#aedd3381ac01cc14dd41d803d59bc80b2" title="get the current pulse count." alt="" coords="629,55,801,80"/>
+<area shape="rect" id="node9" href="$class_pulse_generator.html#a43c6e5a24b400613cf3da8f31ad8a7c6" title="Set the pulse count target. When in targeting mode, pulse generator will stop when target is reached." alt="" coords="628,153,803,179"/>
+</map>

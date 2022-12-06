@@ -1,0 +1,15 @@
+<map id="PulseGenerator::setRunMode" name="PulseGenerator::setRunMode">
+<area shape="rect" id="node1" title="sets motor to either targeting mode or constant run mode." alt="" coords="504,143,697,168"/>
+<area shape="rect" id="node2" href="$classio_1_1_stepper.html#adf4a3bb20714b3bf48c816d0e014de11" title="Initialise stepper motor." alt="" coords="320,19,431,44"/>
+<area shape="rect" id="node4" href="$classio_1_1_stepper.html#a735e92dd186abc0044ade5777608340c" title="Run the stepper motor at specified speed indefinitely." alt="" coords="320,93,431,119"/>
+<area shape="rect" id="node7" href="$classio_1_1_stepper.html#a83337e3036b25fe52d22bea3d6074be1" title="Run the stepper motor for a number of pulses from current position." alt="" coords="300,143,451,168"/>
+<area shape="rect" id="node8" href="$classio_1_1_stepper.html#aa0cd44bd6b7eebf0745124cb36bd7236" title="Run the stepper motor to a target position." alt="" coords="295,192,456,217"/>
+<area shape="rect" id="node9" href="$classio_1_1_stepper.html#aa27dcfc80c29dbbc30a6f1fec5b47298" title="Stop the stepper motor. This is achieved by setting the target step count to the current step count...." alt="" coords="316,243,435,268"/>
+<area shape="rect" id="node3" href="$_h_a_s___telescope_controller_8ino.html#a4fc01d736fe50cf5b977f755b675f11d" title="Main Program." alt="" coords="146,5,201,31"/>
+<area shape="rect" id="node5" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,183,52,208"/>
+<area shape="rect" id="node6" href="$namespacectrl.html#a9bec9e01e09cac8e6bd5f531e7176feb" title=" " alt="" coords="117,107,229,132"/>
+<area shape="rect" id="node10" href="$namespacectrl.html#a9a173d9014157b230d74d1257d0c929a" title=" " alt="" coords="120,208,227,233"/>
+<area shape="rect" id="node11" href="$namespacectrl.html#a802445b7f11ebf82272c96dbddd3e5f1" title="Stop the motors if the current location is below the horizon." alt="" coords="115,257,232,283"/>
+<area shape="rect" id="node12" href="$namespaceio.html#a773508c2ed345cf874dc566aa57e9ce4" title="stop the declination motor if a limit switch is triggered." alt="" coords="128,307,219,332"/>
+<area shape="rect" id="node13" href="$namespacectrl.html#a4fbc9180a52083f002d7e787a25fa884" title="Stop all movement of the telescope." alt="" coords="100,356,247,381"/>
+</map>

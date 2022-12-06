@@ -1,0 +1,5 @@
+<map id="pos::FrameSet::motor2Base" name="pos::FrameSet::motor2Base">
+<area shape="rect" id="node1" title="The base frame local hour angle is equal to motor coordinates plus a fixed offset determined by the p..." alt="" coords="5,31,192,56"/>
+<area shape="rect" id="node2" href="$src_2utils_8cpp.html#acf65966ebf2cce2f5d458ba1226825b7" title="wrap values to plus or minus 180 degrees." alt="" coords="240,5,311,31"/>
+<area shape="rect" id="node3" href="$src_2utils_8cpp.html#a53a50376d1ca5e6b1e4f090961fe0a4f" title="wrap values from 0 to 360 degrees." alt="" coords="240,55,311,80"/>
+</map>

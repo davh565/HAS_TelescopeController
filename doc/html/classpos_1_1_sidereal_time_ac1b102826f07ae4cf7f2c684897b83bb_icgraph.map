@@ -1,0 +1,6 @@
+<map id="pos::SiderealTime::_sync" name="pos::SiderealTime::_sync">
+<area shape="rect" id="node1" title="the initial syncronisation must be done from a known location" alt="" coords="311,35,445,75"/>
+<area shape="rect" id="node2" href="$classpos_1_1_sidereal_time.html#aea9c99c48afbd3c73b58d4373b46c757" title="sets the current sidreal time. This function assumes that the telescope is in the home position,..." alt="" coords="114,5,249,45"/>
+<area shape="rect" id="node3" href="$classpos_1_1_sidereal_time.html#a0052c61e0afd7740ac0728d601c85c91" title=" " alt="" coords="100,70,263,95"/>
+<area shape="rect" id="node4" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,70,52,95"/>
+</map>

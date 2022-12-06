@@ -1,0 +1,13 @@
+<map id="wrap180" name="wrap180">
+<area shape="rect" id="node1" title="wrap values to plus or minus 180 degrees." alt="" coords="343,179,413,204"/>
+<area shape="rect" id="node2" href="$classpos_1_1_frame_set.html#a4be0ef0fad478216b92355480c3836e7" title=" " alt="" coords="111,5,292,31"/>
+<area shape="rect" id="node3" href="$classpos_1_1_frame_set.html#a0df05288b5233c985bd45e810f79a831" title=" " alt="" coords="111,55,292,80"/>
+<area shape="rect" id="node4" href="$classpos_1_1_frame_set.html#acc2c706774199bd769e3261a19dcf812" title=" " alt="" coords="109,104,293,129"/>
+<area shape="rect" id="node5" href="$classpos_1_1_frame_set.html#a46c6d5691553ed5d2c777129b20bd08a" title="Conversion from local hour angle to right ascension, based on the current sidereal time." alt="" coords="114,153,289,179"/>
+<area shape="rect" id="node6" href="$classpos_1_1_frame_set.html#a2d3f2a2658788a516581a59949a7a986" title="The base frame local hour angle is equal to motor coordinates plus a fixed offset determined by the p..." alt="" coords="108,203,295,228"/>
+<area shape="rect" id="node7" href="$namespacectrl.html#ac6298cdb7b00cb4c3fe67adbc4f98e7b" title="Move the telescope to the target position." alt="" coords="162,252,241,277"/>
+<area shape="rect" id="node9" href="$classpos_1_1_frame_set.html#aa6447ef05a604cfab189bbaacb4d9505" title="Conversion from right ascension to local hour angle, based on the current sidereal time." alt="" coords="114,301,289,327"/>
+<area shape="rect" id="node10" href="$tests_8ino.html#a9fe5a8cd74847af9e4ae68faf81d0aa7" title=" " alt="" coords="164,351,239,376"/>
+<area shape="rect" id="node8" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="9,252,56,277"/>
+<area shape="rect" id="node11" href="$tests_8ino.html#a4fc01d736fe50cf5b977f755b675f11d" title=" " alt="" coords="5,351,60,376"/>
+</map>

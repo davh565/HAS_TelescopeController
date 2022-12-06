@@ -1,0 +1,6 @@
+<map id="io::Stepper::getMaxFrequency" name="io::Stepper::getMaxFrequency">
+<area shape="rect" id="node1" title=" " alt="" coords="260,23,457,49"/>
+<area shape="rect" id="node2" href="$_h_a_s___telescope_controller_8ino.html#afe461d27b9c48d5921c00d521181f12f" title="Main loop." alt="" coords="5,23,52,49"/>
+<area shape="rect" id="node3" href="$namespacectrl.html#ac6298cdb7b00cb4c3fe67adbc4f98e7b" title="Move the telescope to the target position." alt="" coords="117,23,195,49"/>
+<area shape="rect" id="node4" href="$namespacectrl.html#a9bec9e01e09cac8e6bd5f531e7176feb" title=" " alt="" coords="100,73,212,98"/>
+</map>

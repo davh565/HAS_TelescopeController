@@ -1,0 +1,4 @@
+<map id="io::Stepper::setDirection" name="io::Stepper::setDirection">
+<area shape="rect" id="node1" title="set the direction of the stepper motor" alt="" coords="5,5,168,31"/>
+<area shape="rect" id="node2" href="$class_pulse_generator.html#a175b8eb09e7ac8ab2a0b05fc2689fe99" title="Set the direction of the pulse generator. This ensures accurate count is maintained regardless of dir..." alt="" coords="216,5,405,31"/>
+</map>
